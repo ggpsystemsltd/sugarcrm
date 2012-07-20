@@ -1,0 +1,184 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/utils/expression_utils.js?v={VERSION_MARK}"></script>
+<script>
+function set_return(field_num){
+	window.opener.document.getElementById('set_type_' + field_num).value = get_value(field_num + '__set_type');
+	window.opener.document.getElementById('adv_type_' + field_num).value = get_value(field_num + '__adv_type');
+	window.opener.document.getElementById('value_' + field_num).value = get_value(field_num + '__field_value');
+
+	window.opener.document.getElementById('adv_value_' + field_num).value = get_value(field_num + '__adv_value');
+	window.opener.document.getElementById('ext1_' + field_num).value = get_value(field_num + '__ext1');
+	window.opener.document.getElementById('ext2_' + field_num).value = get_value(field_num + '__ext2');
+	window.opener.document.getElementById('ext3_' + field_num).value = get_value(field_num + '__ext3');
+
+	if(this.document.getElementById(field_num + '__set_type').value=='Advanced'){
+		var display_text = build_display_text(field_num, 'Advanced');
+	} else {
+		var display_text = build_display_text(field_num, 'Basic');
+	}
+		
+	window.opener.document.getElementById('display_text_' + field_num).value = display_text;
+	window.opener.changehref_text('value_' + field_num, 'href_text_' + field_num, field_num);
+
+	
+		
+		window.close();
+	
+//end function set_return
+}
+
+function build_display_text(field_num, type){
+	
+	if(type=='Basic'){
+		
+		var selected_text = get_inner_text(field_num + '__field_value');
+		
+		if(	get_value(field_num + '__field_type') == 'datetime' || 
+			get_value(field_num + '__field_type') == 'date')
+		{
+			selected_text += 'from ' + get_inner_text(field_num + '__ext1');
+		}
+		return selected_text;	
+	//end if type is basic		
+	} else {
+		if(get_value(field_num + '__adv_type') == 'value_calc'){
+			var selected_text = ' existing value ' + get_inner_text(field_num + '__ext1');
+			selected_text += ' ' + get_inner_text(field_num + '__adv_value');
+			return selected_text;
+		}		
+			
+		if(get_value(field_num + '__adv_type') == 'enum_step'){
+			var selected_text = ' ' + get_inner_text(field_num + '__ext1');
+			selected_text += ' ' + get_inner_text(field_num + '__adv_value') + ' step(s)';
+			return selected_text;
+		}		
+			var selected_text = get_inner_text(field_num + '__adv_value');
+			selected_text += ' ' + get_inner_text(field_num + '__ext1');
+			selected_text += ' ' + get_inner_text(field_num + '__ext2');
+			selected_text += ' ' + get_inner_text(field_num + '__ext3');
+			return selected_text;
+		
+	//end if type is advanced
+	}		
+	
+
+
+//end function build_display_text
+}
+	
+function toggle_set_type(field_num, focus_set_type){
+		if(focus_set_type == 'Basic'){
+			this.document.getElementById('href_set_type_adv').style.display='none'
+			this.document.getElementById('href_set_type_basic').style.display=''
+			this.document.getElementById(field_num + '__set_type').value = 'Basic'
+			toggleoptions(field_num, focus_set_type);
+		} else {
+			this.document.getElementById('href_set_type_basic').style.display='none'
+			this.document.getElementById('href_set_type_adv').style.display=''
+			this.document.getElementById(field_num + '__set_type').value = 'Advanced'
+				toggleoptions(field_num, focus_set_type);			
+		}	
+}	
+
+function toggleoptions(field_num, focus_set_type){
+	//alert(this.document.getElementById(field_num + '__set_type').value);
+	if(this.document.getElementById(field_num + '__set_type').value=='Basic'){
+		this.document.getElementById('basic_options').style.display=''
+		this.document.getElementById('adv_options').style.display='none'
+	} else{
+		this.document.getElementById('basic_options').style.display='none'
+		this.document.getElementById('adv_options').style.display=''
+	}	
+}	
+function toggle_hrefs(set_disabled){
+
+	if(set_disabled=="Yes"){
+		this.document.getElementById('set_type_hrefs').style.display='none'
+	}	
+	
+}	
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input id="{PREFIX}set_type" type="hidden" name="{PREFIX}set_type" value="{SET_TYPE}">
+			<input id="{PREFIX}adv_type" type="hidden" name="{PREFIX}adv_type" value="{ADV_TYPE}">			
+			<input id="{PREFIX}field_type" type="hidden" name="{PREFIX}field_type" value="{FIELD_TYPE}">			
+
+			</tr>
+			<tr id='basic_options'>
+			<td width='25%' nowrap scope="row"><slot>Set&nbsp;{FIELD_NAME} as&nbsp;</slot></td>
+			<td scope="row">{VALUE}&nbsp;</td>
+
+			</tr>
+			<tr id='adv_options' style='display:none'>
+			<td width='25%' nowrap scope="row"><slot>Set&nbsp;{FIELD_NAME} as&nbsp;</slot></td>
+			<td scope="row">{ADV_VALUE}&nbsp;</td>
+			<td scope="row">{EXT1}&nbsp;</td>
+			<td scope="row">{EXT2}&nbsp;</td>
+			</tr>
+			<tr>
+			<td colspan ="3">&nbsp;</td>
+			</tr>
+			<tr>
+			<td colspan = "3" width = '100%' scope="row" align="right">
+			<span id='set_type_hrefs'>
+			<a id='href_set_type_basic' href=# onclick="toggle_set_type('{FIELD_NUM}', 'Advanced');" class="tabFormAdvLink">{ADVANCED_SEARCH_PNG}&nbsp;{APP.LNK_ADVANCED_SEARCH}</a>
+			<a id='href_set_type_adv' href=# onclick="toggle_set_type('{FIELD_NUM}', 'Basic');" class="tabFormAdvLink">{BASIC_SEARCH_PNG}&nbsp;{APP.LNK_BASIC_SEARCH}</a>
+			</span>
+			<input title="{APP.LBL_SELECT_BUTTON_TITLE}" class="button" type="button" name="button" value="{APP.LBL_SELECT_BUTTON_LABEL}"
+					onclick="set_return('{FIELD_NUM}')">
+			</td>			
+			</tr>
+			</form>
+</tr>
+</table>
+	
+<script>
+toggle_set_type('{FIELD_NUM}', '{SET_TYPE}');
+toggle_hrefs('{SET_DISABLED}');
+</script>
+
+<!-- END: main -->

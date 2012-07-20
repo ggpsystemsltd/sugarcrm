@@ -1,0 +1,210 @@
+/********************************************************************************* * The contents of this file are subject to the SugarCRM Sales Subscription * Agreement ("License") which can be viewed at * http://www.sugarcrm.com/crm/eula/sugarcrm-sales-subscription-agreement.html * By installing or using this file, You have unconditionally agreed to the * terms and conditions of the License, and You may not use this file except in * compliance with the License.  Under the terms of the license, You shall not, * among other things: 1) sublicense, resell, rent, lease, redistribute, assign * or otherwise transfer Your rights to the Software, and 2) use the Software * for timesharing or service bureau purposes such as hosting the Software for * commercial gain and/or for the benefit of a third party.  Use of the Software * may be subject to applicable fees and any use of the Software without first * paying applicable fees is strictly prohibited.  You do not have the right to * remove SugarCRM copyrights from the source code or user interface. * * All copies of the Covered Code must include on each user interface screen: *  (i) the "Powered by SugarCRM" logo and *  (ii) the SugarCRM copyright notice * in the same form as they appear in the distribution.  See full license for * requirements. * * Your Warranty, Limitations of liability and Indemnity are expressly stated * in the License.  Please refer to the License for the specific language * governing these rights and limitations under the License.  Portions created * by SugarCRM are Copyright (C) 2004-2010 SugarCRM, Inc.; All Rights Reserved. ********************************************************************************//********************************************************************************* * Description:  Contains a variety of utility functions used to display UI  * components such as form headers and footers.  Intended to be modified on a per  * theme basis. ********************************************************************************//** From default style.css file **/
+
+body.popupBody {
+	direction: rtl;
+}
+
+#companyLogo {    float:right;}
+
+#search, #sitemapLink, #colorPicker, #welcome, #globalLinks, #globalLinksLeft{    float: left;}
+
+#welcome {	padding-left: 10px;}
+
+#globalLinksModule {float: left;}
+
+#globalLinksCtrl {	float: left;}
+
+#globalLinksCtrl a.yui-toggle {    background-position:-20px 0; /* close (minus) icon */}
+
+#globalLinksCtrl a.yui-toggle:hover {	background-position:-60px 0;}
+#globalLinksModule.yui-closed a.yui-toggle {    background-position: 0 0; /* open (plus) icon */}
+
+#globalLinksModule.yui-closed a.yui-toggle:hover {	background-position:-40px 0;}
+
+div#content{    direction: rtl;}
+
+div.moduleTitle{    direction: rtl;}
+
+.moduleTitle h2, h2{    float: right;
+    direction: ltr;}
+
+.moduleTitle span.utils{    float: left;}
+
+.detail tr td{    text-align: right;}.detail tr td[scope=row] {    text-align: left;}
+
+table.actionsContainer table td {text-align: left;direction: ltr;}
+
+table.actionsContainer td:last-child {
+text-align: left;
+}
+
+.list tr.pagination td table td:first-child {text-align: right;
+-moz-border-radius-bottomright: 6px;
+-moz-border-radius-topright: 6px;
+border-radius-bottomright: 6px;
+border-radius-topright: 6px;
+-webkit-border-bottom-right-radius: 6px;
+-webkit-border-top-right-radius: 6px;}.list tr.pagination td table td:last-child {direction: ltr;text-align: left;	
+-moz-border-radius-bottomleft: 6px;
+-moz-border-radius-topleft: 6px;
+border-radius-bottomleft: 6px;
+border-radius-topleft: 6px;
+-webkit-border-bottom-left-radius: 6px;
+-webkit-border-top-left-radius: 6px;}
+
+.list tr.pagination .paginationActionButtons {	padding-right: 10px !important;}
+
+.list tr th, .list tr td[scope=col], .edit .list tr th, .edit .list tr td[scope=col]{    text-align: right;}.list tr th div {	text-align: right;		white-space: nowrap !important;}
+
+.list tr.oddListRowS1 td,.list tr.evenListRowS1 td{    text-align: right;}
+
+input.phone {
+text-align: right;	
+}
+.list tr.oddListRowS1 td.phone,.list tr.evenListRowS1 td.phone,
+.detail tr td.phone, input.phone, .olBgClass .phone, table.dateTime, span.dateTime, div.duration
+{
+	direction: ltr;
+}
+
+.search_form .view{    padding-right:10px !important;
+}
+
+.search_form .sumbitButtons {	text-align: right;}.search_form .helpIcon {	text-align: left;}
+
+.search_form .view.advanced .help {
+text-align: left;	
+}
+
+ul.noBullet {  padding-right: 0;}
+
+span.id-ff {direction: ltr !important;	}
+
+span.id-ff.multiple button.button.firstChild{	-moz-border-radius: 4px;	border-radius: 4px;	-webkit-border-radius: 4px;	-moz-border-radius-topleft: 0px;  	-moz-border-radius-bottomleft: 0px; 	border-radius-topleft: 0px;  	border-radius-bottomleft: 0px; 	-webkit-border-bottom-left-radius: 0px;	-webkit-border-top-left-radius: 0px;	border-left-color: #eee;}span.id-ff.multiple button.button.lastChild{	-moz-border-radius: 4px;	border-radius: 4px;	-webkit-border-radius: 4px;  -moz-border-radius-topright: 0px;  -moz-border-radius-bottomright: 0px;  border-radius-topright: 0px;  border-radius-bottomright: 0px;  -webkit-border-bottom-right-radius: 0px;  -webkit-border-bottom-top-radius: 0px;  border-left-color: #CCCCCC;}
+
+#moduleList {	padding-left: 0px;	padding-right: 20px;}
+
+#moduleList.yuimenubarnav .yuimenubaritem {float: right;}#moduleList.yuimenubar .moduleTabGroupMenu {float: left;}#moduleList.yuimenubar .yuimenuitemlabel.group {border-left: 0px;border-right: 1px solid #ccc;}
+
+#moduleList.yuimenubar li.currentTabRight {float:right;}
+
+#moduleList.yuimenubar li.currentTabRight .yuimenuitemlabel{	border-right: 0px;}
+
+#moduleList .dashletPanelMenu .yuimenuitemlabel, .dashletPanelMenu a.yuimenuitemlabel, .dashletPanelMenu a.yuimenuitemlabel:link, .dashletPanelMenu a.yuimenuitemlabel:visited, #moduleList.yuimenubar li.current .dashletPanelMenu  .yuimenuitemlabel, li.current .dashletPanelMenu  a.yuimenuitemlabel, li.current .dashletPanelMenu  a.yuimenuitemlabel:link, li.current .dashletPanelMenu  a.yuimenuitemlabel:visited { padding:4px 6px 4px 6px;text-align: right;}
+
+#moduleList .dashletPanelMenu  .bd  ul.shortCutsUl {float: right;direction: rtl;}#moduleList .dashletPanelMenu  .bd  ul.lastViewedUl {float: left;width: 45%;direction: rtl;}
+
+#moduleList.yuimenubar li.currentTabRight + li  .yuimenuitemlabel {border-right: 1px solid transparent;
+border-left: 0px;}
+
+.list tr.pagination td table td a:link,.list tr.pagination td table td a:visited,.reportGroupByDataChildTablelistViewThS1 a:link,.reportGroupByDataChildTablelistViewThS1 a:visited,.list tr th,.list tr th a:link,.list tr th a:visited,.list tr td[scope=col],.list tr td[scope=col] a:link,.list tr td[scope=col] a:visited{	direction: rtl;}
+
+.list tr.pagination td table td span.pageNumbers, .pageNumbers
+{
+direction: ltr;	
+}
+
+
+.list.view  tr:last-child td:first-child ,.list.view  tr:last-child th:first-child{	 padding-right: 10px !important;}
+
+.detail tr td[scope="row"] {    text-align: left;}
+
+#tabListContainer ul.subpanelTablist li a.current{padding: 7px 20px 7px 5px;margin-left: 2px;}
+
+#tabListContainer.yui-scroll {    float: right;}
+
+#tabListContainerTable { direction: rtl;}
+
+#dashletCtrlsTD {text-align: left;}
+
+.edit.view > tr:last-child > td:first-child,.detail.view tr:last-child > td:first-child {-moz-border-radius: 0px 0px 6px 0px;border-radius: 0px 0px 6px 0px;-webkit-border-bottom-right-radius: 6px;}.edit.view > tr:last-child td:last-child ,.detail.view tr:last-child td:last-child{-moz-border-radius: 0px 0px 0px 6px;border-radius: 0px 0px 0px 6px;-webkit-border-bottom-left-radius: 6px;}
+
+.edit.view h4:first-child, .detail.view h4:first-child {
+text-align: right;
+}
+
+.yui-navset.detailview_tabs .view tr:first-child td:first-child {-moz-border-radius: 0px 6px 0px 0px;border-radius: 0px 6px 0px 0px;-webkit-border-top-right-radius: 6px;}.yui-navset.detailview_tabs .view tr:first-child td:last-child {-moz-border-radius: 6px 0px 0px 0px;border-radius: 6px 0px 0px 0px;-webkit-border-top-left-radius: 6px;}
+
+.list.view tr th.selectCol {	padding: 0px 6px 0px 6px;}
+
+#dcboxbody{width: 1050px;direction: rtl;}
+
+#dcboxbody.sugar_spot_search, #dcboxbody.dcmenuSugarCube{width: 320px;}
+
+#dcboxbody  .hd span {float: right;direction: rtl;}
+
+#dcboxbody  .hd .close {float: left;}
+
+#glblSearchBtn {float: left;margin-left: 10px;}
+#dcmenuSugarCube {float: right;margin: 0px 15px 0 0px;}
+
+#dcmenuContainer{float: right;}
+
+.star {	float:left;}
+
+#dcmenuSearchDiv {	float:left;}
+
+#sugar_spot_search {    direction: rtl;    }
+
+#notificationsDivider { 	float: right;  	margin-left: 10px;}
+
+#moduleList .yuimenuitemlabel, a.yuimenuitemlabel, a.yuimenuitemlabel:link, a.yuimenuitemlabel:visited {
+    border-right: 1px solid #ccc;
+    border-left: none;
+
+}
+#moduleList.yuimenubarnav .yuimenubaritemlabel-selected {
+border-right: 1px solid #ccc;
+border-left: none;
+}
+
+#listViewDiv .pagination {
+    direction: ltr;
+}
+
+.monthHeader, .monthFooter {
+direction: ltr;
+}
+
+table#calendarModule > tbody > tr > td:last-child{
+padding-right: 10px;	
+}
+.edit tr td {
+text-align: right;	
+}
+.edit tr td[scope="row"] {
+    text-align: right;
+}
+
+table#editor-content .percentage, table#editor-content .editIcon {
+text-align: left;	
+}
+
+.emailUIField {
+    text-align: right !important;
+}
+
+#dashletsDialog_c table td 
+{
+text-align: right;
+}
+
+.yui-dialog .container-close {
+    left: 6px;
+    right: auto;
+}
+
+.yui-module .hd, .yui-panel .hd, .yui-panel .bd 
+{
+direction: rtl;
+}
+.mceEditor.defaultSkin, .mceContentBody {
+direction: rtl;	
+}
+
+#bottomLinks {
+	padding: 0 25px;
+	float: left;
+	direction: rtl;	
+}
+

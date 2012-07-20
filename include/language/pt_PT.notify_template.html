@@ -1,0 +1,339 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+
+<!-- BEGIN: Quote_Subject -->
+Cotação SugarCRM - {QUOTE_SUBJECT}
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+{ASSIGNER} atribuiu uma cotação a {ASSIGNED_USER}.
+
+Assunto: {QUOTE_SUBJECT}
+Estado: {QUOTE_STATUS}
+Data Esperada de Fecho: {QUOTE_CLOSEDATE}
+Descrição: {QUOTE_DESCRIPTION}
+
+Pode rever esta cotação em:
+<{URL}>
+<!-- END: Quote -->
+
+
+<!-- BEGIN: Account_Subject -->
+Entidade no SugarCRM - {ACCOUNT_NAME}
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+Foi-lhe atribuído por {ASSIGNER} uma Entidade através do SugarCRM, a qual carece da sua análise.
+
+Entidade: {ACCOUNT_NAME}
+Tipo: {ACCOUNT_TYPE}
+Descrição: {ACCOUNT_DESCRIPTION}
+
+Pode aceder e analisar a Entidade através do seguinte link:
+<{URL}>
+<!-- END: Account -->
+
+
+<!-- BEGIN: Case_Subject -->
+Pedido no SugarCRM - {CASE_NUMBER}
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+Foi-lhe atribuído por {ASSIGNER} um Pedido através do SugarCRM, o qual carece da sua análise.
+
+Assunto: {CASE_SUBJECT}
+Estado: {CASE_STATUS}
+Estado: {CASE_STATUS}
+Descrição: {CASE_DESCRIPTION}
+
+Pode aceder e analisar o Pedido através do seguinte link:
+<{URL}>
+<!-- END: Case -->
+
+
+<!-- BEGIN: Task_Subject -->
+Tarefa SugarCRM - {TASK_SUBJECT}
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+{ASSIGNER} atribuiu uma tarefa a {ASSIGNED_USER}.
+
+Assunto: {TASK_SUBJECT}
+Prioridade: {TASK_PRIORITY}
+Data de conclusão: {TASK_DUEDATE}
+Estado: {TASK_STATUS}
+Descrição: {TASK_DESCRIPTION}
+
+Pode rever esta tarefa em:
+<{URL}>
+<!-- END: Task -->
+
+
+<!-- BEGIN: Meeting_Subject -->
+Reunião SugarCRM - {MEETING_SUBJECT}
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+Para: {MEETING_TO},
+
+{ASSIGNER} convidou-o para uma reunião
+
+Assunto: {MEETING_SUBJECT}
+Estado: {MEETING_STATUS}
+Data: {MEETING_STARTDATE}
+Duração: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Descrição: {MEETING_DESCRIPTION}
+
+Aceitar:
+<{ACCEPT_URL}&accept_status=accept>
+
+Aceitar provisoriamente:
+<{ACCEPT_URL}&accept_status=tentative>
+
+Recusar:
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+Reunião SugarCRM - {MEETING_SUBJECT}
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+{ASSIGNER} atribuiu uma reunião a {ASSIGNED_USER}.
+
+Assunto: {MEETING_SUBJECT}
+Estado: {MEETING_STATUS}
+Data: {MEETING_STARTDATE}
+Duração: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Descrição: {MEETING_DESCRIPTION}
+
+Pode rever esta reunião em:
+<{URL}>
+<!-- END: MeetingSpecial -->
+
+
+<!-- BEGIN: Email_Subject -->
+Email no SugarCRM - {EMAIL_SUBJECT}
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+Foi-lhe atribuído por {ASSIGNER} um Email através do SugarCRM, o qual carece da sua análise.
+
+Assunto: {EMAIL_SUBJECT}
+Data de Envio: {EMAIL_DATESENT}
+
+Pode aceder e analisar o Email através do seguinte link:
+<{URL}>
+<!-- END: Email -->
+
+
+
+
+
+
+<!-- BEGIN: Contact_Subject -->
+Contacto no SugarCRM - {CONTACT_NAME}
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+Foi-lhe atribuído por {ASSIGNER} um Contacto através do SugarCRM, o qual carece da sua análise.
+
+Nome: {CONTACT_NAME}
+Descrição: {CONTACT_DESCRIPTION}
+
+Pode aceder e analisar o Contacto através do seguinte link:
+<{URL}>
+<!-- END: Contact -->
+
+
+<!-- BEGIN: Lead_Subject -->
+Potencial Cliente SugarCRM - {LEAD_NAME}
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+{ASSIGNER} atribuiu um potencial cliente a {ASSIGNED_USER}.
+
+Nome: {LEAD_NAME}
+Origem: {LEAD_SOURCE}
+Estado: {LEAD_STATUS}
+Descrição: {LEAD_DESCRIPTION}
+
+Pode rever este potencial cliente em:
+<{URL}>
+<!-- END: Lead -->
+
+
+<!-- BEGIN: Opportunity_Subject -->
+Oportunidade SugarCRM - {OPPORTUNITY_NAME}
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+{ASSIGNER} atribuiu uma oportunidade a {ASSIGNED_USER}.
+
+Nome: {OPPORTUNITY_NAME}
+Quantia: {OPPORTUNITY_AMOUNT}
+Data de fecho prevista: {OPPORTUNITY_CLOSEDATE}
+Estágio de venda: {OPPORTUNITY_STAGE}
+Descrição: {OPPORTUNITY_DESCRIPTION}
+
+Pode rever esta oportunidade em:
+<{URL}>
+<!-- END: Opportunity -->
+
+
+<!-- BEGIN: Bug_Subject -->
+Bug SugarCRM - {BUG_SUBJECT}
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+{ASSIGNER} atribuiu um bug a {ASSIGNED_USER}.
+
+Bug Número: {BUG_BUG_NUMBER}
+Assunto: {BUG_SUBJECT}
+Tipo: {BUG_TYPE}
+Prioridade: {BUG_PRIORITY}
+Estado: {BUG_STATUS}
+Resolução: {BUG_RESOLUTION}
+Versão: {BUG_RELEASE}
+Descrição: {BUG_DESCRIPTION}
+Registo de trabalhos: {BUG_WORK_LOG}
+
+Pode rever este bug em:
+<{URL}>
+<!-- END: Bug -->
+
+
+<!-- BEGIN: Default_Subject -->
+SugarCRM - Atribuição de {OBJECT}
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+{ASSIGNER} atribuiu {OBJECT} a {ASSIGNED_USER}.
+
+Pode rever este {OBJECT} em:
+<{URL}>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+Chamada telefónica SugarCRM - {CALL_SUBJECT}
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+Para: {CALL_TO},
+ {ASSIGNER} convidou-o para uma conf call
+Assunto: {CALL_SUBJECT}
+Estado: {CALL_STATUS}
+Data: {CALL_STARTDATE}
+Duração: {CALL_HOURS}h, {CALL_MINUTES}m
+Descrição: {CALL_DESCRIPTION}
+
+Aceitar:
+<{ACCEPT_URL}&accept_status=accept>
+
+Aceitar provisoriamente:
+<{ACCEPT_URL}&accept_status=tentative>
+
+Rejeitar:
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+Chamada telefónica SugarCRM - {CALL_SUBJECT}
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+{ASSIGNER} atribuiu uma chamada a {ASSIGNED_USER}.
+
+Assunto: {CALL_SUBJECT}
+Estado: {CALL_STATUS}
+Data: {CALL_STARTDATE}
+Duração: {CALL_HOURS}h, {CALL_MINUTES}m
+Descrição: {CALL_DESCRIPTION}
+
+Pode rever esta chamada em:
+<{URL}>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: Campaign_Subject -->
+Campanha SugarCRM - {CAMPAIGN_NAME}
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+{ASSIGNER} atribuiu uma campanha a {ASSIGNED_USER}.
+
+Assunto: {CAMPAIGN_NAME}
+Valor: {CAMPAIGN_AMOUNT}
+Data de Fecho: {CAMPAIGN_CLOSEDATE}
+Estado: {CAMPAIGN_STATUS}
+Descrição: {CAMPAIGN_DESCRIPTION}
+
+Pode rever esta campanha em:
+<{URL}>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+Quotas SugarCRM - A sua quota para {QUOTA_TIMEPERIOD}
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+{ASSIGNER} atribuiu uma quota a {ASSIGNED_USER}.
+
+Valor: {QUOTA_AMOUNT}
+Periodo temporal: {QUOTA_TIMEPERIOD}
+
+Pode ver esta atribuição de quota em:
+<{QUOTA_URL}>
+<!-- END: Quota -->
+
+<!-- BEGIN: KBDocument_Subject -->
+Documento SugarCRM - {KBDOCUMENT_NAME}
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+
+{NOTIFICATION_MESSAGE}
+
+Nome: {KBDOCUMENT_NAME}
+Data de criação: {KBDOCUMENT_DATE_CREATED}
+Criado por: {KBDOCUMENT_CREATED_BY}
+Estado: {KBDOCUMENT_STATUS}
+Descrição: {KBDOCUMENT_DESCRIPTION}
+
+Pode rever este documento em:
+<{URL}>
+<!-- END: KBDocument -->
+
+<!-- BEGIN: Contract_Subject -->
+Contracto SugarCRM - {CONTRACT_NAME}
+<!-- END: Contract_Subject -->
+<!-- BEGIN: Contract-->
+
+{ASSIGNER} atribuiu um contracto a {ASSIGNED_USER}.
+
+Pode rever este contracto em:
+<{URL}>
+<!-- END:Contract-->
+
+<!-- BEGIN: ContractSpecial_Subject -->
+Contracto SugarCRM - {CONTRACT_NAME}
+<!-- END: ContractSpecial_Subject -->
+<!-- BEGIN: ContractSpecial -->
+
+O seu contracto: {CONTRACT_NAME} vai expirar em {CONTRACT_END_DATE}.
+
+Pode rever este contracto em:
+<{URL}>
+<!-- END:ContractSpecial-->

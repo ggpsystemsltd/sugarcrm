@@ -1,0 +1,175 @@
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+ 
+#cal-grid {
+	border-left: 1px solid silver;	 
+	width: 100%; 
+	overflow:hidden;
+}
+
+#cal-scrollable {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#cal-grid .day_col {
+	width: 14.2%; 
+	float: left; 
+	border-bottom: 0px solid silver;
+}
+#cal-grid .left_time_col {
+	width: 52px; 
+	float: left; 
+	border-bottom: 0px solid silver;
+}
+
+#cal-grid .week_block {
+	width: auto;
+	margin-left: 52px;
+	min-width: 290px;
+}
+
+#cal-grid .slot {
+	height: 14px;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid #e5e5e5;
+	background-color: transparent;	
+}
+#cal-grid .slot_over {
+	background-color: #D1DCFF;
+}
+
+#cal-grid .left_cell {	
+	height: 14px;
+	font-size: 10px;
+	text-align: center;	
+	border-right: 1px solid silver;	
+	border-bottom: 1px solid #e5e5e5;	
+	vertical-align: middle;
+	line-height: 15px;	
+}
+#cal-grid .day_head {
+	height: 14px;		
+	text-align: center;
+	font-size: 13px;
+	border-bottom: 1px solid silver;
+	border-top: 1px solid silver;
+	border-right: 1px solid silver;	
+	white-space: nowrap;
+}
+#cal-grid .day_head a {
+	text-decoration: none;	
+}
+#cal-grid .odd {
+	background-color: transparent;
+}
+#cal-grid .odd_border {
+	border-bottom: 1px solid silver;
+}
+
+#cal-grid .slot_active {
+	background-color: gray;
+}
+	
+#cal-grid .today {
+	font-weight: bold;
+	background-color: #FCD372;
+}
+
+.act_item {
+	width: 92%;
+	min-width: 0px;	
+	font-size: 10px;
+	position : relative;	
+	vertical-align: top;
+	display: inline-block;
+	border: 1px solid;
+	border-top-width: 1px;
+	overflow: hidden;
+	cursor: default;
+}
+
+.act_item.empty {
+	border-color: transparent;
+}
+
+.act_item, #cal-grid .day_col {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.act_item .head {
+	height: 13px;
+	padding-left: 2px;
+}
+.act_item .head div {
+	overflow: hidden;
+	height: 13px;	
+}
+.act_item .contain {
+	padding-top: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+	overflow: hidden;
+	height: 13px;	
+}
+
+.act_item .adicon {
+	float: right;	
+	color: black;
+	width: 11px;
+	font-size: 9px;
+	height: 11px;
+	line-height: 11px;
+	text-align: center;
+	background-image: url('../../themes/default/images/MoreDetail.png');
+	background-repeat: no-repeat;
+}
+
+.act_item .head {
+	font-size: 10px;	
+	font-weight: bold;
+}
+.act_item .head div {
+	font-weight: bold;	
+	font-size: 10px;
+}
+.act_item .head a, .act_item .head a:visited, .act_item .head a:hover {
+	text-decoration: none;
+}
+
+#cal-edit-buttons {
+	padding: 7px 5px 5px 5px;
+}
+	
+#cal-grid .owt {
+	display: none;
+}

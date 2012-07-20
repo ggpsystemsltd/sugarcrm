@@ -1,0 +1,75 @@
+<?php
+if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+ * Description:  Defines the Catalan language pack for the base application. 
+
+ * Source: SugarCRM 5.2.0
+ * Contributor(s): Ramón Feliu (ramon@slay.es).
+ ********************************************************************************/
+
+$mod_strings = array (
+	//module
+	'LBL_MODULE_NAME' 					=> 'Etiquetes d´Article',
+	'LBL_MODULE_TITLE' 					=> 'Etiquetes d´Article',
+	'LNK_NEW_TAG' 						=> 'Crear Etiqueta d´Article',
+	'LNK_KBTAG_LIST'					=> 'Llista de Etiquetes d´Article',
+	'LBL_SEARCH_FORM_TITLE'				=> 'Recerca de Etiquetes d´Article',
+    'LBL_LIST_FORM_TITLE' 				=> 'Llista de Etiquetes d´Article',
+	//vardef labels	
+	'LBL_KBTAGS_ID' 					=> 'Id Etiqueta:',
+	'LBL_PARENT_TAG_ID' 				=> 'Id Padre:',
+	'LBL_ROOT_TAG' 						=> 'Arrel:',
+	'LBL_TAG_NAME' 						=> 'Nom d´Etiqueta',
+	'LBL_CREATED_BY'					=> 'Creat per',
+	'LBL_DATE_ENTERED'					=> 'Data de Creació',
+	'LBL_DATE_MODIFIED'					=> 'Última Modificació',
+	'LBL_DELETED' 						=> 'Eliminat',
+	'LBL_MODIFIED'						=> 'Modificat per id',
+	'LBL_MODIFIED_USER' 				=> 'Modificat per',
+	'LBL_CREATED'						=> 'Creat per',
+        
+    //for hovering over tree
+    'LBL_CHILD_TAG_IN_TREE_HOVER' 		=> 'Etiqueta Filla',
+    'LBL_CHILD_TAGS_IN_TREE_HOVER' 		=> 'Etiquetes Filles',
+    'LBL_ARTICLE_IN_TREE_HOVER' 		=> 'Article',
+    'LBL_ARTICLES_IN_TREE_HOVER' 		=> 'Articles',
+    'LBL_THIS_TAG_CONTAINS_TREE_HOVER' 	=> 'Aquesta etiqueta conté',
+    //Root tag label
+    'LBL_TAGS_ROOT_LABEL' 				=> 'Etiquetes',
+    'LBL_ROOT_TAG_CAN_NOT_BE_RENAMED' 	=> 'L´etiqueta arrel no pot ser rebatejada',
+    'LBL_SOURCE_AND_TARGET_TAGS_ARE_SAME' => 'Les etiquetes Origen i Destí són la mateixa',
+    'LBL_NO_MATHING_TAG_FOUND'			=>'No s´han trobat etiquetes que coincideixin amb els criteris de recerca',
+    'LBL_TYPE_TAG_NAME_TO_SEARCH' 		=> 'Introdueixi el nom d´etiqueta a buscar',
+    'LBL_TAGS_CHILD_TAGS_WITH_ARTICLE_CAN_NOT_BE_DELETED' => 'Les etiquetes o etiquetes filles amb Articles no poden ser eliminades',
+    'LBL_FAQ_TAG_CAN_NOT_BE_DELETED' 	=> ' etiqueta i no poden ser eliminades',
+    'LBL_TYPE_TAG_NAME_TO_SEARCH' 		=> 'Introdueixi el nom d´etiqueta a buscar',
+    'LBL_UNTAGGED_ARTICLES_NODE' 		=> 'Artícles Sense Etiquetar',
+);
+?>

@@ -1,0 +1,63 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+<!-- BEGIN: history -->
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+    <tr height="20">
+    <th width="2%"><img src="include/images/blank.gif" width="1" height="1" alt=""></th>
+    <th width="28%">{MOD.LBL_LIST_SUBJECT}</th>
+    <th width="10%">{MOD.LBL_LIST_STATUS}</th>
+    <th width="20%">{MOD.LBL_LIST_CONTACT}</th>
+    <th width="10%" nowrap="nowrap">{MOD.LBL_LIST_DATE}</th>
+
+    </tr>
+
+<!-- BEGIN: row -->
+<tr height="20" class="{ROW_COLOR}S1">
+        <td nowrap="nowrap" valign="top">{ACTIVITY_MODULE_PNG}</td>
+        <td nowrap="nowrap" valign="top">{ACTIVITY.NAME}  {ACTIVITY.ATTACHMENT}</td>
+        <td nowrap="nowrap" valign="top">{ACTIVITY.TYPE} {ACTIVITY.STATUS}</td>
+        <td valign="top">{ACTIVITY.CONTACT_NAME}</td>
+        <td nowrap="nowrap" valign="top">{ACTIVITY.DATE_TYPE}<img src="include/images/blank.gif" width="3" height="1" alt="">{ACTIVITY.DATE}</td>
+
+</tr>
+<!--  BEGIN: description -->
+<tr class="{ROW_COLOR}S1">
+    <td colspan="1" valign="top"></td>
+    <td colspan="4" valign="top">
+        <table><tr class="{ROW_COLOR}S1"><td valign="top"><img src="include/images/blank.gif" width="3" height="1" alt=""></td><td valign="top">{ACTIVITY.DESCRIPTION}
+        </td></tr></table>
+    </td>
+</tr>
+<!--  END: description -->
+
+<!-- END: row -->
+</table>
+<!-- END: history -->

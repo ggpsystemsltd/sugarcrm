@@ -1,0 +1,147 @@
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+button, .button {
+	overflow:visible;
+}
+
+.mbTable{
+	width:100%
+}
+.mbTd{
+	vertical-align:top
+}
+.mbLBL{
+	vertical-align:top;
+	text-align:right;
+	width:1%;
+	font-weight: bold;
+	white-space:nowrap;
+}
+.mbLBLL{
+	vertical-align:top;
+	text-align:left;
+	width:1%;
+	font-weight: bold;
+	white-space:nowrap;
+}
+.crumbLink {
+	color: #444;
+}
+a.crumbLink {
+	text-decoration: none;
+}
+.wizardButton {
+border:0px;
+
+}
+.relTable{
+border:0px solid white;
+padding: 4px 8px 4px 8px;
+}
+
+.relform .edit tr td[scope="row"] {
+    text-align:right;	
+}
+
+.wizardButton TD{
+border:1px solid white;
+padding: 0px 0px 0px 0px;
+background-color:white;
+}
+.wizardButton TD:hover    {
+border:1px solid darkgray;
+background-color:white;
+cursor:pointer
+}
+.wizardButtonDown TD   {
+border:1px solid black;
+background-color:lightgray;
+cursor:pointer
+}
+a.studiolink {font-weight: normal; text-decoration:none; text-align:center}
+div.bodywrapper{padding: 4px 4px 4px 4px}
+
+img.left_icon {
+    float:left;
+    margin:0px 2px;
+}
+
+img.right_icon {
+    float:right;
+    margin:0px 2px;
+}
+
+.oddListRowS1{
+	background-color:WhiteSmoke;
+}
+
+#mbfooter .yui-layout-hd, #mbfooter .yui-layout-hd td {
+    border-bottom-width: 1px;
+    background-image:url(../../../index.php?entryPoint=getImage&themeName=Sugar&imageName=tabRowBg.png);
+    background-position:0 -9px;
+    border-width: 1px;
+    height: 30px;
+    font-size:8px;
+    font-weight:normal;
+}
+
+#mbfooter .yui-layout-hd td a.copyRightLink {
+    font-size:8px;
+}
+
+#mbfooter div.yui-layout-hd h2 {
+    padding-top: 0;	
+}
+
+#mbhelp {
+    padding-left: 5px;
+}
+
+#yui-history-iframe { 
+    position:absolute; 
+    top:0; left:0; 
+    width:1px; height:1px; 
+    visibility:hidden; 
+}
+
+#mblayout .yui-content {
+	padding: 0;
+	background-image: none;
+}
+
+#mblayout .yui-navset {
+    overflow-y: hidden;
+}
+
+#mblayout .yui-dt-scrollable .yui-dt-hd {
+    position: static;
+}
+
+input[disabled], select[disabled]{
+    background-color: #EEE;
+}

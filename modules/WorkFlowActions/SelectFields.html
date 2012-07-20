@@ -1,0 +1,105 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script>
+function togglefield_select(field_num){
+	var focus_field = 'mod_field_' + field_num;
+	var setting = this.document.getElementById(focus_field).checked;
+	window.parent.togglefield_select(field_num, setting);
+//end function togglefieldselect	
+}	
+
+function applylanguage(action_update, action_update_rel, action_new){
+
+	this.document.getElementById('lang_update').style.display= action_update;
+	this.document.getElementById('lang_update_rel').style.display= action_update_rel;
+	this.document.getElementById('lang_new').style.display= action_new;
+	
+//end function applylanguage
+}
+function changehref_text(href_object, href_value){
+	
+	this.document.getElementById(href_object).innerHTML = this.document.getElementById(href_value).value;
+//end function changehref_text
+}
+
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}	
+
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="FieldView" method="POST" action="index.php">
+			<input type="hidden" id="total_field_count" name="total_field_count" value="{TOTAL_FIELD_COUNT}">
+	<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!-- BEGIN: field -->	
+		<tr>
+		<td width="10%" scope="row"><slot><input id='mod_field_{FIELD_NUM}' name='mod_field_{FIELD_NUM}' type='checkbox' tabindex='2' value ='{FIELD_VALUE}' onclick="togglefield_select('{FIELD_NUM}');" {SELECTED_ACTION}></slot></td>
+		<td width="90%" scope="row"><slot>{MOD.LBL_MODIFY_FIELD} {FIELD_NAME}</slot></td>
+		</tr>
+<!-- END: field -->				
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		</form>
+	</table>
+
+<script>
+
+</script>
+
+<!-- END: main -->

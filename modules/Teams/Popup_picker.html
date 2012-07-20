@@ -1,0 +1,87 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+<!-- BEGIN: main -->
+<!-- BEGIN: SearchHeader -->
+<script type="text/javascript" src="include/javascript/popup_helper.js?v={VERSION_MARK}"></script>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr>
+<td>
+<form action="index.php" method="post" name="popup_query_form" id="popup_query_form">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td scope="row" nowrap="nowrap" width="15%">{MOD.LBL_NAME}</td>
+<td width="70%"><input id="team_name_input" type="text" size="15" tabindex="1" name="name" class="dataField" value="{NAME}"></td>
+</tr><tr>
+<td valign="top" width="100%" align="left" colspan="2">
+<input type="hidden" name="module" value="{MODULE_NAME}" />
+<input type="hidden" name="action" value="Popup" />
+<input type="hidden" name="query" value="true" />
+<input type="hidden" name="func_name" value="" />
+<input type="hidden" name="request_data" value="{request_data}" />
+<input type="hidden" name="populate_parent" value="false" />
+<input type="hidden" name="custom_method" value="{CUSTOM_METHOD}" />
+<input type="hidden" name="user_id" value="{USER_ID}" />
+<input type="hidden" name="record_id" value="" />
+<br>
+<input type="submit" name="button" class="button" title="{APP.LBL_SEARCH_BUTTON_TITLE}" value="{APP.LBL_SEARCH_BUTTON_LABEL}" id="search_form_submit"/>
+ <input type="reset" onclick="SUGAR.searchForm.clear_form(this.form); return false;" class="button" title="{APP.LBL_CLEAR_BUTTON_TITLE}" value="{APP.LBL_CLEAR_BUTTON_LABEL}" id="search_form_clear">
+<input type="hidden" name="mode" value="{MULTI_SELECT}" />
+</td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+<!-- END: SearchHeader -->
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<!-- BEGIN: list_nav_row -->
+{PAGINATION}
+<!-- END: list_nav_row -->
+<tr height="20" class="listViewThS1">
+<td scope="col" class="listViewThS1" NOWRAP>{CHECKALL}</td>
+<td scope="col" width="15%" class="listViewThS1" nowrap="nowrap"><a href="{ORDER_BY}name" class="listViewThLinkS1">{MOD.LBL_LIST_NAME}{arrow_start}{name_arrow}{arrow_end}</a></td>
+<td scope="col" width="75%" class="listViewThS1" nowrap="nowrap">{MOD.LBL_LIST_DESCRIPTION}</td>
+<td scope="col" width="10%" class="listViewThS1" nowrap="nowrap"><a href="{ORDER_BY}private" class="listViewThLinkS1">{MOD.LBL_PRIVATE}{arrow_start}{name_arrow}{arrow_end}</a></td>
+</tr>
+<!-- BEGIN: row -->
+<tr class="{ROW_COLOR}S1" height="20">
+<td valign='top'>{PREROW}</td>
+<td scope='row' valign="top"><a href="#" onclick="send_team_to_form('Teams','{TEAM.ID}');">{TEAM.NAME}</a></td>
+<td valign="top">{TEAM.DESCRIPTION}</td>
+<td valign="top">{TEAM.PRIVATE}</td>
+</tr>
+<!-- END: row -->
+</table>
+{ASSOCIATED_JAVASCRIPT_DATA}
+<!-- END: main -->

@@ -1,0 +1,67 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+<script>
+function get_popup(workflow_id, id, action, plugin_action, plugin_module, width, height){
+	
+	window.open('index.php?module=WorkFlowActionShells&action=' + action +'&sugar_body_only=true&workflow_id=' + workflow_id + '&record=' + id + '&plugin_module=' + plugin_module +'&plugin_action='+ plugin_action +'','new','width=' + width + ',height='+ height +',resizable=1,scrollbars=1');
+	
+}	
+</script>
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+	<tr height="20" >
+	<td scope="col" width="7%" >{MOD.LBL_DETAILS}</td>
+	<td scope="col" width="15%" ><slot>{MOD.LBL_LIST_TYPE}</td>
+	<td scope="col" width="15%" ><slot>&nbsp;</td>
+	<td scope="col" width="60%" ><slot>{MOD.LBL_LIST_STATEMENT}</td>
+	<td scope="col" width="5%" ><slot>&nbsp;</td>
+	<td scope="col" width="5%" ><slot><img src="include/images/blank.gif" widht="1" height="1" alt=""></slot></td>
+	  </tr>
+
+<!-- BEGIN: row -->
+<tr height="20"  class="{ROW_COLOR}S1">
+    	<td scope='row' nowrap valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot><a class="listViewTdToolsS1" onclick="toggle_div('{ACTION.ID}')"><span id='span_{ACTION.ID}'><img src='index.php?entryPoint=getImage&themeName={THEME}&imageName=advanced_search.gif' width='8' height='8' alt='Advanced' border='0'>&nbsp;{MOD.LBL_SHOW}</span></a></slot></td>
+    	<td scope='row' valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot>{ACTION.TYPE}</slot></td>
+       	<td scope='row' valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot><a href={ACTION.COMPONENT_HREF_EDIT}>{ACTION.COMPONENT_STATEMENT}</a></slot></td>
+		<td scope='row' valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot>{ACTION.STATEMENT_NOTICE}<a href={ACTION.HREF_EDIT}>{ACTION.STATEMENT}</a></slot></td>
+		<td nowrap align="center" valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot><a href={ACTION.HREF_EDIT} >{EDIT_INLINE_PNG}&nbsp;{APP.LNK_EDIT}</a></td>
+		<td nowrap align="center" valign=TOP><slot><a class="listViewTdToolsS1" onclick="return confirm('{MOD.NTC_REMOVE_ACTION}')" href="{URL_PREFIX}{ACTION.HREF_DELETE}{RETURN_URL}">{DELETE_INLINE_PNG}&nbsp;{APP.LNK_REMOVE}</a></slot></td>
+
+</tr>
+<span><tr><td colspan="5">{ACTION.DETAILS_TABLE}</td></tr></span>
+
+<!-- END: row -->
+
+</table>
+<!-- END: main -->

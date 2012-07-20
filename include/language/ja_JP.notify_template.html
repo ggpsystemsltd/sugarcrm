@@ -1,0 +1,309 @@
+<!-- BEGIN: Quote_Subject -->
+SugarCRM 見積 - {QUOTE_SUBJECT}
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+{ASSIGNER} は {ASSIGNED_USER} に見積をアサインしました。
+
+件名: {QUOTE_SUBJECT}
+ステータス: {QUOTE_STATUS}
+受注予定日: {QUOTE_CLOSEDATE}
+詳細: {QUOTE_DESCRIPTION}
+
+この見積の詳細は下記で閲覧できます:
+<{URL}>
+<!-- END: Quote -->
+
+
+<!-- BEGIN: Account_Subject -->
+SugarCRM 取引先 - {ACCOUNT_NAME}
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+{ASSIGNER} は取引先を {ASSIGNED_USER} にアサインしました。
+
+名前: {ACCOUNT_NAME}
+タイプ: {ACCOUNT_TYPE}
+詳細: {ACCOUNT_DESCRIPTION}
+
+下記URLで取引先を閲覧できます:
+<{URL}>
+<!-- END: Account -->
+
+
+<!-- BEGIN: Case_Subject -->
+SugarCRM ケース - {CASE_SUBJECT}
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+{ASSIGNER} はケースを {ASSIGNED_USER} にアサインしました。
+
+件名: {CASE_SUBJECT}
+優先度: {CASE_PRIORITY}
+ステータス: {CASE_STATUS}
+詳細: {CASE_DESCRIPTION}
+
+下記URLでケースを閲覧できます:
+<{URL}>
+<!-- END: Case -->
+
+
+<!-- BEGIN: Task_Subject -->
+SugarCRM タスク - {TASK_SUBJECT}
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+{ASSIGNER} はタスクを {ASSIGNED_USER} にアサインしました。
+
+件名: {TASK_SUBJECT}
+優先度: {TASK_PRIORITY}
+期限: {TASK_DUEDATE}
+ステータス: {TASK_STATUS}
+詳細: {TASK_DESCRIPTION}
+
+下記URLでタスクを閲覧できます:
+<{URL}>
+<!-- END: Task -->
+
+
+<!-- BEGIN: Meeting_Subject -->
+SugarCRM 会議 - {MEETING_SUBJECT}
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+To: {MEETING_TO},
+
+{ASSIGNER} はあなたを会議に招待しました。
+
+件名: {MEETING_SUBJECT}
+ステータス: {MEETING_STATUS}
+開始日時: {MEETING_STARTDATE}
+時間: {MEETING_HOURS}時間 {MEETING_MINUTES}分
+詳細: {MEETING_DESCRIPTION}
+
+この会議を承諾
+<{ACCEPT_URL}&accept_status=accept>
+
+仮で承諾
+<{ACCEPT_URL}&accept_status=tentative>
+
+却下
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+SugarCRM 会議 - {MEETING_SUBJECT}
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+{ASSIGNER} は {ASSIGNED_USER} を会議にアサインしました。
+
+件名: {MEETING_SUBJECT}
+ステータス: {MEETING_STATUS}
+開始時間: {MEETING_STARTDATE}
+時間: {MEETING_HOURS}時間, {MEETING_MINUTES}分
+詳細: {MEETING_DESCRIPTION}
+
+下記URLで会議を閲覧できます:
+<{URL}>
+<!-- END: MeetingSpecial -->
+
+
+<!-- BEGIN: Email_Subject -->
+SugarCRM 電子メール - {EMAIL_SUBJECT}
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+{ASSIGNER} は電子メールを {ASSIGNED_USER} にアサインしました。
+
+件名: {EMAIL_SUBJECT}
+送信日: {EMAIL_DATESENT}
+
+下記URLで電子メールを閲覧できます:
+<{URL}>
+<!-- END: Email -->
+
+
+
+
+
+
+<!-- BEGIN: Contact_Subject -->
+SugarCRM 取引先担当者 - {CONTACT_NAME}
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+{ASSIGNER} は取引先担当者を {ASSIGNED_USER} にアサインしました。
+
+名前: {CONTACT_NAME}
+詳細: {CONTACT_DESCRIPTION}
+
+下記URLで取引先担当者を閲覧できます:
+<{URL}>
+<!-- END: Contact -->
+
+
+<!-- BEGIN: Lead_Subject -->
+SugarCRM リード - {LEAD_NAME}
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+{ASSIGNER} はリードを {ASSIGNED_USER} にアサインしました。
+
+名前: {LEAD_NAME}
+リードソース: {LEAD_SOURCE}
+ステータス: {LEAD_STATUS}
+詳細: {LEAD_DESCRIPTION}
+
+下記URLでリードを閲覧できます:
+<{URL}>
+<!-- END: Lead -->
+
+
+<!-- BEGIN: Opportunity_Subject -->
+SugarCRM 商談 - {OPPORTUNITY_NAME}
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+{ASSIGNER} は商談を {ASSIGNED_USER} にアサインしました。
+
+件名: {OPPORTUNITY_NAME}
+金額: {OPPORTUNITY_AMOUNT}
+受注予定日: {OPPORTUNITY_CLOSEDATE}
+商談フェーズ: {OPPORTUNITY_STAGE}
+詳細: {OPPORTUNITY_DESCRIPTION}
+
+下記URLで商談を閲覧できます:
+<{URL}>
+<!-- END: Opportunity -->
+
+
+<!-- BEGIN: Bug_Subject -->
+SugarCRM 不具合 - {BUG_SUBJECT}
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+{ASSIGNER} は不具合を {ASSIGNED_USER} にアサインしました。
+
+不具合番号: {BUG_BUG_NUMBER}
+件名: {BUG_SUBJECT}
+タイプ: {BUG_TYPE}
+優先度: {BUG_PRIORITY}
+ステータス: {BUG_STATUS}
+対応策: {BUG_RESOLUTION}
+リリース: {BUG_RELEASE}
+詳細: {BUG_DESCRIPTION}
+作業履歴: {BUG_WORK_LOG}
+
+下記URLで不具合を閲覧できます:
+<{URL}>
+<!-- END: Bug -->
+
+
+<!-- BEGIN: Default_Subject -->
+SugarCRM - アサインされました。
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+{ASSIGNER}は{OBJECT}を{ASSIGNED_USER}にアサインしました。
+
+下記URLで{OBJECT}を閲覧できます :
+<{URL}>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+SugarCRM Call - {CALL_SUBJECT}
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+To: {CALL_TO},
+ {ASSIGNER} はあなたを電話に招待しました。
+件名: {CALL_SUBJECT}
+ステータス: {CALL_STATUS}
+開始日時: {CALL_STARTDATE}
+時間: {CALL_HOURS}時間 {CALL_MINUTES}分
+詳細: {CALL_DESCRIPTION}
+
+この電話を承諾
+<{ACCEPT_URL}&accept_status=accept>
+
+仮で承諾
+<{ACCEPT_URL}&accept_status=tentative>
+
+却下
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+SugarCRM 電話 - {CALL_SUBJECT}
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+{ASSIGNER} は電話を{ASSIGNED_USER} にアサインしました。
+
+件名: {CALL_SUBJECT}
+ステータス: {CALL_STATUS}
+開始時間: {CALL_STARTDATE}
+時間: {CALL_HOURS}時間, {CALL_MINUTES}分
+詳細: {CALL_DESCRIPTION}
+
+下記URLで電話を閲覧できます:
+<{URL}>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: Campaign_Subject -->
+SugarCRM キャンペーン - {CAMPAIGN_NAME}
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+{ASSIGNER} はキャンペーンを{ASSIGNED_USER} にアサインしました。
+
+件名: {CAMPAIGN_NAME}
+金額: {CAMPAIGN_AMOUNT}
+クローズ期日: {CAMPAIGN_CLOSEDATE}
+ステータス: {CAMPAIGN_STATUS}
+詳細: {CAMPAIGN_DESCRIPTION}
+
+下記URLでキャンペーンを閲覧できます:
+<{URL}>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+SugarCRM ノルマ - {QUOTA_TIMEPERIOD} のあなたのノルマです。
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+{ASSIGNER} は {ASSIGNED_USER} にノルマをアサインしました。
+
+金額: {QUOTA_AMOUNT}
+期間: {QUOTA_TIMEPERIOD}
+
+以下でノルマの詳細を閲覧できます:
+<{QUOTA_URL}>
+<!-- END: Quota -->
+
+<!-- BEGIN: KBDocument_Subject -->
+SugarCRM ドキュメント - {KBDOCUMENT_NAME}
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+
+{NOTIFICATION_MESSAGE}
+
+名前: {KBDOCUMENT_NAME}
+作成日: {KBDOCUMENT_DATE_CREATED}
+作成者y: {KBDOCUMENT_CREATED_BY}
+ステータス: {KBDOCUMENT_STATUS}
+詳細: {KBDOCUMENT_DESCRIPTION}
+
+下記URLでドキュメントを閲覧できます:
+<{URL}>
+<!-- END: KBDocument -->
+
+<!-- BEGIN: Contract_Subject -->
+SugarCRM 契約 - {CONTRACT_NAME}
+<!-- END: Contract_Subject -->
+<!-- BEGIN: Contract-->
+
+{ASSIGNER} は {ASSIGNED_USER} に契約をアサインしました。
+
+下記URLで契約を閲覧できます:
+<{URL}>
+<!-- END:Contract-->
+
+<!-- BEGIN: ContractSpecial_Subject -->
+SugarCRM 契約 - {CONTRACT_NAME}
+<!-- END: ContractSpecial_Subject -->
+<!-- BEGIN: ContractSpecial -->
+
+契約: {CONTRACT_NAME} は {CONTRACT_END_DATE} に期限切れとなります。
+
+下記URLで契約を閲覧できます:
+<{URL}>
+<!-- END:ContractSpecial-->
+

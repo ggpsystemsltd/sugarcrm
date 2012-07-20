@@ -1,0 +1,104 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+<form name="EditView" id="EditView" method="POST" action="index.php">
+<input type="hidden" name="module" value="TeamNotices">
+<input type="hidden" name="record" value="{ID}">
+<input type="hidden" name="action">
+<input type="hidden" name="edit">
+<input type="hidden" name="return_module" value="TeamNotices">
+<input type="hidden" name="return_action" value="index">
+<input type="hidden" name="return_id" value="">
+
+<div class="actionsContainer">
+<input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="this.form.action.value='Save'; return check_form('EditView');" type="submit" name="button" value="{APP.LBL_SAVE_BUTTON_LABEL}">
+<input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" onclick="this.form.action.value='index';" class="button" type="submit" name="button" value="{APP.LBL_CANCEL_BUTTON_LABEL}">
+</div>
+
+
+<table width="100%" cellspacing="1" cellpadding="0" border="0" class="edit view">
+<tr>
+
+<td width="15%"scope="row"  valign="top" nowrap><slot>{MOD.LBL_DATE_START} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+<td width="32%"  valign="top" nowrap><slot><input name='date_start' id='jscal_field' onblur="parseDate(this, '{CALENDAR_DATEFORMAT}');" tabindex='1' size='11' maxlength='10' type="text" value="{DATE_START}"> <img src="index.php?entryPoint=getImage&themeName={THEME}&imageName=jscalendar.gif" alt="{APP.LBL_ENTER_DATE}"  id="jscal_trigger" align="absmiddle">&nbsp;&nbsp;</slot></td>
+	<!-- BEGIN: pro -->
+	
+	<td  scope="row" width="10%"><slot>{APP.LBL_TEAM} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+	<td ><slot>{TEAM_SET_FIELD}</slot>
+	</td>
+
+
+	<!-- END: pro -->
+	<!-- BEGIN: open_source -->
+	<!-- END: open_source -->
+</tr><tr>
+<td width="15%" scope="row" align='left'  valign="top" nowrap><slot>{MOD.LBL_DATE_END} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+<td width="32%"  align='left' valign="top" nowrap><slot><input name='date_end' id='jscal_field_end' onblur="parseDate(this, '{CALENDAR_DATEFORMAT}');" tabindex='1' size='11' maxlength='10' type="text" value="{DATE_END}"> <img src="index.php?entryPoint=getImage&themeName={THEME}&imageName=jscalendar.gif" alt="{APP.LBL_ENTER_DATE}"  id="jscal_trigger_end" align="absmiddle">&nbsp;&nbsp;</slot></td>
+	<td width="10%" scope="row" nowrap><slot>{MOD.LBL_STATUS}: <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+<td width="25%" ><slot><select tabindex="2" name='status'>{STATUS_OPTIONS}</select></slot></td>
+</tr>
+<tr>
+<td width="15%" scope="row"><slot>{MOD.LBL_NAME}: <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+<td width="50%"><slot><input name='name' tabindex='3' size='70' maxlength='50' type="text" value="{NAME}"></slot></td>
+</tr>
+<tr>
+<td width="15%" valign='top' scope="row"><slot>{MOD.LBL_DESCRIPTION}:</slot></td>
+<td width="50%" ><slot><textarea cols="50" rows="8" name='description' tabindex='3' onchange='this.value=cleanQuotes(this.value);'>{DESCRIPTION}</textarea></slot></td>
+</tr>
+<tr>
+<td valign='top' scope="row"><slot>{MOD.LBL_URL_TITLE}:</slot></td>
+<td><slot><input name='url_title' value='{URL_TITLE}' type='text' maxlength="255" size='70' tabindex='4'></slot></td>
+</tr>
+<tr>
+<td valign='top' scope="row"><slot>{MOD.LBL_URL}:</slot></td>
+<td><slot><input name='url' value='{URL}' type='text' maxlength="255" size='70' tabindex='4'></slot></td>
+</tr>
+</table>
+
+</form>
+
+<script type="text/javascript">
+function cleanQuotes(str) {
+	while(str.indexOf('"') > -1)
+		str = str.replace('"', "''" );
+	return str;
+}
+Calendar.setup ({
+	inputField : "jscal_field", daFormat : "{CALENDAR_DATEFORMAT}", ifFormat : "{CALENDAR_DATEFORMAT}", showsTime : false, button : "jscal_trigger", singleClick : true, step : 1
+});
+Calendar.setup ({
+	inputField : "jscal_field_end", daFormat : "{CALENDAR_DATEFORMAT}", ifFormat : "{CALENDAR_DATEFORMAT}", showsTime : false, button : "jscal_trigger_end", singleClick : true, step : 1
+});
+	</script>
+{JAVASCRIPT}
+<!-- END: main -->

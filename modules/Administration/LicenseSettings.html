@@ -1,0 +1,184 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+
+
+
+-->
+
+<!-- BEGIN: main -->
+<div name='mainbody' id='mainbody' style='display:inline'>
+<form name="LicenseSettings" method="POST" action="index.php" onSubmit="return check_form('LicenseSettings');">
+    <input type="hidden" name="module" value="Administration">
+    <input type="hidden" name="action">
+    <input type="hidden" name="return_module" value="Administration">
+    <input type="hidden" name="return_action" value="LicenseSettings">
+
+
+
+<div id='detail_view_div' style='display:inline'>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="actionsContainer">
+<tr>
+    <td>
+    	<input title="{APP.LBL_EDIT_BUTTON_TITLE}" class="button primary" onclick="toggleDisplay('detail_view_div');toggleDisplay('edit_view_div');" type="button" name="button" value="  {APP.LBL_EDIT_BUTTON_LABEL}  " >
+    </td>
+
+	<td align="right" nowrap><span class="required">&nbsp;</td>
+</tr>
+</table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+    <tr><th align="left" scope="row" colspan="4"><h4>{MOD.LBL_MANAGE_LICENSE_TITLE}</h4></th>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_KEY}</td>
+      <td width="30%" >{LICENSE_KEY}<div class="error">{LICENSE_VALIDATION_NOTICE}</div></td>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_EXPIRE_DATE} {CALENDAR_DATEFORMAT}</td>
+      <td width="30%" >{LICENSE_EXPIRE_DATE}</td>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_USERS}</td>
+      <td width="30%" >{LICENSE_USERS} </td>
+    </tr>
+    
+    <tr>
+      <td  scope="row"></td>
+      <td ></td>
+    </tr>
+  </table>
+</div>
+
+<div id='edit_view_div' style='display:none'>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="actionsContainer">
+<tr>
+
+
+    <td>
+        <input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="this.form.action.value='Save'; " type="submit" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " >
+        <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="document.location.href='index.php?module=Administration&action=LicenseSettings'" type="button" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+    </td>
+
+	<td align="right" nowrap><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+    <tr><th align="left" scope="row" colspan="4"><h4>{MOD.LBL_MANAGE_LICENSE_TITLE}</h4></th>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_KEY}</td>
+      <td width="30%" >
+      <input name='license_key' tabindex='3' size='25' maxlength='128' type="text" value="{LICENSE_KEY}">
+      <div class='error'>{LICENSE_VALIDATION_NOTICE}</div>
+      </td>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_EXPIRE_DATE}</td>
+      <td width="30%" >{LICENSE_EXPIRE_DATE}</td>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_USERS}</td>
+      <td width="30%" >{LICENSE_USERS}</td>
+    </tr>
+    <tr>
+      <td  scope="row"></td>
+      <td ></td>
+    </tr>
+  </table>
+</div>
+    <br>
+	<div style='display:{LICENSE_VALIDATION_HIDE}'>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="actionsContainer">
+<tr>
+ 
+    <td>
+        <input title="{MOD.LBL_REVALIDATE}" class="button" onclick="this.form.action.value='Save'; " type="submit" name="button" value="  {MOD.LBL_REVALIDATE}  " >
+    </td>
+
+	<td align="right" nowrap><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+</tr>
+</table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+    <tr><th align="left" scope="row" colspan="4"><h4>{MOD.LBL_LICENSE_VALIDATION}</h4></th>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_VALIDATION_KEY}</td>
+      <td width="30%" >{LICENSE_VALIDATION_KEY}</td>
+    </tr>
+     <tr>
+      <td width="15%" scope="row">{MOD.LBL_LICENSE_VALIDATION_END} {CALENDAR_DATEFORMAT}</td>
+      <td width="30%" >{LICENSE_VALIDATION_EXPIRE_DATE} </td>
+    </tr>
+    <tr>
+      <td width="15%" scope="row">{MOD.LBL_STATUS}</td>
+      <td width="30%" >{LICENSE_VALIDATION_STATUS} </td>
+    </tr>
+    <tr>
+      <td colspan='2' > &nbsp; </td>
+    </tr>
+     <tr>
+      <td colspan='2' > {MOD.LBL_MANUAL_VALIDATION} </td>
+    </tr>
+  </table>
+</div>
+</form>
+</div>
+<div name='manualbody' id='manualbody' style='display:none'>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+   <tr><th align="left" scope="row" colspan="4"><h4>{MOD.LBL_MANUAL_VALIDATION_TXT} </h4></th>
+    </tr>
+<tr><td  scope="row">	{MOD.LBL_MANUAL_VALIDATION1}</td></tr>
+<tr><td scope="row"  ><br><input title="{MOD.LBL_EXPORT_DOWNLOAD_KEY}" class="button" onclick="document.location.href='index.php?module=Administration&action=LicenseSettings&exportKey=true&to_pdf=true'; " type="button" name="button" value="  {MOD.LBL_EXPORT_DOWNLOAD_KEY}  "  {NO_LICENSE}></td></tr>
+<tr><td  scope="row"><br>	{MOD.LBL_MANUAL_VALIDATION2}</td></tr>
+<tr><td  scope="row"><br>	{MOD.LBL_MANUAL_VALIDATION3}</td></tr>
+<tr><td  scope="row"><br>	{MOD.LBL_MANUAL_VALIDATION4}</td></tr>
+<tr><td>	
+	<form name='importValidationKey' METHOD='POST' ENCTYPE="multipart/form-data" action='index.php'>
+	<input type='hidden' name='action' value= 'LicenseSettings'>
+	<input type='hidden' name='module' value= 'Administration'>
+	
+	<span scope="row">{MOD.LBL_VALIDATION_FILE}(sugarvalidationkey.lic)&nbsp;</span><INPUT TYPE='file' NAME="VKFile">
+	<INPUT TYPE='submit' VALUE="{APP.LBL_IMPORT}" class='button' >
+	</form>
+</td></tr>
+<tr><td  scope="row"><br>	{MOD.LBL_MANUAL_VALIDATION5}</td></tr>
+</table>
+</div>
+
+<script>
+requiredTxt = 'Missing required fields:';
+addToValidate('LicenseSettings', 'license_users',       'int',  false,  '{MOD.LBL_LICENSE_USERS}' );
+addToValidate('LicenseSettings', 'license_num_lic_oc',       'int',  false,  '{MOD.LBL_LICENSE_NUM_LIC_OC}' );
+addToValidate('LicenseSettings', 'license_expire_date', 'date', false,  '{MOD.LBL_LICENSE_EXPIRE_DATE} {CALENDAR_DATEFORMAT}' );
+</script>
+
+{JAVASCRIPT}
+<!-- END: main -->

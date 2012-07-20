@@ -1,0 +1,648 @@
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:  Contains a variety of utility functions used to display UI 
+ * components such as form headers and footers.  Intended to be modified on a per 
+ * theme basis.
+ ********************************************************************************/
+
+/** From default style.css file **/
+
+body
+{
+	background-image:url('../../../../index.php?entryPoint=getImage&imageName=bg.png'); 
+	background-color: #fff;
+}
+
+a:link, a:visited {
+color:#689800;
+}
+
+.dcmenu {
+min-width: 1050px;
+background-color: #0d3a62;
+background: -moz-linear-gradient(center top,
+	rgba(154,189,56,.9) 0%,
+	rgba(134,162,56,.9) 78%, 
+	rgba(0,0,0,.2) 78%, 
+	rgba(0,0,0,0) 100%); 
+	background-color: transparent;
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(154,189,56,.9)),
+    color-stop(0.78, rgba(134,162,56,.9)),
+    color-stop(0.78, rgba(0,0,0,.2)),
+    color-stop(1, rgba(0,0,0,0))
+    );
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#98bd38', endColorstr='#86a238');
+height: 43px\9;;
+}
+
+.dcmenuDivider  {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dcMenuDivider.png");
+}
+
+#glblSearchBtn {
+margin-top:8px;
+}
+
+#moduleList  {
+background: -moz-linear-gradient(center top,
+		transparent 0%,
+		transparent 12%,
+		rgba(255,255,255,.9) 13%,  
+		rgba(255,255,255,.8) 45%,
+		rgba(255,255,255,.6) 45%, 
+		rgba(255,255,255,.6) 76%,
+		rgba(0,0,0,.1) 76%, 
+		rgba(0,0,0,0) 100%
+	); 
+	background-color: transparent;
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(255,255,255,0)),
+    color-stop(0.12, rgba(255,255,255,0)),
+    color-stop(0.13, rgba(255,255,255,.9)),
+    color-stop(0.45, rgba(255,255,255,.8)),
+    color-stop(0.45, rgba(255,255,255,.6)),
+    color-stop(0.74, rgba(255,255,255,.6)),
+    color-stop(0.74, rgba(0,0,0,.1)),
+    color-stop(1, rgba(0,0,0,0))
+    );
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=tabRowBg.png")/9;
+height:50px;
+}
+
+#moduleList.yuimenubar li.current {
+margin-right: -1px;	
+}
+
+#moduleList.yuimenubar li.current .yuimenuitemlabel, li.current a.yuimenuitemlabel, li.current a.yuimenuitemlabel:link, li.current a.yuimenuitemlabel:visited {
+	background-image: -moz-linear-gradient(center top, 
+	#cee3a2 0%,
+	#adcf64 2%,
+	#87ad35 52%,
+	#689800 52%,
+	#7ab200 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #cee3a2),
+    color-stop(.05, #adcf64),
+    color-stop(.52, #87ad35),
+    color-stop(.52, #689800),
+    color-stop(1, #7ab200)
+   );	
+	-moz-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cee3a2', endColorstr='#7ab200');
+	
+padding-bottom: 4px;
+padding-top: 6px\9;
+text-shadow:-1px -1px #48591a;
+}
+
+
+#moduleList .yuimenuitemlabel, a.yuimenuitemlabel, a.yuimenuitemlabel:link, a.yuimenuitemlabel:visited {
+padding:1px 15px 2px;
+border-color:#cbdc2b;
+}
+
+.moduleTabExtraMenu .yuimenuitemlabel.more {
+border-right:1px solid #cbdc2b;
+}
+
+#moduleList #moduleTabGroup .yuimenuitemlabel.group em
+{
+	background-image: url(../../../../index.php?entryPoint=getImage&imageName=grouped-menu.png);
+}
+
+#moduleList.yuimenubarnav .yuimenubaritemlabel-selected {
+	background-image: -moz-linear-gradient(center top, 
+	#ffffff 0%,
+	rgba(255,255,255,.6) 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #ffffff),
+    color-stop(1, rgba(255,255,255,.6))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fefefe');
+border-color: #CBDC2B;
+}
+
+#welcome, #globalLinks  {
+	border-color: #edf0d2;
+height:21px;
+background-image: -moz-linear-gradient(center top, 
+	#eef3bf 0%,
+	#dfe793 50%,
+	#d1dd63 50%,
+	#cad661 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #eef3bf),
+    color-stop(.5, #dfe793),
+    color-stop(.5, #d1dd63),
+    color-stop(1, #cad661)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eef3bf', endColorstr='#cad661');
+}
+
+
+#globalLinksCtrl a.yui-toggle {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=globalLinksToggle.png");
+height:29px;
+}
+
+.dashletPanel {
+-moz-box-shadow:0 2px 10px #666666;
+box-shadow: #666666 0px 2px 10px;
+-webkit-box-shadow: #666666 0px 2px 10px;
+}
+
+.dashletPanel.dc {
+border: 1px solid #0a6315;
+}
+
+
+.dashletPanel.dc .hd {
+height:38px;
+
+	background-image: -moz-linear-gradient(center top, 
+		rgba(140,168,86,.9) 0%,
+		rgba(110,149,33,1) 50%,
+		rgba(89,134,1,1) 50%,  
+		rgba(96,145,1,.8) 100%
+		);
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, rgba(140,168,86,.9)),
+	    color-stop(.50, rgba(110,149,33,1)),
+	    color-stop(.50, rgba(89,134,1,1)),
+	    color-stop(1, rgba(96,145,1,.8))
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ca856', endColorstr='#609101');
+    
+    
+    
+}
+
+.dashletPanel.dc .hd .tl {
+height: 38px;
+}
+
+.dashletPanel.dc .hd .hd-center {
+height: 38px;
+}
+
+.dashletPanel.dc .hd .hd-center span {
+text-shadow: 0 -1px #48591a;
+}
+
+.dashletPanel.dc .hd .tr {
+height: 38px;
+}
+
+.dashletPanel.dc .hd img {
+margin-top:5px;
+}
+
+.dashletPanel.dc .bd {
+	background-color: rgba(7,70,15,.3);
+}
+
+
+#dcmenuContainer
+{
+height: 44px;
+}
+
+#moduleList .dashletPanelMenu .ml {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-ml-menu.png");
+}
+
+#moduleList .dashletPanelMenu .mr {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-mr-menu.png");
+}
+
+#moduleList .dashletPanelMenu .ft .bl {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-bl-menu.png");
+}
+
+#moduleList .dashletPanelMenu .ft .ft-center {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-ft-menu.png");
+}
+
+#moduleList .dashletPanelMenu .ft .br {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-br-menu.png");
+}
+
+#moduleList .dashletPanelMenu,#moduleList .more .dashletPanelMenu,#moduleList .moduleTabGroupMenu .dashletPanelMenu {
+background-color: rgba(255,255,255,.5);
+background-color: #ffffff\9;  /*ie hack */
+border-color: #ffffff;
+}
+
+#moduleList li.more div.bd { 
+
+}
+
+.dashletPanel .dccontent {
+border:1px solid #17e531;
+}
+
+#moduleList .dashletPanelMenu .bd-center {
+border:1px solid #17e531;
+}
+
+
+.dashletPanel .hd .hd-center, .dashletPanel .hd .tl, .dashletPanel .hd .tr{
+	background-image: -moz-linear-gradient(center top, 
+	rgba(255,255,255,.9) 0%,
+	rgba(233,244,148,.9) 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0,rgba(255,255,255,.9)),
+    color-stop(1, rgba(233,244,148,.9))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e9f391');
+border-color:#17e531;
+}
+
+.dashletPanel .hd .tl, .dashletPanel .hd .tr{
+width: 8px;
+}
+
+.dashletPanel .formHeader h3 {
+color:#095E14;
+}
+
+.list {
+border-color:#17e531 !important;
+}
+
+.dashletPanel .dashletNonTable {
+border-color:#17e531 #17e531 #CCCCCC;
+background-color: rgba(255,255,255,.6);
+}
+
+.teamNoticeBox {
+border-color:#17e531;
+}
+
+.evenListRowS1 td {
+background-color:#f8fcd9;
+}
+
+.evenListRowS1:hover td, 
+.oddListRowS1:hover td
+{
+    background: #f6fccd;
+}
+
+#tabListContainer ul.subpanelTablist li a:link, .tabListContainer ul.subpanelTablist li a:visited {
+background-color:#e4e9b7;
+border-color:#efefef;
+}
+
+#tabListContainerTD  {
+background-image: -moz-linear-gradient(center top, 
+	transparent 0%, 
+	rgba(255,255,255, 0) 92%, 
+	#ffffff 92%, 
+	#FFFFFF 97%, 
+	transparent 98%, 
+	transparent 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(255,255,255,0)),
+    color-stop(.92, rgba(255,255,255,0)),
+    color-stop(.92, rgba(255,255,255,1)),
+    color-stop(.98, rgba(255,255,255,1)),
+    color-stop(.98, rgba(255,255,255,0)),
+    color-stop(1, rgba(255,255,255,0))
+   );
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dashlet-tab-bg-bottom.png")\9;
+}
+
+ul.tablist, ul.subpanelTablist {
+border-bottom-color:#FFFFFF;
+}
+
+#dashletCtrls  {
+border-bottom:2px solid #fff;
+}
+
+#dashletCtrls a  {
+color:#9FA757;
+font-weight:bold;
+}
+
+#addPage a {
+background-color:#e4e9b7;
+border-color:#efefef;
+padding:6px 10px;
+}
+
+#tabListContainer .yui-hd a {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=scroll_arrows.png");
+}
+
+#tabListContainer .yui-hd .yui-scroll-controls a {
+border-bottom:2px solid #FFFFFF;
+}
+
+#tabListContainer ul.subpanelTablist li a.current,#tabListContainer ul.subpanelTablist li a:hover  {
+background-image: -moz-linear-gradient(center top, 
+	#d6df7d 0%,
+	#f0f3cf 50%,
+	#ecf0c2 50%,
+	#ffffff 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #d6df7d),
+    color-stop(.5, #f0f3cf),
+    color-stop(.5, #ecf0c2),
+    color-stop(1, #ffffff)
+   );	
+background-color: #fff\9;;
+border-color: #fff;
+}
+
+.oddListRowS1 td a, .evenListRowS1 td a {
+color:#689800;
+}
+
+.oddListRowS1:hover td a, .evenListRowS1:hover td a {
+color: #00ad15;
+}
+
+a.utilsLink:link, a.utilsLink:visited, #bottomLinks a {
+color:#689800;
+}
+
+#globalLinks a {
+color:#689800;
+}
+
+#globalLinksModule a  {
+color:#689800;
+}
+
+.search_form .view {
+	background-image: -moz-linear-gradient(center top, 
+	rgba(255,255,255,.9) 0%,
+	rgba(233,244,148,.9) 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0,rgba(255,255,255,.9)),
+    color-stop(1, rgba(233,244,148,.9))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e9f391');
+border-color:#17E531	;
+background-color: #E8F292;
+}
+
+
+.search_form .view a {
+color:#689800;
+}
+button, input[type="submit"], input[type="reset"], input[type="button"], .button, .buttons .button, .yui-button button {
+background-image: -moz-linear-gradient(center top, 
+	#fdfdfd 0%,
+	#f8f8f8 50%,
+	#f1f1f1 50%,
+	#e6e6e6 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #fdfdfd),
+    color-stop(.5, #f8f8f8),
+    color-stop(.5, #f1f1f1),
+    color-stop(1, #e6e6e6)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#e6e6e6');
+color:#888888;
+border:1px solid #cbdc2b;
+}
+
+
+.button.primary, .yui-dialog .ft span.default button {
+background-image: -moz-linear-gradient(center top, 
+	#d1dfb3 0%,
+	#81a92b 50%,
+	#6a9904 50%,
+	#a1bf62 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #d1dfb3),
+    color-stop(.5, #81a92b),
+    color-stop(.5, #6a9904),
+    color-stop(1, #a1bf62)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1dfb3', endColorstr='#a1bf62');
+border:1px solid #689800;
+text-shadow:-1px -1px #689800;
+color: #fff;
+}
+
+button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover,
+button:focus, input[type=submit]:focus, input[type=reset]:focus, input[type=button]:focus,
+button[selected], input[type=submit][selected], input[type=reset][selected], input[type=button][selected]
+{
+background-image: -moz-linear-gradient(center top, 
+	#fdfdfd 0%,
+	#f8f8f8 50%,
+	#f1f1f1 50%,
+	#e6e6e6 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #fdfdfd),
+    color-stop(.5, #f8f8f8),
+    color-stop(.5, #f1f1f1),
+    color-stop(1, #e6e6e6)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#e6e6e6');
+	border-color: #cbdc2b;
+}
+
+.button.primary:hover,.button.primary:focus ,button.primary[selected],.yui-dialog .ft span.default button:hover{
+	border: 1px solid #095E14;
+	background-color: #689800;
+	text-shadow: -1px -1px #095E14;
+	background-image: -moz-linear-gradient(center top, 
+	#d1dfb3 0%,
+	#81a92b 50%,
+	#6a9904 50%,
+	#a1bf62 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #d1dfb3),
+    color-stop(.5, #81a92b),
+    color-stop(.5, #6a9904),
+    color-stop(1, #a1bf62)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1dfb3', endColorstr='#a1bf62');
+}
+
+
+
+.moduleTitle h2 {
+color:#8b9061;
+}
+
+.moduleTitle h2 a {
+color:#0E901F;
+}
+
+.detail tr td a:link, .detail tr td a:visited, .detail tr td a:hover {
+color:#095E14;
+}
+.edit, .detail, .detail > table {
+border-color: #17E531;
+}
+
+#moduleList .dashletPanelMenu a.yuimenuitemlabel:hover, #moduleList.yuimenubar li.current .dashletPanelMenu  .yuimenuitemlabel:hover,#moduleList .more .dashletPanelMenu a.yuimenuitemlabel:hover {
+background-color: #6ea100;
+}
+
+
+#moduleList .moduleTabExtraMenu,#moduleList .moduleTabGroupMenu {
+height:32px;
+}
+
+.monthHeader,.monthFooter td  {
+	background-image: -moz-linear-gradient(center top, 
+	rgba(255,255,255,.9) 0%,
+	rgba(233,244,148,.9) 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0,rgba(255,255,255,.9)),
+    color-stop(1, rgba(233,244,148,.9))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e9f391');
+}
+.monthFooter td:first-child  {
+-moz-border-radius:0px 0px 0px 6px;
+}
+
+.monthFooter td:last-child  {
+-moz-border-radius:0px 0px 6px 0px;
+}
+
+#daily_cal_table_outside  {
+-moz-box-shadow:0 0 10px #666666;
+border:1px solid #17E531;
+}
+
+.monthHeader a, .monthFooter a ,.monthHeader a:hover, .monthFooter a:hover {
+color:#689800;
+}
+
+.yui-module .hd, .yui-panel .hd {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-hd.png");
+border-color:#17E531 ;
+}
+
+.yui-module.yui-overlay.yui-panel  {
+border-color:#17E531;
+}
+
+.olBgClass td.olCgClass {
+background:url("../../../../index.php?entryPoint=getImage&imageName=dp-hd.png") repeat-x transparent;
+}
+
+.olBgClass td.olCgClass {
+border-bottom-color:#17E531;
+}
+
+#filters_tab, #reportDetailsTable {
+border-color:#17E531;
+}
+
+.container-close  {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=close_dashboard.gif") ;
+
+}
+
+.yui-navset .yui-content, .yui-navset .yui-navset-top .yui-content {
+-moz-border-radius:0 0 6px 6px;
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-bd.png");
+}
+
+.detail h4,.detail tr td[scope="row"],.edit tr td[scope="row"],.edit tr th {
+background-color:#ECFFEE;
+}
+
+tr.yui-dt-selected td, tr.yui-dt-selected td.yui-dt-asc, tr.yui-dt-selected td.yui-dt-desc {
+background-color: #f6fccd;
+}
+

@@ -1,0 +1,84 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<form id="wizform" name="wizform" method="POST" action="index.php">
+	<input type="hidden" id="module" name="module" value="Campaigns">
+	<input type="hidden" id="action" name="action" = "WizardHome">
+	<input type="hidden" id="process_form" name="process_form" value='false' >		
+	<input type="hidden" id="return_module" name="return_module" value="{$RETURN_MODULE}">
+	<input type="hidden" id="return_id" name="return_id" value="{$RETURN_ID}">
+	<input type="hidden" id="return_action" name="return_action" value="{$RETURN_ACTION}">
+	<input type="hidden" id="record" name="record" value="{$ID}">	
+	<input type="hidden" id="direct_step" name="direct_step" value="1">		
+	<input type="hidden" id="campaign_id" name="campaign_id" value="">			
+	<input type="hidden" id="wiz_mass" name="wiz_mass" value="">			
+	<input type="hidden" id="mode" name="mode" value="">					
+
+
+
+<table class='other view' cellspacing="1">
+<tr>
+<td rowspan='2' width='10%' scope='row' style='vertical-align: top;'>
+<div id='nav' >
+{$NAV_ITEMS}
+
+</div>
+
+</td>
+
+<td class='edit view' rowspan='2' width='100%'>
+{$CAMPAIGN_DIAGNOSTIC_LINK}<p>
+<table  width="100%" border="0" cellspacing="1" cellpadding="0" >
+	<tr><td>
+		<div id='campaign_summary'>{$CAMPAIGN_TBL}</div><p>
+	</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>
+		<p><div id='campaign_trackers'>{$TRACKERS_TBL}</div>
+	</td></tr>
+	<tr><td>&nbsp;</td></tr>			
+	<tr><td>
+		<p><div id='campaign_targets'>{$TARGETS_TBL}</div>
+	</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>
+		<p><div id='campaign_marketing'>{$MARKETING_TBL}</div>
+	</td></tr>
+</table>		
+
+		
+</td></tr></table>
+<script>
+{$MSG_SCRIPT}
+</script>
+</form>
+		

@@ -1,0 +1,157 @@
+`<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:  
+ ********************************************************************************/
+-->
+<!-- BEGIN: my_main -->
+
+<script>
+function schedulePOPUP(id){
+			window.open("index.php?module=Reports&action=add_schedule&to_pdf=true&id=" + id ,"test","width=400,height=250,resizable=1,scrollbars=1")
+}
+</script>
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<!-- BEGIN: list_nav_row -->
+{PAGINATION}
+<!-- END: list_nav_row -->
+	<tr height="20">
+	<td scope="col"  width="40%"  nowrap><slot><a href="{ORDER_BY}name" class="listViewThLinkS1">{MOD.LBL_REPORT_NAME}{arrow_start}{name_arrow}{arrow_end}</a></slot></td>
+	<td scope="col"  width="20%"  nowrap><slot><a href="{ORDER_BY}module" class="listViewThLinkS1">{MOD.LBL_MODULE_NAME_SAVED}{arrow_start}{module_arrow}{arrow_end}</a></slot></td>
+	<td scope="col"  width="20%"  nowrap><slot><a href="{ORDER_BY}report_type" class="listViewThLinkS1">{MOD.LBL_REPORT_TYPE}{arrow_start}{report_type_arrow}{arrow_end}</a></slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>{MOD.LBL_SCHEDULE_REPORT}</slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+	  
+	  </tr>
+
+<!-- BEGIN: row -->
+<tr height="20" class="{ROW_COLOR}S1">
+    	
+		<td scope="row" valign=TOP><slot><a href="{URL_PREFIX}index.php?module=Reports&action=index&page=report&id={MY_SAVED_REPORT.ID}" >{MY_SAVED_REPORT.NAME}</a></slot></td>
+   		<td valign=TOP><slot>{MY_SAVED_REPORT.MODULE}</slot></td>
+   		<td valign=TOP><slot>{MY_SAVED_REPORT.REPORT_TYPE_TRANS}</slot></td>
+
+    	<td nowrap="nowrap" valign="top"><slot><a  href="#" onclick="schedulePOPUP('{MY_SAVED_REPORT.ID}')" class="listViewTdToolsS1">{MY_SAVED_REPORT.IS_SCHEDULED_IMG} {MY_SAVED_REPORT.IS_SCHEDULED}</a></slot></td>
+    	<td nowrap="nowrap" valign="top"><slot><a href="index.php?module=Reports&action=index&page=report&id={MY_SAVED_REPORT.ID}"  class="listViewTdToolsS1">{MY_SAVED_REPORT.VIEW}</a></slot></td>
+    	<td nowrap="nowrap" valign="top"><slot>{MY_SAVED_REPORT.DELETE_MY_REPORTS}</slot></td>
+		<td nowrap="nowrap" valign="top"><slot>{MY_SAVED_REPORT.PUBLISH_MY_REPORTS}</slot></td>
+		
+		
+</tr>
+
+<!-- END: row -->
+{PAGINATION}
+</table>
+
+<!-- END: my_main -->
+
+<!-- BEGIN: mainEnd -->
+
+
+<!-- END: mainEnd -->
+
+<!-- BEGIN: my_team_main -->
+                                                                                                          
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<!-- BEGIN: list_nav_row -->
+{PAGINATION}
+<!-- END: list_nav_row -->
+  <tr height="20">
+  <td scope="col"  width="40%"  nowrap><slot><a href="{ORDER_BY}name" class="listViewThLinkS1">{MOD.LBL_REPORT_NAME}{arrow_start}{name_arrow}{arrow_end}</a></slot></td>
+  <td scope="col"  width="20%"  nowrap><slot><a href="{ORDER_BY}module" class="listViewThLinkS1">{MOD.LBL_MODULE_NAME_SAVED}{arrow_start}{module_arrow}{arrow_end}</a></slot></td>
+  <td scope="col"  width="20%"  nowrap><slot><a href="{ORDER_BY}report_type" class="listViewThLinkS1">{MOD.LBL_REPORT_TYPE}{arrow_start}{report_type_arrow}{arrow_end}</a></slot></td>
+  <td scope="col"  width="5%"  nowrap><slot>{MOD.LBL_SCHEDULE_REPORT}</slot></td>
+  <td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+  <td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+  <td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+    </tr>
+                                                                                                          
+<!-- BEGIN: row -->
+<tr height="20" class="{ROW_COLOR}S1">
+                                                                                                          
+    <td scope="row" valign=TOP><slot><a href="{URL_PREFIX}index.php?module=Reports&action=index&page=report&id={TEAM_SAVED_REPORT.ID}" >{TEAM_SAVED_REPORT.NAME}</a></slot></td>
+      <td valign=TOP><slot>{TEAM_SAVED_REPORT.MODULE}</slot></td>
+      <td valign=TOP><slot>{TEAM_SAVED_REPORT.REPORT_TYPE_TRANS}</slot></td>
+           
+      <td nowrap="nowrap" valign="top"><slot><a  href="#" onclick="schedulePOPUP('{TEAM_SAVED_REPORT.ID}')" class="listViewTdToolsS1">{TEAM_SAVED_REPORT.IS_SCHEDULED_IMG} {TEAM_SAVED_REPORT.IS_SCHEDULED}</a></slot></td>
+      <td nowrap="nowrap" valign="top"><slot><a href="index.php?module=Reports&action=index&page=report&id={TEAM_SAVED_REPORT.ID}"  class="listViewTdToolsS1">{TEAM_SAVED_REPORT.VIEW}</a></slot></td>
+      <td nowrap="nowrap" valign="top"><slot>{TEAM_SAVED_REPORT.DELETE}</slot></td>
+    <td nowrap="nowrap" valign="top"><slot>{TEAM_SAVED_REPORT.PUBLISH_MY_REPORTS}</slot></td>
+                                                                                                          
+                                                                                                          
+</tr>
+
+<!-- END: row -->
+{PAGINATION}
+</table>
+<!-- END: my_team_main -->
+
+
+
+
+
+<!-- BEGIN: all_main -->
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<!-- BEGIN: list_nav_row -->
+{PAGINATION}
+<!-- END: list_nav_row -->
+	<tr height="20">
+	<td scope="col"  width="40%"  nowrap><slot><a href="{ORDER_BY}name" class="listViewThLinkS1">{MOD.LBL_REPORT_NAME}{arrow_start}{name_arrow}{arrow_end}</a></slot></td>
+	<td scope="col"  width="20%"  nowrap><slot><a href="{ORDER_BY}module" class="listViewThLinkS1">{MOD.LBL_MODULE_NAME_SAVED}{arrow_start}{module_arrow}{arrow_end}</a></slot></td>
+	<td scope="col"  width="20%"  nowrap><slot><a href="{ORDER_BY}report_type" class="listViewThLinkS1">{MOD.LBL_REPORT_TYPE}{arrow_start}{report_type_arrow}{arrow_end}</a></slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>{MOD.LBL_SCHEDULE_REPORT}</slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+	<td scope="col"  width="5%"  nowrap><slot>&nbsp;</slot></td>
+	  </tr>
+
+<!-- BEGIN: row -->
+<tr height="20" class="{ROW_COLOR}S1">
+    	
+		<td scope="row" valign=TOP><slot><a href="{URL_PREFIX}index.php?module=Reports&action=index&page=report&id={SAVED_REPORT.ID}" >{SAVED_REPORT.NAME}</a></slot></td>
+   		<td valign=TOP><slot>{SAVED_REPORT.MODULE}</slot></td>
+   		<td valign=TOP><slot>{SAVED_REPORT.REPORT_TYPE_TRANS}</slot></td>
+
+    	<td nowrap="nowrap" valign="top"><slot><a  href="#" onclick="schedulePOPUP('{SAVED_REPORT.ID}')" class="listViewTdToolsS1">{SAVED_REPORT.IS_SCHEDULED_IMG} {SAVED_REPORT.IS_SCHEDULED}</a></slot></td>
+    	<td nowrap="nowrap" valign="top"><slot><a href="index.php?module=Reports&action=index&page=report&id={SAVED_REPORT.ID}"  class="listViewTdToolsS1">{SAVED_REPORT.VIEW}</a></slot></td>
+    	<td nowrap="nowrap" valign="top"><slot>{SAVED_REPORT.DELETE}</slot></td>
+		<td nowrap="nowrap" valign="top"><slot>{SAVED_REPORT.UNPUBLISH_REPORT}</slot></td>
+		
+		
+</tr>
+
+<!-- END: row -->
+{PAGINATION}
+</table>
+<!-- END: all_main -->

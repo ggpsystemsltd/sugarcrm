@@ -1,0 +1,129 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+<script>
+function set_return(href_object, rel1, rel2){
+	
+	//safety, to see if the second item must be selected
+	if(get_value('select_rel2')=="Yes"){
+		var check_one = confirm_value_present('rel_module2', '{PLEASE_SEL}');
+		if(check_one == false){
+			return false;	
+		}	
+	}	
+	
+	if(get_value('rel_module1')!=""){
+		window.opener.document.getElementById(rel1).value = get_value('rel_module1');
+		window.opener.document.getElementById(rel2).value = get_value('rel_module2');
+		var selected_text = this.document.getElementById('rel_module1').options[this.document.getElementById('rel_module1').selectedIndex].text;
+	
+		if(get_value('rel_module2')!=""){
+			var selected_text2 = this.document.getElementById('rel_module2').options[this.document.getElementById('rel_module2').selectedIndex].text;
+			selected_text = selected_text2 + '{ASSOCIATED_WITH} ' + selected_text;
+		}
+	
+	
+		window.opener.changehref_text(href_object, selected_text);
+		window.close();
+	}
+	
+//end function set_return
+}	
+
+function get_second_related(){
+	
+	if(get_value('rel_module1') != ""){
+		this.document.EditView.submit();	
+	} else {
+		this.document.getElementById('rel_module2_selector').style.display= 'none';
+	}		
+
+//end function get_second_related
+}
+
+function toggle_rel2(){
+	
+	if(get_value('rel_module1')!=""){
+		this.document.getElementById('rel_module2_selector').style.display= '';
+	} else {
+		this.document.getElementById('rel_module2_selector').style.display= 'none';
+	}		
+}	
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="Expressions">
+			<input type="hidden" id='type' name="type" value="{TYPE}">
+			<input type="hidden" id='workflow_id' name="workflow_id" value="{WORKFLOW_ID}">
+			<input type="hidden" name="action" value="RelateSelector">
+			<input type="hidden" name="sugar_body_only" value="true">
+			<input type="hidden" id='select_rel2' name="select_rel2" value="{SELECT_REL2}">
+			<input type="hidden" id='base_module' name="base_module" value="{BASE_MODULE}">
+	<td scope="row" width="60%" align="right"><slot>{SELECTOR_TAG}&nbsp;</slot></td>
+	<td  align="right"><slot><select id='rel_module1' name='rel_module1' tabindex='2' onchange="get_second_related();">{SELECTOR_DROPDOWN}</select></slot></td>		
+</tr>
+<tr id='rel_module2_selector'>
+	<td scope="row" width="60%" align="right"><slot>{SELECTOR_TAG2}&nbsp;</slot></td>
+	<td  align="right"><slot><select id='rel_module2' name='rel_module2' tabindex='2'>{SELECTOR_DROPDOWN2}</select></slot></td>	
+	</form>
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+	<td align='right' colspan='2'>
+	<input type='button' class='button' value='{APP.LBL_SAVE_BUTTON_LABEL}' name='{APP.LBL_SAVE_BUTTON_LABEL}' title='{APP.LBL_SAVE_BUTTON_TITLE}' onClick="set_return({SELECTOR_JSCRIPT_RETURN})";>
+ <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="window.close();" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+
+	</td>
+</tr>
+
+</table>
+	
+<script>
+toggle_rel2();
+</script>
+
+<!-- END: main -->

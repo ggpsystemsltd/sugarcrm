@@ -1,0 +1,11 @@
+/*
+ Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+ Code licensed under the BSD License:
+ http://developer.yahoo.com/yui/license.html
+ version: 3.3.0
+ build: 3167
+ */
+YUI.add('widget-anim',function(Y){var BOUNDING_BOX="boundingBox",HOST="host",NODE="node",OPACITY="opacity",EMPTY_STR="",VISIBLE="visible",DESTROY="destroy",HIDDEN="hidden",RENDERED="rendered",START="start",END="end",DURATION="duration",ANIM_SHOW="animShow",ANIM_HIDE="animHide",_UI_SET_VISIBLE="_uiSetVisible",ANIM_SHOW_CHANGE="animShowChange",ANIM_HIDE_CHANGE="animHideChange";function WidgetAnim(config){WidgetAnim.superclass.constructor.apply(this,arguments);}
+WidgetAnim.NS="anim";WidgetAnim.NAME="pluginWidgetAnim";WidgetAnim.ANIMATIONS={fadeIn:function(){var widget=this.get(HOST),boundingBox=widget.get(BOUNDING_BOX),anim=new Y.Anim({node:boundingBox,to:{opacity:1},duration:this.get(DURATION)});if(!widget.get(VISIBLE)){boundingBox.setStyle(OPACITY,0);}
+anim.on(DESTROY,function(){this.get(NODE).setStyle(OPACITY,(Y.UA.ie)?1:EMPTY_STR);});return anim;},fadeOut:function(){return new Y.Anim({node:this.get(HOST).get(BOUNDING_BOX),to:{opacity:0},duration:this.get(DURATION)});}};WidgetAnim.ATTRS={duration:{value:0.2},animShow:{valueFn:WidgetAnim.ANIMATIONS.fadeIn},animHide:{valueFn:WidgetAnim.ANIMATIONS.fadeOut}};Y.extend(WidgetAnim,Y.Plugin.Base,{initializer:function(config){this._bindAnimShow();this._bindAnimHide();this.after(ANIM_SHOW_CHANGE,this._bindAnimShow);this.after(ANIM_HIDE_CHANGE,this._bindAnimHide);this.beforeHostMethod(_UI_SET_VISIBLE,this._uiAnimSetVisible);},destructor:function(){this.get(ANIM_SHOW).destroy();this.get(ANIM_HIDE).destroy();},_uiAnimSetVisible:function(val){if(this.get(HOST).get(RENDERED)){if(val){this.get(ANIM_HIDE).stop();this.get(ANIM_SHOW).run();}else{this.get(ANIM_SHOW).stop();this.get(ANIM_HIDE).run();}
+return new Y.Do.Prevent();}},_uiSetVisible:function(val){var host=this.get(HOST),hiddenClass=host.getClassName(HIDDEN);host.get(BOUNDING_BOX).toggleClass(hiddenClass,!val);},_bindAnimShow:function(){this.get(ANIM_SHOW).on(START,Y.bind(function(){this._uiSetVisible(true);},this));},_bindAnimHide:function(){this.get(ANIM_HIDE).after(END,Y.bind(function(){this._uiSetVisible(false);},this));}});Y.namespace("Plugin").WidgetAnim=WidgetAnim;},'3.3.0',{requires:['plugin','anim-base','widget']});

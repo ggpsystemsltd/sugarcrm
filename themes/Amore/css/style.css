@@ -1,0 +1,646 @@
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:  Contains a variety of utility functions used to display UI 
+ * components such as form headers and footers.  Intended to be modified on a per 
+ * theme basis.
+ ********************************************************************************/
+
+/** From default style.css file **/
+
+body
+{
+	background-image:url('../../../../index.php?entryPoint=getImage&imageName=bg.png'); 
+	background-color: #f4c3da;
+}
+
+a:link, a:visited {
+color:#ef3067;
+}
+
+.dcmenu {
+min-width: 1050px;
+background-color: #0d3a62;
+background: -moz-linear-gradient(center top,
+	rgba(240,120,156,.9) 0%,
+	rgba(236,72,121,.9) 78%, 
+	rgba(0,0,0,.3) 78%, 
+	rgba(0,0,0,0) 100%); 
+	background-color: transparent;
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(240,120,156,.9)),
+    color-stop(0.78, rgba(236,72,121,.9)),
+    color-stop(0.78, rgba(0,0,0,.3)),
+    color-stop(1, rgba(0,0,0,0))
+    );
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0789c', endColorstr='#ec4779');
+height: 43px\9;;
+}
+
+.dcmenuDivider  {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dcMenuDivider.png");
+}
+
+
+#glblSearchBtn {
+margin-top:8px;
+}
+
+#moduleList  {
+background: -moz-linear-gradient(center top,
+		transparent 0%,
+		transparent 12%,
+		rgba(255,255,255,.9) 13%,  
+		rgba(255,255,255,.8) 45%,
+		rgba(255,255,255,.6) 45%, 
+		rgba(255,255,255,.6) 76%,
+		rgba(0,0,0,.1) 76%, 
+		rgba(0,0,0,0) 100%
+	); 
+	background-color: transparent;
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(255,255,255,0)),
+    color-stop(0.12, rgba(255,255,255,0)),
+    color-stop(0.13, rgba(255,255,255,.9)),
+    color-stop(0.45, rgba(255,255,255,.8)),
+    color-stop(0.45, rgba(255,255,255,.6)),
+    color-stop(0.74, rgba(255,255,255,.6)),
+    color-stop(0.74, rgba(0,0,0,.1)),
+    color-stop(1, rgba(0,0,0,0))
+    );
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=tabRowBg.png")/9;
+height:50px;
+}
+
+#moduleList.yuimenubar li.current {
+margin-right: -1px;	
+}
+
+#moduleList.yuimenubar li.current .yuimenuitemlabel, li.current a.yuimenuitemlabel, li.current a.yuimenuitemlabel:link, li.current a.yuimenuitemlabel:visited {
+	background-image: -moz-linear-gradient(center top, 
+	#f9d3dd 0%,
+	#f5b4c7 2%,
+	#f26b91 52%,
+	#ef4475 52%,
+	#e586a1 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f9d3dd),
+    color-stop(.05, #f5b4c7),
+    color-stop(.52, #f26b91),
+    color-stop(.52, #ef4475),
+    color-stop(1, #e586a1)
+   );	
+	-moz-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9d3dd', endColorstr='#e586a1');
+	
+padding-bottom: 4px;
+padding-top: 6px\9;
+text-shadow:-1px -1px #F04476;
+}
+
+
+#moduleList .yuimenuitemlabel, a.yuimenuitemlabel, a.yuimenuitemlabel:link, a.yuimenuitemlabel:visited {
+padding:1px 15px 2px;
+border-color:#F0B9D3;
+}
+
+.moduleTabExtraMenu .yuimenuitemlabel.more {
+border-right:1px solid #F0B9D3;
+}
+
+#moduleList .moduleTabGroup .yuimenuitemlabel.group em
+{
+	background-image: url(../../../../index.php?entryPoint=getImage&imageName=grouped-menu.png);
+}
+
+#moduleList.yuimenubarnav .yuimenubaritemlabel-selected {
+	background-image: -moz-linear-gradient(center top, 
+	#ffffff 0%,
+	rgba(255,255,255,.6) 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #ffffff),
+    color-stop(1, rgba(255,255,255,.6))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fefefe');
+border-color: #fbe9f1;
+}
+
+#welcome, #globalLinks  {
+ height: 20px;
+ background-image: none;
+ background-color: rgba(252,184,194,.6);
+ background-color: #fce2e6/9;
+ border-color: #f2bdd5;
+}
+
+#globalLinksCtrl a.yui-toggle {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=globalLinksToggle.png");
+height:29px;
+}
+
+.dashletPanel {
+-moz-box-shadow:0 2px 10px #666666;
+box-shadow: #666666 0px 2px 10px;
+-webkit-box-shadow: #666666 0px 2px 10px;
+}
+
+#moduleList .dashletPanelMenu .bd {
+	border-color: #ccc;	
+}
+
+
+.dashletPanel.dc {
+border: 1px solid #ef0044;
+}
+
+
+.dashletPanel.dc .hd {
+height:38px;
+
+	background-image: -moz-linear-gradient(center top, 
+		rgba(244,152,178,.9) 0%,
+		rgba(241,87,131,1) 50%,
+		rgba(239,60,111,1) 50%,  
+		rgba(239,22,83,.8) 100%
+		);
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, rgba(244,152,178,.9)),
+	    color-stop(.50, rgba(241,87,131,1)),
+	    color-stop(.50, rgba(239,60,111,1)),
+	    color-stop(1, rgba(239,22,83,.8))
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f498b2', endColorstr='#ff1653');
+    
+    
+    
+}
+
+.dashletPanel.dc .hd .tl {
+height: 38px;
+}
+
+.dashletPanel.dc .hd .hd-center {
+height: 38px;
+}
+
+.dashletPanel.dc .hd .tr {
+height: 38px;
+}
+
+.dashletPanel.dc .hd img {
+margin-top:5px;
+}
+
+.dashletPanel.dc .bd {
+	background-color: rgba(239,0,68,.3);
+}
+
+#dcmenuContainer
+{
+height: 44px;
+}
+
+#moduleList .dashletPanelMenu .ml {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-ml-menu.png");
+}
+
+#moduleList .dashletPanelMenu .mr {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-mr-menu.png");
+}
+
+#moduleList .dashletPanelMenu .ft .bl {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-bl-menu.png");
+}
+
+#moduleList .dashletPanelMenu .ft .ft-center {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-ft-menu.png");
+}
+
+#moduleList .dashletPanelMenu .ft .br {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-br-menu.png");
+}
+
+#moduleList .dashletPanelMenu,#moduleList .more .dashletPanelMenu,#moduleList .moduleTabGroupMenu .dashletPanelMenu {
+background-color: rgba(255,255,255,.5);
+background-color: #ffffff\9;  /*ie hack */
+border-color: #ffffff;
+box-shadow: 0 2px 5px #999999;
+}
+
+#moduleList li.more div.bd { 
+
+}
+
+.dashletPanel .dccontent {
+border:1px solid #ef3067;
+}
+
+#moduleList .dashletPanelMenu .bd-center {
+border:1px solid #F079B1;
+}
+
+
+.dashletPanel .hd .hd-center, .dashletPanel .hd .tl, .dashletPanel .hd .tr{
+	background-image: -moz-linear-gradient(center top, 
+	rgba(254,249,251,.9) 0%,
+	rgba(248,224,235,.9) 100%
+	);
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0,rgba(254,249,251,.9)),
+    color-stop(1, rgba(248,224,235,.9))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fef9fb', endColorstr='#f8e0eb');
+border-color:#FF95C7;
+}
+
+.dashletPanel .hd .tl, .dashletPanel .hd .tr{
+width: 8px;
+}
+
+.dashletPanel .formHeader h3 {
+color:#BB0058;
+}
+
+.list {
+border-color:#FF95C7 !important;
+}
+
+.dashletPanel .dashletNonTable {
+border-color:#FF95C7 #FF95C7 #CCCCCC;
+background-color: rgba(255,255,255,.6);
+background-color: #f5e7ed\9;
+}
+
+.teamNoticeBox {
+border-color:#FF95C7;
+}
+
+.evenListRowS1 td {
+background-color:#FFF1F8;
+}
+
+.evenListRowS1:hover td, 
+.oddListRowS1:hover td
+{
+    background: #ffe0ef;
+}
+
+#tabListContainer ul.subpanelTablist li a:link, .tabListContainer ul.subpanelTablist li a:visited {
+background-color:#F2D7E4;
+border-color:#efefef;
+}
+
+#tabListContainerTD  {
+background-image: -moz-linear-gradient(center top, 
+	transparent 0%, 
+	rgba(255,255,255, 0) 92%, 
+	#ffffff 92%, 
+	#FFFFFF 97%, 
+	transparent 98%, 
+	transparent 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(255,255,255,0)),
+    color-stop(.92, rgba(255,255,255,0)),
+    color-stop(.92, rgba(255,255,255,1)),
+    color-stop(.98, rgba(255,255,255,1)),
+    color-stop(.98, rgba(255,255,255,0)),
+    color-stop(1, rgba(255,255,255,0))
+   );
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dashlet-tab-bg-bottom.png")\9;
+}
+
+ul.tablist, ul.subpanelTablist {
+border-bottom-color:#FFFFFF;
+}
+
+#dashletCtrls  {
+border-bottom:2px solid #fff;
+}
+
+#dashletCtrls a  {
+color:#BC90A5;
+font-weight:bold;
+}
+
+#addPage a {
+background-color:#F2D7E4;
+border-color:#efefef;
+padding:6px 10px;
+}
+
+#tabListContainer .yui-hd a {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=scroll_arrows.png");
+}
+
+#tabListContainer .yui-hd .yui-scroll-controls a {
+border-bottom:2px solid #FFFFFF;
+}
+ 
+#tabListContainer ul.subpanelTablist li a.current,#tabListContainer ul.subpanelTablist li a:hover  {
+background-image: -moz-linear-gradient(center top, 
+	#f1cfdf 0%,
+	#faedf3 50%,
+	#f9e9f0 50%,
+	#fdfafb 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f1cfdf),
+    color-stop(.5, #faedf3),
+    color-stop(.5, #f9e9f0),
+    color-stop(1, #fdfafb)
+   );	
+background-color: #fff\9;;
+border-color: #fff;
+}
+
+.oddListRowS1 td a, .evenListRowS1 td a {
+color:#ef3067;
+}
+
+.oddListRowS1:hover td a, .evenListRowS1:hover td a {
+color: #ff1255;
+}
+
+a.utilsLink:link, a.utilsLink:visited, #bottomLinks a {
+color:#ef3067;
+}
+
+#globalLinks a {
+color:#ef3067;
+}
+
+#globalLinksModule a  {
+color:#ef3067;
+}
+
+.search_form .view, .search_form .view.advanced {
+	background-color: #efb9d2;
+background-image: -moz-linear-gradient(center top, 
+	rgba(254,249,251,.9) 0%,
+	rgba(248,224,235,.9) 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0,rgba(254,249,251,.9)),
+    color-stop(1, rgba(248,224,235,.9))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fef9fb', endColorstr='#f8e0eb');
+border-color:#FF95C7;
+}
+
+.search_form .view a {
+color:#ef3067;
+}
+button, input[type="submit"], input[type="reset"], input[type="button"], .button, .buttons .button, .yui-button button {
+
+background-image: -moz-linear-gradient(center top, 
+	#fdfdfd 0%,
+	#f8f8f8 50%,
+	#f1f1f1 50%,
+	#e6e6e6 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #fdfdfd),
+    color-stop(.5, #f8f8f8),
+    color-stop(.5, #f1f1f1),
+    color-stop(1, #e6e6e6)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#e6e6e6');
+
+color:#888888;
+border:1px solid #DC79A8;
+}
+
+
+.button.primary, .yui-dialog .ft span.default button {
+background-color:#ef3066;
+
+background-image: -moz-linear-gradient(center top, 
+	#f9c8d7 0%,
+	#f15380 50%,
+	#ef3167 50%,
+	#f57398 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f9c8d7),
+    color-stop(.5, #f15380),
+    color-stop(.5, #ef3167),
+    color-stop(1, #f57398)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9c8d7', endColorstr='#f57398');
+   
+border:1px solid #ef3067;
+text-shadow:-1px -1px #ef3067;
+color: #fff;
+}
+
+button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover,
+button:focus, input[type=submit]:focus, input[type=reset]:focus, input[type=button]:focus,
+button[selected], input[type=submit][selected], input[type=reset][selected], input[type=button][selected]
+{
+background-image: -moz-linear-gradient(center top, 
+	#fdfdfd 0%,
+	#f8f8f8 50%,
+	#f1f1f1 50%,
+	#e6e6e6 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #fdfdfd),
+    color-stop(.5, #f8f8f8),
+    color-stop(.5, #f1f1f1),
+    color-stop(1, #e6e6e6)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#e6e6e6');
+	border-color: #DC79A8;
+}
+
+.button.primary:hover,.button.primary:focus ,button.primary[selected],.yui-dialog .ft span.default button:hover{
+	border: 1px solid #ef3067;
+	background-color: #ef3067;
+	text-shadow: -1px -1px #ef3067;
+background-image: -moz-linear-gradient(center top, 
+	#f9c8d7 0%,
+	#f15380 50%,
+	#ef3167 50%,
+	#f57398 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f9c8d7),
+    color-stop(.5, #f15380),
+    color-stop(.5, #ef3167),
+    color-stop(1, #f57398)
+   );	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9c8d7', endColorstr='#f57398');
+}
+
+
+
+.moduleTitle h2 {
+color:#BB0058;
+}
+
+.moduleTitle h2 a {
+color:#ef3067;
+}
+
+.detail tr td a:link, .detail tr td a:visited, .detail tr td a:hover {
+color:#ef3067;
+}
+.edit, .detail, .detail > table {
+border-color: #FF95C7;
+}
+
+#moduleList .dashletPanelMenu a.yuimenuitemlabel:hover, #moduleList.yuimenubar li.current .dashletPanelMenu  .yuimenuitemlabel:hover,#moduleList .more .dashletPanelMenu a.yuimenuitemlabel:hover {
+background-color: #ef3067;
+}
+
+
+#moduleList .moduleTabExtraMenu,#moduleList .moduleTabGroupMenu {
+height:32px;
+}
+
+.monthHeader,.monthFooter td  {
+background-color: transparent;
+background-image: -moz-linear-gradient(center top, 
+	rgba(254,249,251,.9) 0%,
+	rgba(248,224,235,.9) 100%
+	);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0,rgba(254,249,251,.9)),
+    color-stop(1, rgba(248,224,235,.9))
+   );	
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fef9fb', endColorstr='#f8e0eb');
+}
+.monthFooter td:first-child  {
+-moz-border-radius:0px 0px 0px 6px;
+border-radius:0px 0px 0px 6px;
+-webkit-border-bottom-left-radius: 6px;
+}
+
+.monthFooter td:last-child  {
+-moz-border-radius:0px 0px 6px 0px;
+border-radius:0px 0px 6px 0px;
+-webkit-border-bottom-right-radius: 6px;
+}
+
+#daily_cal_table_outside  {
+-moz-box-shadow:0 0 10px #666666;
+box-shadow:0 0 10px #666666;
+-webkit-box-shadow:0 0 10px #666666;
+border:1px solid #FF95C7;
+}
+
+.monthHeader a, .monthFooter a {
+color:#ef3067;
+}
+
+.yui-module .hd, .yui-panel .hd {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-hd.png");
+border-color:#FF95C7 ;
+}
+
+.yui-module.yui-overlay.yui-panel  {
+border-color:#FF95C7 ;
+}
+
+.olBgClass td.olCgClass {
+background:url("../../../../index.php?entryPoint=getImage&imageName=dp-hd.png") repeat-x transparent;
+}
+
+.olBgClass td.olCgClass {
+border-bottom-color:#FF95C7;
+}
+
+#filters_tab, #reportDetailsTable {
+border-color:#FF95C7;
+}
+
+.container-close  {
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=close_dashboard.gif") ;
+
+}
+
+.yui-navset .yui-content, .yui-navset .yui-navset-top .yui-content {
+-moz-border-radius:0 0 6px 6px;
+border-radius:0 0 6px 6px;
+-webkit-border-bottom-right-radius: 6px;
+-webkit-border-bottom-left-radius: 6px;
+background-image:url("../../../../index.php?entryPoint=getImage&imageName=dp-bd.png");
+}
+
+tr.yui-dt-selected td, tr.yui-dt-selected td.yui-dt-asc, tr.yui-dt-selected td.yui-dt-desc {
+background-color: #ffe0ef;
+}

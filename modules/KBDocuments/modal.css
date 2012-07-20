@@ -1,0 +1,130 @@
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+
+/* The specific style rules used to suggest rendering */
+/* for the CSS table design example, starts here */
+
+DIV.base-layer {
+  background: none #cc9966; border: solid #333333 1px; color: #000000;
+  margin: 0.5em 12px 0.5em 12px; padding: 0; text-align: center; width: auto;
+}
+
+DIV.table-row {
+  background: none #ffffcc; border: solid #000000 1px; color: #000000;
+  margin-top: 0; margin-right: auto; margin-bottom: 0; margin-left: auto;
+  padding: 0; text-align: center; width: 96%;
+}
+
+/* Style rules for the 3 x 2 table example */
+
+DIV.left-container2 {
+  border: none; float: left; margin: 0; padding: 0; width: 50%;
+}
+
+DIV.right-container2 {
+  border: none; float: right; margin: 0; padding: 0; width: 50%;
+}
+
+/* Rules in detail that is used to suggest rendering for the */
+/* Nobel price winner table example. I still use some of the */
+/* generic rules as found above and below, but still..       */
+
+DIV.left-container13 {
+  border: none; float: left; margin: 0; padding: 0; width: 20%;
+}
+
+DIV.left-container23 {
+  border: none; float: left; margin: 0; padding: 0; width: 35%;
+}
+
+DIV.right-container13 {
+  border: none; float: right; margin: 0; padding: 0; width: 45%;
+}
+
+
+.tabDetailViewDL2 {
+	    font-size: 12px;
+		font-weight: normal;
+		padding: 3px 6px 4px 6px;
+		vertical-align: top;
+		border-top: 1px solid;
+	}
+
+	.tabDetailViewDF2 {
+	font-size: 11px;
+		border-left: 2px solid;
+		font-weight: normal;
+		padding: 4px 10px 4px 6px;
+		vertical-align: top;
+	}
+
+/* Rules in detail that is used to suggest rendering for the  10 by 5 int. */
+/* product table example. I still use some of the generic rules as found   */
+/* above and below, but still..                                            */
+
+DIV.left-layer11 {
+  border: none; float: left; margin: 0; padding: 0; width: 9%;
+}
+
+DIV.right-layer11 {
+  border: none; float: right; margin: 0; padding: 0; width: 10%;
+}
+
+/* Watch out for this DIV... rule, it appears every now and then */
+
+DIV.space-line {
+  clear: both; margin: 0; padding: 0; width: auto;
+}
+
+/* Some rules for captions, headers and running text */
+
+H4.table-caption {
+  background: transparent; color: #3333cc; font-family: sans-serif;
+  font-size: 1em; font-style: italic; font-weight: bold; margin: 0;
+  padding: 0.3em; text-align: center; width: auto;
+}
+
+H5.colhdr {
+  background: none #ffffcc; border: solid #3333cc 1px; color: #993333;
+  font-family: sans-serif; font-size: 1em; font-style: italic;
+  font-weight: normal; margin: 0; padding: 0.3em 0.3em 0 0.3em;
+  text-align: center; width: auto;
+}
+
+P.text {
+  border: solid #3333cc 1px; margin: 0; padding: 0.3em 0.3em 0 0.3em;
+  font-style: normal; font-size: 1em; text-align: center; text-indent: 0;
+  width: auto;
+}
+
+.yui-panel .view  {
+    width: auto;
+    margin: 0px;
+}
+
+/* End of layer specific style rule set */

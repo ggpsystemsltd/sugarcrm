@@ -1,0 +1,367 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+{JAVASCRIPT_LANGUAGE_FILES}
+<script>
+function togglefield_select(field_num){
+	var focus_field = 'mod_' + field_num;
+	var setting = this.document.getElementById(focus_field).checked;
+
+	var target_row = 'lang_' + field_num;
+	
+	
+	if(setting==true){
+		this.document.getElementById(target_row).style.display='';
+		
+	} else {
+		this.document.getElementById(target_row).style.display='none';
+	}	
+//end function togglefield_select		
+}	
+
+
+function togglelanguage(reset_values){
+	var radio_object = document.EditView.user_display_type;
+	if(!radio_object)
+		return "";
+	var radioLength = radio_object.length;
+
+	for(var i = 0; i < radioLength; i++) {
+
+		if(radio_object[i].checked) {
+			//alert(radio_object[i].value);
+			this.document.getElementById('lang_' + radio_object[i].value).style.display= '';
+			var target_value = radio_object[i].value; 
+		} else {
+			this.document.getElementById('lang_' + radio_object[i].value).style.display= 'none';	
+		}	
+	}
+		
+	
+	
+//end function togglelanguage
+}
+
+function changehref_text(href_object, selected_text){
+	
+	this.document.getElementById(href_object).innerHTML = selected_text;
+	
+//end function changehref_text
+}
+
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}	
+
+</script>
+<script>
+function get_selector(user_type){
+
+	var base_module = this.document.getElementById('base_module').value;
+	var rel_module1 = this.document.getElementById('rel_module1').value;
+	var rel_module2 = this.document.getElementById('rel_module2').value;
+	var link_location = "index.php?module=WorkFlowAlerts&action=Selector&sugar_body_only=true&base_module={BASE_MODULE}";
+	link_location += '&rel_module1=' + rel_module1 + '&rel_module2=' + rel_module2 + '&user_type=' + user_type;
+	
+	window.open(link_location, "Test","width=300,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}
+
+function get_single_selector(href_object, type, dom_name, value_field, meta_filter_name){
+
+	var value = get_value(value_field);
+	var opener_id = value_field;
+	
+	//type, value, dom_name, opener_id, href_object
+	
+	var link_location = "index.php?module=Expressions&action=SingleSelector&sugar_body_only=true";
+	link_location += '&type=' + type + '&value=' + value + '&opener_id=' + opener_id + '&href_object=' + href_object + '&dom_name=' + dom_name;
+	link_location += '&meta_filter_name=' + meta_filter_name;
+	
+	window.open(link_location, "Test","width=400,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}	
+
+	
+function confirm_safety(type){
+
+	var select_option = SUGAR.language.get('WorkFlow', 'LBL_SELECT_OPTION');
+	var select_name = SUGAR.language.get('WorkFlowAlerts', 'LBL_SELECT_NAME');
+	var select_email = SUGAR.language.get('WorkFlowAlerts', 'LBL_SELECT_EMAIL');
+	var select_filter = SUGAR.language.get('WorkFlowAlerts', 'LBL_SELECT_FILTER');
+	var select_name_email = SUGAR.language.get('WorkFlowAlerts', 'LBL_SELECT_NAME_EMAIL');
+	
+	if((safety_rel_filters())==false){
+		return false;	
+	}	
+	
+	
+	if(type=='rel_user_custom'){
+
+		var check_one = "";
+		var check_two = "";
+		var check_three = "";
+		//make sure you have the select email, name selected
+		if(this.document.getElementById('mod_rel_custom1').checked==true){
+			check_one = confirm_value_present('field_value', select_name);
+			check_two = confirm_value_present('rel_email_value', select_email);
+		} else {
+			alert(select_name_email);
+			return false;	
+		}		
+		//make sure you have fields selected for these
+		
+		//if filter is checked, then make sure something is selected
+		if(this.document.getElementById('mod_rel_custom2').checked==true){
+			check_three = confirm_value_present('rel_custom2_lhs_field', select_filter);
+		} else {
+			check_three = true;	
+		}	
+		
+		if(check_one==false || check_two==false || check_three==false){
+					//alert('test1' + check_one + 'test2' + check_two + 'test3' + check_three);
+			return false;
+		} else {
+			return true;	
+		}	
+
+	}
+	
+	if(type=='trig_user_custom'){
+
+		var check_one = "";
+		var check_two = "";
+
+		//make sure you have the select email, name selected
+		if(this.document.getElementById('mod_rel_custom1').checked==true){
+			check_one = confirm_value_present('field_value', select_name);
+			check_two = confirm_value_present('rel_email_value', select_email);
+		} else {
+			alert(select_name_email);
+			return false;	
+		}		
+		//make sure you have fields selected for these
+	
+		
+		if(check_one==false || check_two==false){
+					//alert('test1' + check_one + 'test2' + check_two + 'test3' + check_three);
+			return false;
+		} else {
+			return true;	
+		}	
+	//end if trig_user_custom
+	}
+	
+	
+		var radio_object = document.EditView.user_display_type;
+		var checked_value = getCheckedValue(radio_object);
+		
+		if(checked_value==""){
+			alert(select_option);
+			return false;	
+		} else {
+			return true;	
+		}	
+
+	
+//end function confirm_safety
+}	
+
+
+
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowAlerts">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{PARENT_ID}">
+			<input type="hidden" name="action" value="Save">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="sugar_body_only" value="true">
+			<input type="hidden" id='user_type' name="user_type" value="{USER_TYPE}">
+			<input type="hidden" id='base_module' name="base_module" value="{BASE_MODULE}">
+			<input type="hidden" id ='rel_module1' name="rel_module1" value="{REL_MODULE1}">
+			<input type="hidden" id ='rel_module2' name="rel_module2" value="{REL_MODULE2}">
+			<input type="hidden" id='rel__set_type' name="rel__set_type" value="{REL_SET_TYPE}">
+			<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+<!-- BEGIN: top_frame -->
+
+		<tr>
+		<td width="10%" scope="row"><slot><input id='{RADIO_ID}' name='{RADIO_NAME}' type='radio' tabindex='2' value ='{RADIO_VALUE}' onclick='togglelanguage("true");' {RADIO_DISABLE}></slot></td>
+		<td width="90%" scope="row"><slot>{RADIO_DISPLAY}{RADIO_DISPLAY2}{RADIO_DISPLAY3}</slot></td>
+		</tr>
+
+<!-- END: top_frame -->
+<!-- BEGIN: rel_custom_frame_top -->
+			<input type="hidden" id ='rel_email_value' name="rel_email_value" value="{REL_EMAIL_VALUE}">
+			<input type="hidden" id ='field_value' name="field_value" value="{FIELD_VALUE}">
+				
+
+		<tr>
+		<td width="10%" scope="row"><slot><input id='mod_rel_custom1' name='mod_rel_custom1' type='checkbox' tabindex='2' onclick="togglefield_select('rel_custom1');" {REL_CUSTOM1_CHECKED}></slot></td>
+		<td width="90%" scope="row"><slot>{MOD.LBL_REL_CUSTOM_STRING}</slot></td>
+		</tr>
+		<tr>
+		<td width="10%" scope="row"><slot><input id='mod_rel_custom2' name='mod_rel_custom2' type='checkbox' tabindex='2' onclick="togglefield_select('rel_custom2');" {REL_CUSTOM2_CHECKED}></slot></td>
+		<td width="90%" scope="row"><slot>{MOD.LBL_FILTER_BY}{MOD.LBL_SPECIFIC_FIELD}</slot></td>
+		</tr>
+<!-- END: rel_custom_frame_top -->	
+<!-- BEGIN: trig_custom_frame_top -->
+			<input type="hidden" id ='rel_email_value' name="rel_email_value" value="{REL_EMAIL_VALUE}">
+			<input type="hidden" id ='field_value' name="field_value" value="{FIELD_VALUE}">
+		<tr>
+		<td width="10%" scope="row"><slot><input id='mod_rel_custom1' name='mod_rel_custom1' type='checkbox' tabindex='2' onclick="togglefield_select('rel_custom1');" {REL_CUSTOM1_CHECKED}></slot></td>
+		<td width="90%" scope="row"><slot>{MOD.LBL_REL_CUSTOM_STRING}</slot></td>
+		</tr>
+<!-- END: trig_custom_frame_top -->		
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td colspan="4">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="50px">
+	<tr>
+	<td>{PREV_DISPLAY_TEXT}</td>
+	</tr>
+		<!-- BEGIN: bottom_frame -->
+
+			<tr id='lang_{USER_DISPLAY_TYPE}'>
+		<td><slot>{HREF_TEXT1}<a id='href_{USER_DISPLAY_TYPE}' href=# onclick="get_single_selector('{SINGLE_SELECTOR_ARRAY}','dom_array', 'wflow_relate_type_dom', 'relate_type_{USER_DISPLAY_TYPE}');">{HREF_TEXT2}</a>{HREF_TEXT3}&nbsp;
+		{MOD.LBL_ADDRESS_TYPE}<a id='href_add_{USER_DISPLAY_TYPE}' href=# onclick="get_single_selector('{SINGLE_SELECTOR_ARRAY_ADD}','dom_array', '{ADDRESS_TYPE_DOM}', 'address_type_{USER_DISPLAY_TYPE}');">{ADDRESS_TYPE_TARGET}</a>
+		</slot></td>
+			<input type="hidden" id ='relate_type_{USER_DISPLAY_TYPE}' name="relate_type_{USER_DISPLAY_TYPE}" value="{RELATE_TYPE}">
+			<input type="hidden" id ='address_type_{USER_DISPLAY_TYPE}' name="address_type_{USER_DISPLAY_TYPE}" value="{ADDRESS_TYPE}">		
+			<input type="hidden" id='field_value_{USER_DISPLAY_TYPE}' name="field_value_{USER_DISPLAY_TYPE}" value="{FIELD_VALUE}">
+			<input type="hidden" id='array_type_{USER_DISPLAY_TYPE}' name="array_type_{USER_DISPLAY_TYPE}" value="{ARRAY_TYPE}">			
+			</tr>
+		
+<!-- END: bottom_frame -->
+<!-- BEGIN: rel_custom_frame_bottom -->		
+
+		<tr id='lang_rel_custom1'>
+		<td><slot>{REL_CUSTOM1_TEXT1}<a id='href_rel_custom1' href=# onclick="get_single_selector('href_rel_custom1','field', '{TARGET_MODULE}', 'rel_email_value', 'normal_trigger');">{REL_CUSTOM1_TEXT2}</a>{MOD.LBL_AND}
+		<a id='href_rel_custom1b' href=# onclick="get_single_selector('href_rel_custom1b','field', '{TARGET_MODULE}', 'field_value', 'alert_trigger');">{REL_CUSTOM1_TEXT3}</a>
+			<BR>	{MOD.LBL_ADDRESS_TYPE}<a id='href_add_lang_rel_custom1' href=# onclick="get_single_selector('href_add_lang_rel_custom1','dom_array', '{ADDRESS_TYPE_DOM}', 'address_type');">{ADDRESS_TYPE_TARGET}</a>
+				<input type="hidden" id ='address_type' name="address_type" value="{ADDRESS_TYPE}">
+			</slot></td>
+		</tr>		
+		<tr id='lang_rel_custom2'>
+		<td><slot>{MOD.LBL_FILTER_BY}<a id='href_rel_custom2' href=# onclick="get_filter_selector('alert_filter', 'rel_custom2_exp_id', 'rel_custom2_lhs_module', 'rel_custom2_lhs_field', 'rel_custom2_rhs_value', 'rel_custom2_operator', 'rel_custom2');">{REL_CUSTOM2_TEXT}</a>
+		</slot></td>
+		<input type="hidden" id='rel_custom2_lhs_module' name="rel_custom2_lhs_module" value="{REL_CUSTOM2_LHS_MODULE}">
+		<input type="hidden" id='rel_custom2_lhs_field' name="rel_custom2_lhs_field" value="{REL_CUSTOM2_LHS_FIELD}">
+		<input type="hidden" id='rel_custom2_rhs_value' name="rel_custom2_rhs_value" value="{REL_CUSTOM2_RHS_VALUE}">
+		<input type="hidden" id='rel_custom2_exp_id' name="rel_custom2_exp_id" value="{REL_CUSTOM2_EXP_ID}">
+		<input type="hidden" id='rel_custom2_operator' name="rel_custom2_operator" value="{REL_CUSTOM2_OPERATOR}">
+		<input type="hidden" id='rel_custom2_exp_type' name="rel_custom2_exp_type" value="{REL_CUSTOM2_EXP_TYPE}">
+		<input type="hidden" id ='address_type' name="address_type" value="{ADDRESS_TYPE}">	
+		</tr>			
+<!-- END: rel_custom_frame_bottom -->
+<!-- BEGIN: trig_custom_frame_bottom -->		
+
+		<tr id='lang_rel_custom1'>
+		<td><slot>{REL_CUSTOM1_TEXT1}<a id='href_rel_custom1' href=# onclick="get_single_selector('href_rel_custom1','field', '{TARGET_MODULE}', 'rel_email_value', 'normal_trigger');">{REL_CUSTOM1_TEXT2}</a>{MOD.LBL_AND}
+		<a id='href_rel_custom1b' href=# onclick="get_single_selector('href_rel_custom1b','field', '{TARGET_MODULE}', 'field_value', 'alert_trigger');">{REL_CUSTOM1_TEXT3}</a>
+			<BR>	{MOD.LBL_ADDRESS_TYPE}<a id='href_add_lang_rel_custom1' href=# onclick="get_single_selector('href_add_lang_rel_custom1','dom_array', '{ADDRESS_TYPE_DOM}', 'address_type');">{ADDRESS_TYPE_TARGET}</a>
+		</slot></td>
+		<input type="hidden" id ='address_type' name="address_type" value="{ADDRESS_TYPE}">
+		</tr>					
+<!-- END: trig_custom_frame_bottom -->
+		<tr>
+		<td>&nbsp;</td>
+		</tr>	
+		</table>		
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	<tr>
+	<td align='right' colspan="2">
+	<span id='set_type_hrefs'>
+			<a id='href_set_type_basic' href=# onclick="toggle_set_type('rel', 'Advanced');" class="tabFormAdvLink">{ADVANCED_SEARCH_PNG}&nbsp;{APP.LNK_ADVANCED_SEARCH}</a>
+			<a id='href_set_type_adv' href=# onclick="reset_rel_filters(); toggle_set_type('rel', 'Basic');" class="tabFormAdvLink">{BASIC_SEARCH_PNG}&nbsp;{APP.LNK_BASIC_SEARCH}</a>
+	</span>	
+		<input type='submit' class='button' value='{APP.LBL_SAVE_BUTTON_LABEL}' id='save' name='save' title='{APP.LBL_SAVE_BUTTON_LABEL}' onclick="return confirm_safety('{USER_TYPE}');">
+	 <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="window.close();" type="button" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+	</td>
+	</tr>
+		<tr>
+	<td>&nbsp;</td>
+	</tr>
+
+	{ADV_RELATED_BLOCK}
+		
+		</form>
+</table>
+
+<script>
+togglelanguage();
+{REL_USER_CUSTOM_START_JSCRIPT}
+{SPECIAL_JAVASCRIPT}
+toggle_set_type('rel', '{REL_SET_TYPE}');
+toggle_hrefs('{SET_DISABLED}');
+</script>
+
+<!-- END: main -->
+

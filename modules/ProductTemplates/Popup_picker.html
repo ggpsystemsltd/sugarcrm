@@ -1,0 +1,138 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+<!-- BEGIN: main -->
+<!-- BEGIN: SearchHeader -->
+<script type="text/javascript" src="modules/ProductTemplates/Popup_picker.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/javascript/popup_helper.js?v={VERSION_MARK}"></script>
+<script type='text/javascript' src='include/javascript/yui/build/connection/connection.js'></script>
+<script type='text/javascript' language='JavaScript'>
+function set_return(treeid) {
+	node=YAHOO.namespace(treeid).selectednode;
+	if (node.data.type == 'product') {
+		document.popup_query_form.name.value=node.label;
+		document.popup_query_form.category_name.value='';
+	} else {
+		document.popup_query_form.name.value='';
+		document.popup_query_form.category_name.value=node.label;
+	}
+	document.popup_query_form.submit();
+}
+</script>
+
+{SITEURL}
+{TREEHEADER}
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr>
+<td>
+<form action="index.php" method="post" name="popup_query_form" id="popup_query_form"  action="#editwindow">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td scope="row" nowrap="nowrap">{MOD.LBL_NAME}</td>
+<td ><input type="text" size="20" name="name"  value="{NAME}">
+<td scope="row" nowrap="nowrap">{MOD.LBL_TYPE}</td>
+<td ><input type="text" size="20" name="type_name"  value="{TYPE_NAME}">
+<td rowspan="2" valign="top" align="right">
+<input type="hidden" name="module" value="{MODULE_NAME}" />
+<input type="hidden" name="action" value="Popup" />
+<input type="hidden" name="query" value="true" />
+<input type="hidden" name="func_name" value="" />
+<input type="hidden" name="request_data" value="{request_data}" />
+<input type="hidden" name="populate_parent" value="false" />
+<input type="hidden" name="record_id" value="" />
+<input type="hidden" name="row_id" value="{ROW_ID}" />
+<input type="hidden" name="tree" value="{TREE}" />
+<input type="hidden" name="form" value="{FORM}" />
+<input type="submit" name="button" class="button" id="search_form_submit"
+	title="{APP.LBL_SEARCH_BUTTON_TITLE}"
+	value="{APP.LBL_SEARCH_BUTTON_LABEL}" />
+</td>
+</tr>
+<tr>
+<td scope="row" nowrap="nowrap">{MOD.LBL_CATEGORY}</td>
+<td ><input type="text" name="category_name"  size="20" value="{CATEGORY_NAME}" />
+<td scope="row" nowrap="nowrap">{MOD.LBL_MANUFACTURER}</td>
+<td ><input type="text" name="manufacturer_name"  size="20" value="{MANUFACTURER_NAME}" />
+<td scope="row">&nbsp;</td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+<tr><td>
+	<table width="95%" border="0" cellspacing="0" cellpadding="0">
+	<tr><td>
+		<div id="productcatalog">
+			{TREEINSTANCE}
+		</div>	
+	</td></tr>
+	</table>
+</td></tr>
+</table>
+
+{ANCHOR}
+<!-- END: SearchHeader -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list view">
+<!-- BEGIN: list_nav_row -->
+{PAGINATION}
+<!-- END: list_nav_row -->
+<tr height="20">
+<td scope="col" scope="col" width="25%"  nowrap="nowrap"><a href="{ORDER_BY}name" class="listViewThLinkS1">{MOD.LBL_LIST_NAME}{arrow_start}{name_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%"  nowrap="nowrap"><a href="{ORDER_BY}type_name" class="listViewThLinkS1">{MOD.LBL_LIST_TYPE}{arrow_start}{type_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%"  nowrap="nowrap"><a href="{ORDER_BY}category_name" class="listViewThLinkS1">{MOD.LBL_LIST_CATEGORY}{arrow_start}{category_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%"  nowrap="nowrap"><a href="{ORDER_BY}manufacturer_name" class="listViewThLinkS1">{MOD.LBL_LIST_MANUFACTURER}{arrow_start}{manufacturer_name_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%" ><a href="{ORDER_BY}status" class="listViewThLinkS1">{MOD.LBL_LIST_STATUS}{arrow_start}{status_arrow}{arrow_end}</a></td>
+<td scope="col" width="5%" ><a href="{ORDER_BY}qty_in_stock" class="listViewThLinkS1">{MOD.LBL_LIST_QTY_IN_STOCK}{arrow_start}{qty_in_stock_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%"  nowrap="nowrap"><a href="{ORDER_BY}cost_price" class="listViewThLinkS1">{MOD.LBL_LIST_COST_PRICE}{arrow_start}{cost_price_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%"  nowrap="nowrap"><a href="{ORDER_BY}list_price" class="listViewThLinkS1">{MOD.LBL_LIST_LIST_PRICE}{arrow_start}{list_price_arrow}{arrow_end}</a></td>
+<td scope="col" width="10%"  nowrap="nowrap"><a href="{ORDER_BY}discount_price" class="listViewThLinkS1">{MOD.LBL_LIST_DISCOUNT_PRICE}{arrow_start}{discount_price_arrow}{arrow_end}</a></td>
+</tr>
+<!-- BEGIN: row -->
+<tr height="20" class="{ROW_COLOR}S1">
+<td scope="row" valign="top"><a  href="#" onclick="send_back('ProductTemplates','{PRODUCT_TEMPLATE.ID}');">{PRODUCT_TEMPLATE.NAME}</a></td>
+<td valign="top">{PRODUCT_TEMPLATE.TYPE_NAME}</td>
+<td valign="top">{PRODUCT_TEMPLATE.CATEGORY_NAME}</td>
+<td valign="top">{PRODUCT_TEMPLATE.MANUFACTURER_NAME}</td>
+<td valign="top" nowrap="nowrap">{PRODUCT_TEMPLATE.STATUS}</td>
+<td valign="top" nowrap="nowrap">{PRODUCT_TEMPLATE.QTY_IN_STOCK}</td>
+<td valign="top">{PRODUCT_TEMPLATE.CURRENCY_SYMBOL}{PRODUCT_TEMPLATE.COST_PRICE}</td>
+<td valign="top">{PRODUCT_TEMPLATE.CURRENCY_SYMBOL}{PRODUCT_TEMPLATE.LIST_PRICE}</td>
+<td valign="top">{PRODUCT_TEMPLATE.CURRENCY_SYMBOL}{PRODUCT_TEMPLATE.DISCOUNT_PRICE}</td>
+</tr>
+
+<!-- END: row -->
+</table>
+{ASSOCIATED_JAVASCRIPT_DATA}
+<!-- END: main -->

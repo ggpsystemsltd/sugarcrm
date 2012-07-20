@@ -1,0 +1,255 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+{JAVASCRIPT_LANGUAGE_FILES}
+<script>
+
+function togglelanguage(run_clear){
+	var radio_object = document.EditView.type;
+
+	if(run_clear == 'clear_field'){
+		//Clear the fields before proceeding
+		clear_field('field');
+		reset_text('EditView');
+	}
+
+	var target_value = setup_radio_selection(radio_object);
+
+	if(target_value){
+
+		if(target_value == 'compare_change' ||
+		target_value =='compare_any_time' ||
+		target_value == 'trigger_record_change'){
+		//make save button visible, next button invisible
+
+			this.document.getElementById('next_div').style.display= 'none';
+			this.document.getElementById('save_div').style.display= '';
+
+		}
+		if(
+			target_value == 'compare_specific' ||
+			target_value == 'filter_field' ||
+			target_value == 'filter_rel_field'
+		){
+		//make next button visible, save button invisible
+			this.document.getElementById('next_div').style.display= '';
+			this.document.getElementById('save_div').style.display= 'none';
+		}
+		//BEGIN WFLOW PLUGIN
+		{PLUGIN_JAVASCRIPT1}
+		//END WFLOW PLUGIN
+
+	} else {
+		this.document.getElementById('save_div').style.display= 'none';
+	}
+
+//end function togglelanguage
+}
+
+
+</script>
+<script>
+function get_single_selector(trigger_type, type){
+
+	var value = get_value('field');
+	var href_object = 'href_' + trigger_type;
+	var opener_id = 'field';
+	var dom_name = get_value('base_module');
+	var meta_filter_name = get_value('meta_filter_name');
+	var radio_object = document.EditView.type;
+	var checked_value = getCheckedValue(radio_object);
+	//type, value, dom_name, opener_id, href_object
+
+	var link_location = "index.php?module=Expressions&action=SingleSelector&sugar_body_only=true";
+	link_location += '&type=' + type + '&value=' + value + '&opener_id=' + opener_id + '&href_object=' + href_object;
+	link_location += '&meta_filter_name=' + meta_filter_name + '&dom_name=' + dom_name + '&trigger_type=' + checked_value;
+
+	window.open(link_location, "Test","width=400,height=100,resizable=1,scrollbars=1");
+//end function get_selector
+}
+function get_single_selector2(href_block, target_field, type, meta_filter_name){
+
+	var value = get_value(target_field);
+	var href_object = 'href_' + href_block;
+	var opener_id = target_field;
+	var dom_name = get_value('base_module');
+	var meta_filter_name = meta_filter_name;
+	var type = type;
+
+	//type, value, dom_name, opener_id, href_object
+
+	var link_location = "index.php?module=Expressions&action=SingleSelector&sugar_body_only=true";
+	link_location += '&type=' + type + '&value=' + value + '&opener_id=' + opener_id + '&href_object=' + href_object;
+	link_location += '&meta_filter_name=' + meta_filter_name + '&dom_name=' + dom_name;
+
+	window.open(link_location, "Test","width=400,height=100,resizable=1,scrollbars=1");
+//end function get_selector
+}
+
+
+function confirm_safety(type){
+	var radio_object = document.EditView.type;
+	var checked_value = getCheckedValue(radio_object);
+	var select_option = SUGAR.language.get('WorkFlowTriggerShells', 'LBL_SELECT_OPTION');
+	var select_target_field = SUGAR.language.get('WorkFlowTriggerShells', 'LBL_SELECT_TARGET_FIELD');
+	var select_target_mod = SUGAR.language.get('WorkFlowTriggerShells', 'LBL_SELECT_TARGET_MOD');
+
+	if(checked_value!=""){
+
+		if(type=='next'){
+
+			if(checked_value=="compare_specific"){
+				this.document.getElementById('action').value = "CreateStepSpecific";
+				return confirm_value_present('field', select_target_field);
+			}
+			if(checked_value=="compare_count"){
+				this.document.getElementById('action').value = "CreateStepCount";
+				return true;
+			}
+			if(checked_value=="filter_field"){
+				this.document.getElementById('action').value = "CreateStepFilter";
+				return true;
+			}
+			if(checked_value=="filter_rel_field"){
+				this.document.getElementById('action').value = "CreateStepFilter";
+				return confirm_value_present('rel_module', select_target_mod);
+			}
+			//BEGIN WFLOW PLUGIN
+			{PLUGIN_JAVASCRIPT2}
+			//END WFLOW PLUGIN
+
+		//end if next
+		}
+
+		if(type=='save'){
+			//alert(get_value('field'));
+			if(checked_value!=""){
+				if(checked_value=="trigger_record_change"){
+					return true;//this.document.getElementById('action').value = "CreateStepRecordChange";
+				}
+			}
+			return confirm_value_present('field', select_target_field);
+
+			//end if save
+		}
+
+	} else {
+			alert(select_option);
+			return false;
+	//end if else no radio option selected
+	}
+
+//end function confirm_safety
+}
+
+
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" id="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowTriggerShells">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='workflow_id' name="workflow_id" value="{WORKFLOW_ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{PARENT_ID}">
+			<input type="hidden" id='action' name="action" value="CreateStep2">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="sugar_body_only" value="true">
+			<input type="hidden" id='plugin_action' name="plugin_action">
+			<input type="hidden" id='plugin_module' name="plugin_module">
+			<input type="hidden" name="frame_type" value="{FRAME_TYPE}">
+			<input type="hidden" id='rel_module' name="rel_module" value="{REL_MODULE}">
+			<input type="hidden" id='prev_display_text' name='prev_display_text' value="{PREV_DISPLAY_TEXT}">
+			<input type="hidden" id='field' name='field' value="{FIELD}">
+			<input type="hidden" id='base_module' name="base_module" value="{BASE_MODULE}">
+			<input type="hidden" id='meta_filter_name' name="meta_filter_name" value="{META_FILTER_NAME}">
+			<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+	{TOP_BLOCK}
+
+
+
+		<tr>
+		<td colspan="4">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="50px">
+
+
+
+	{BOTTOM_BLOCK}
+
+
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	<tr id='next_div'>
+	<td align='right' colspan='2'>
+	<input type='submit' class='button' value='{APP.LBL_NEXT_BUTTON_LABEL}' id='next' name='next' title='{APP.LBL_NEXT_BUTTON_LABEL}' onclick="return confirm_safety('next');">
+	 <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" class="button" onclick="window.close();" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+	</td>
+	</tr>
+	<tr id='save_div'>
+	<td align='right' colspan='2'>
+	<input type='submit' class='button' value='{APP.LBL_SAVE_BUTTON_LABEL}' id='save' name='save' title='{APP.LBL_SAVE_BUTTON_LABEL}' onclick="if(confirm_safety('save')) { this.form.action.value='Save'; return true; } else return false;">
+	 <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="window.close();" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+	</td>
+	</tr>
+
+		</form>
+</table>
+
+<script>
+togglelanguage('no');
+{SPECIAL_JAVASCRIPT}
+</script>
+
+<!-- END: main -->

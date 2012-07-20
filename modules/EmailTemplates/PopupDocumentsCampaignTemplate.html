@@ -1,0 +1,102 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+<!-- BEGIN: main -->
+<script type="text/javascript" src="include/javascript/sugar_3.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" language="Javascript" src="modules/Emails/javascript/Email.js?v={VERSION_MARK}"></script>
+
+<!-- BEGIN: SearchHeader -->
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+	<tr>
+		<td>
+			<form action="index.php" method="post" name="popup_query_form" id="popup_query_form">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td scope="row" nowrap="nowrap">{MOD.LBL_DOC_NAME}</td>
+					<td  nowrap="nowrap"><input type="text" name="document_name"  size="10" value="{DOCUMENT_NAME}"/></td>
+					<td scope="row" nowrap="nowrap">{MOD.LBL_DET_IS_TEMPLATE}</td>
+					<td  nowrap="nowrap"><select name="is_template"  >{IS_TEMPLATE_OPTIONS}</select></td>
+				</tr>
+				<tr>
+					<td scope="row" nowrap="nowrap">{MOD.LBL_DET_TEMPLATE_TYPE}</td>
+					<td  nowrap="nowrap"><select name="template_type"  >{TEMPLATE_TYPE_OPTIONS}</select></td>
+					<td scope="row" nowrap="nowrap">{MOD.LBL_CATEGORY_VALUE}</td>
+					<td  nowrap="nowrap"><select name="category_id"  >{CATEGORY_OPTIONS}</select></td>
+				</tr>
+				<tr>
+					<td scope="row" nowrap="nowrap">{MOD.LBL_SUBCATEGORY_VALUE}</td>
+					<td  nowrap="nowrap"><select name="subcategory_id"  >{SUB_CATEGORY_OPTIONS}</select></td>
+					<td align="right" colspan=2>
+						<input type="hidden" name="module" value="EmailTemplates" />
+						<input type="hidden" name="action" value="PopupDocumentsCampaignTemplate" />
+						<input type="hidden" name="to_pdf" value="true" />
+						<input type="hidden" name="query" value="true" />
+						<input type="hidden" name="record_id" value="" />
+						<input type="hidden" name="target" value="{DOCUMENT_TARGET}" />
+						<input type="submit" name="button" class="button"
+                            id="search_form_submit"
+							title="{APP.LBL_SEARCH_BUTTON_TITLE}"
+							value="{APP.LBL_SEARCH_BUTTON_LABEL}" />
+					</td>
+				</tr>
+			</table>
+			</form>
+		</td>
+	</tr>
+</table>
+<!-- END: SearchHeader -->
+
+
+
+
+
+
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+<!-- BEGIN: list_nav_row -->
+{PAGINATION}
+<!-- END: list_nav_row -->
+	<tr height="20" >
+		<td scope="col" width="33%"  nowrap="nowrap"><a href="{ORDER_BY}document_name" class="listViewThLinkS1">{MOD.LBL_LIST_DOCUMENT}{arrow_start}{name_arrow}{arrow_end}</a></td>
+		<td scope="col" width="33%"  nowrap="nowrap">{MOD.LBL_LIST_REVISION}</td>
+		<td scope="col" width="34%"  nowrap="nowrap">{MOD.LBL_LIST_STATUS}</td>
+	</tr>
+<!-- BEGIN: row -->
+	<tr height="20" class="{ROW_COLOR}S1">
+		<td scope="row" valign="top">
+			<a href="javascript:void(0);" onclick="setDocumentToCampaignTemplate('{DOCUMENT_TARGET}','{DOCUMENT.ID}', '{DOCUMENT.DOCUMENT_NAME}','{DOCUMENT.DOCUMENT_REVISION_ID}','{DOCUMENT.LAST_REV_MIME_TYPE}');" >{DOCUMENT.DOCUMENT_NAME}</a>
+		</td>
+		<td valign="top">{DOCUMENT.LATEST_REVISION}</td>
+		<td valign="top">{DOCUMENT.STATUS_ID}</td>
+	</tr>
+	<tr>
+		<td colspan="20" class="listViewHRS1"></td>
+	</tr>
+<!-- END: row -->
+</table>

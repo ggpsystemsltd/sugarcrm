@@ -1,0 +1,100 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: top -->
+		<tr id='{MOD_ID}' {PAST_HIDDEN}>
+		<td width="10%" scope="row"><slot>{INPUT_ELEMENT}</slot></td>
+		<td width="90%" scope="row"><slot>{DISPLAY_TEXT}</slot></td>
+		</tr>	
+<!-- END: top -->	
+
+<!-- BEGIN: bottom -->	
+		<tr id='{LANG_ID}' style='display:none'>
+		<td>
+		<slot>{DISPLAY_TEXT}
+
+<!-- BEGIN: address_type -->			
+		{LBL_ADDRESS_TYPE}<a id='href_add_{LANG_ID}' href="javascript:void(0)" onclick="get_single_selector2('href_add_{LANG_ID}','dom_array', '{ADDRESS_TYPE_DOM}', 'address_type_{LANG_ID}');">{ADDRESS_TYPE_TARGET}</a>
+		<input type="hidden" id ='address_type_{LANG_ID}' name="address_type_{LANG_ID}" value="{ADDRESS_TYPE}">
+<!-- END: address_type -->	
+		</slot></td>
+		{DEFAULT_TEXT_VALUES}
+		</tr>
+
+<!-- END: bottom -->
+
+
+<!-- BEGIN: adv_related -->	
+	<tr>
+	<td colspan="4">
+	<div id='adv_options'>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="60px">
+		<tr>
+		<td>{REL_TITLE}</td>
+		</tr>
+		<tr>
+		<td><select id='rel1_type' name='rel1_type' tabindex='2' onchange="toggle_filter('rel1');">{REL1_TYPE}</select></td>
+		</tr>
+		<tr id='lang_rel1'>
+		<td><slot>{REL1_DISPLAY_TEXT}<a id='href_rel1' href="javascript:void(0)" onclick="get_filter_selector('count_trigger', 'rel1_exp_id', 'rel1_lhs_module', 'rel1_lhs_field', 'rel1_rhs_value', 'rel1_operator', 'rel1', '', 'rel1');">{REL1_TEXT}</a>
+		</slot></td>
+		<input type="hidden" id='rel1_lhs_module' name="rel1_lhs_module" value="{REL1_BASE_MODULE}">
+		<input type="hidden" id='rel1_lhs_field' name="rel1_lhs_field" value="{REL1_LHS_FIELD}">
+		<input type="hidden" id='rel1_rhs_value' name="rel1_rhs_value" value="{REL1_RHS_VALUE}">
+		<input type="hidden" id='rel1_exp_id' name="rel1_exp_id" value="{REL1_EXP_ID}">
+		<input type="hidden" id='rel1_operator' name="rel1_operator" value="{REL1_OPERATOR}">
+		<input type="hidden" id='rel1_exp_type' name="rel1_exp_type" value="{REL1_EXP_TYPE}">
+		<input type="hidden" id='default_href_rel1' name="default_href_rel1" value="Field">
+		</tr>
+		<tr id='top_rel2' >
+		<td><select id='rel2_type' name='rel2_type' tabindex='2' onchange="toggle_filter('rel2');">{REL2_TYPE}</select></td>
+		</tr>
+		<tr id='lang_rel2'>
+		<td><slot>{REL2_DISPLAY_TEXT}<a id='href_rel2' href="javascript:void(0)" onclick="get_filter_selector('count_trigger', 'rel2_exp_id', 'rel2_lhs_module', 'rel2_lhs_field', 'rel2_rhs_value', 'rel2_operator', 'rel2', '', 'rel2');">{REL2_TEXT}</a>
+		</slot></td>
+		<input type="hidden" id='rel2_lhs_module' name="rel2_lhs_module" value="{REL2_BASE_MODULE}">
+		<input type="hidden" id='rel2_lhs_field' name="rel2_lhs_field" value="{REL2_LHS_FIELD}">
+		<input type="hidden" id='rel2_rhs_value' name="rel2_rhs_value" value="{REL2_RHS_VALUE}">
+		<input type="hidden" id='rel2_exp_id' name="rel2_exp_id" value="{REL2_EXP_ID}">
+		<input type="hidden" id='rel2_operator' name="rel2_operator" value="{REL2_OPERATOR}">
+		<input type="hidden" id='rel2_exp_type' name="rel2_exp_type" value="{REL2_EXP_TYPE}">
+		<input type="hidden" id='default_href_rel2' name="default_href_rel2" value="Field">
+		</tr>				
+	</table>
+	</div>
+	</td>
+	</tr>
+<script>
+{START_SCRIPT}
+</script>
+<!-- END: adv_related -->

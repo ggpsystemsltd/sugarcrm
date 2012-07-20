@@ -1,0 +1,257 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+{JAVASCRIPT_LANGUAGE_FILES}
+<script>
+
+function togglelanguage(run_clear){
+	var radio_object = document.EditView.action_type;
+	var action_type = getCheckedValue(radio_object);
+	
+	//clear necessary fields
+
+	
+	if(run_clear == 'clear_field'){
+		//Clear the fields before proceeding
+		clear_field('rel_module');
+		clear_field('action_module');
+		reset_text('EditView');
+	}	
+	var action_array = new Array();
+	action_array.push('update');
+	action_array.push('update_rel');
+	action_array.push('new');
+	action_array.push('new_rel');
+		
+//BEGIN WFLOW PLUGINS
+{PLUGIN_JAVASCRIPT1}
+//END WFLOW PLUGINS
+	
+//none selected so make all not visible				
+	applylanguage(action_type, action_array);
+	
+//end function togglelanguage
+}
+function applylanguage(action_type, action_array){
+
+	
+	for (var loop = 0; loop <action_array.length; loop++){
+
+		if(action_array[loop] == action_type){
+			this.document.getElementById('lang_' + action_array[loop]).style.display= '';
+		} else {	
+			this.document.getElementById('lang_' + action_array[loop]).style.display= 'none';
+		}
+	}
+	
+	
+	
+//end function applylanguage
+}
+function changehref_text(href_object, selected_text){
+	
+	this.document.getElementById(href_object).innerHTML = selected_text;
+	
+//end function changehref_text
+}
+
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}	
+
+</script>
+<script>
+function get_selector(action_type){
+
+	var action_module = this.document.getElementById('action_module').value;
+	var rel_module = this.document.getElementById('rel_module').value;
+	var link_location = "index.php?module=WorkFlowActionShells&action=Selector&html=Selector&form=EditView&form_submit=false&query=true&sugar_body_only=true&workflow_id={WORKFLOW_ID}";
+	link_location += '&action_module=' + action_module + '&rel_module=' + rel_module + '&action_type=' + action_type;
+	
+	window.open(link_location, "Test","width=300,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}
+
+function get_single_selector(href_block, target_field, type, meta_filter_name){
+
+	var value = get_value(target_field);
+	var href_object = 'href_' + href_block;
+	var opener_id = target_field;
+	var dom_name = get_value('base_module');
+	var meta_filter_name = meta_filter_name;
+	var type = type;
+	
+	//type, value, dom_name, opener_id, href_object
+	
+	var link_location = "index.php?module=Expressions&action=SingleSelector&sugar_body_only=true";
+	link_location += '&type=' + type + '&value=' + value + '&opener_id=' + opener_id + '&href_object=' + href_object;
+	link_location += '&meta_filter_name=' + meta_filter_name + '&dom_name=' + dom_name;
+	
+	window.open(link_location, "Test","width=400,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}	
+
+
+
+
+function get_rel_selector(action_type){
+
+	var action_module = this.document.getElementById('action_module').value;
+	var rel_module = this.document.getElementById('rel_module').value;
+	var link_location = "index.php?module=Expressions&action=RelateSelector&form=EditView&sugar_body_only=true&workflow_id={WORKFLOW_ID}";
+	link_location += '&rel_module1=' + rel_module + '&rel_module2=' + action_module + '&type=' + action_type;
+	
+	window.open(link_location, "Test","width=300,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}	
+
+
+function confirm_safety(){
+	var radio_object = document.EditView.action_type;
+	var checked_value = getCheckedValue(radio_object);
+	var select_option = SUGAR.language.get('WorkFlow', 'LBL_SELECT_OPTION');
+	var valid_value = SUGAR.language.get('WorkFlowActionShells', 'LBL_SELECT_VALUE');
+	var select_module = SUGAR.language.get('WorkFlowActionShells', 'LBL_SELECT_MODULE');
+	var select_related_module = SUGAR.language.get('WorkFlowActionShells', 'LBL_SELECT_RELATED_MODULE');
+
+		if(checked_value!=""){
+			if(	checked_value=="update_rel" ||
+				checked_value=="new_rel"){
+				return confirm_value_present('rel_module', select_related_module);
+			}	
+			if(checked_value=="new"){
+				return confirm_value_present('action_module', select_module);
+			}	
+			if(checked_value=="update"){
+				return true;
+			}				
+
+			//BEGIN WFLOW PLUGINS
+			{PLUGIN_JAVASCRIPT2}
+			//END WFLOW PLUGINS				
+			
+					
+		} else {
+			alert(select_option);
+			return false;	
+		}		
+
+		return confirm_value_present('field_value', valid_value);
+
+//end function confirm_safety
+}
+
+
+	
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" id="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowActionShells">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{ID}">
+			<input type="hidden" name="workflow_id" value="{WORKFLOW_ID}">
+			<input type="hidden" id='action' name="action" value="CreateStep2">
+			<input type="hidden" id='plugin_action' name="plugin_action">
+			<input type="hidden" id='plugin_module' name="plugin_module">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="sugar_body_only" value="true">
+			<input type="hidden" id='action_module' name="action_module" value="{ACTION_MODULE}">
+			<input type="hidden" id = 'rel_module' name="rel_module" value="{REL_MODULE}">
+			<input type="hidden" id = 'base_module' name="base_module" value="{BASE_MODULE}">
+	<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+	
+	{TOP_BLOCK}
+
+
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td colspan="4">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="50px">
+
+		{BOTTOM_BLOCK}
+		
+
+		<tr>
+		<td>&nbsp;</td>
+		</tr>	
+		</table>		
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	<tr>
+	<td align='right' colspan='2'>
+	<input type='submit' class='button' value='{APP.LBL_NEXT_BUTTON_LABEL}' name='{APP.LBL_NEXT_BUTTON_LABEL}' id='step1_next' title='{APP.LBL_NEXT_BUTTON_LABEL}' onclick="return confirm_safety();">
+	</td>
+	</tr>
+		</form>
+</table>
+
+<script>
+togglelanguage('no');
+{SPECIAL_JAVASCRIPT}
+</script>
+
+<!-- END: main -->

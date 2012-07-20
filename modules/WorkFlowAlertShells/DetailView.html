@@ -1,0 +1,83 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:  
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<form action="index.php" method="post" name="DetailView" id="form">
+
+			<input type="hidden" name="module" value="WorkFlowAlertShells">
+			<input type="hidden" name="module_tab" value="WorkFlow">
+			<input type="hidden" name="record" value="{ID}">
+			<input type="hidden" name="workflow_id" value="{PARENT_ID}">
+			<input type="hidden" name="isDuplicate" value=false>
+			<input type="hidden" name="action">
+			<input type="hidden" name="return_module">
+			<input type="hidden" name="return_action">
+			<input type="hidden" name="return_id">			
+		<tr>
+		<td><input title="{APP.LBL_EDIT_BUTTON_TITLE}" accessKey="{APP.LBL_EDIT_BUTTON_KEY}" class="button" onclick="this.form.return_module.value='WorkFlowAlertShells'; this.form.return_action.value='DetailView'; this.form.return_id.value='{ID}'; this.form.action.value='EditView'" type="submit" name="Edit" value="  {APP.LBL_EDIT_BUTTON_LABEL}  "> 
+<!-- BEGIN: delete_button -->		 
+		<input title="{APP.LBL_DELETE_BUTTON_TITLE}" accessKey="{APP.LBL_DELETE_BUTTON_KEY}" class="button" onclick="this.form.return_module.value='WorkFlow'; this.form.return_action.value='DetailView'; this.form.action.value='Delete'; this.form.return_id.value='{PARENT_ID}'; return confirm('{APP.NTC_DELETE_CONFIRMATION}')" type="submit" name="Delete" value=" {APP.LBL_DELETE_BUTTON_LABEL} ">
+<!-- END: delete_button -->		 
+		 </td>
+		<td align='right'>
+	<slot><a href="index.php?module=WorkFlow&action=DetailView&record={FINAL_PARENT_ID}">{MOD.LBL_RETURN_TO_WORKFLOW}</a></slot>{ADMIN_EDIT}</td>
+		</tr></table>
+	</form>
+
+
+	<table width="100%" border="0" cellspacing="{GRIDLINE}" cellpadding="0" class="detail view">
+<tr>
+
+	<td width="25%" scope="row"><slot>{MOD.LBL_NAME}</slot></td>
+	<td width="25%"><slot>{NAME}&nbsp;</slot></td>
+	<td scope="row"><slot>{MOD.LBL_SOURCE_TYPE}</slot></td>
+	<td><slot>{SOURCE_TYPE}&nbsp;</slot></td>
+	</tr><tr>
+	<td scope="row"><slot>{MOD.LBL_ALERT_TYPE}</slot></td>
+	<td><slot>{ALERT_TYPE}&nbsp;</slot></td>
+	<td width="25%" scope="row"><slot>&nbsp;</slot></td>
+	<td width="25%"><slot>&nbsp;</slot></td>
+
+	</tr>
+	<tr>
+	<td scope="row" valign="top" ><slot>{MOD_ALERT_TEXT}</slot></td>
+	<td colspan='3'><slot>{ALERT_TEXT}&nbsp;</slot></td>
+	</tr>
+</table>
+
+<!-- END: main -->
+<!-- BEGIN: subpanel -->
+<slot>{SUBALERTCOMPS}</slot>
+<!-- END: subpanel -->

@@ -1,0 +1,245 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+{JAVASCRIPT_LANGUAGE_FILES}
+<script>
+function togglefield_select(target_field, run_clear){
+	var focus_field = 'mod_' + target_field;
+	var setting = this.document.getElementById(focus_field).checked;
+
+	var target_row = 'lang_' + target_field;
+	
+	
+	if(run_clear == 'clear_field'){
+		//Clear the fields before proceeding
+		clear_field(target_field + '_operator');
+		clear_field(target_field + '_rhs_value');
+		this.document.getElementById('href_' + target_field).innerHTML = get_value('default_href_' + target_field);
+	}
+	
+	
+	
+	if(setting==true){
+		this.document.getElementById(target_row).style.display='';
+		
+	} else {
+		this.document.getElementById(target_row).style.display='none';
+	}	
+//end function togglefield_select		
+}	
+
+
+function changehref_text(href_object, selected_text){
+	
+	this.document.getElementById(href_object).innerHTML = selected_text;
+	
+//end function changehref_text
+}
+
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}	
+
+</script>
+<script>
+function get_selector(alert_user_type){
+
+	var base_module = this.document.getElementById('base_module').value;
+	var rel_module1 = this.document.getElementById('rel_module1').value;
+	var rel_module2 = this.document.getElementById('rel_module2').value;
+	var link_location = "index.php?module=WorkFlowAlerts&action=Selector&base_module={BASE_MODULE}";
+	link_location += '&rel_module1=' + rel_module1 + '&rel_module2=' + rel_module2 + '&alert_user_type=' + alert_user_type;
+	
+	window.open(link_location, "Test","width=300,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}
+
+function get_single_selector(href_object, type, dom_name, value_field, meta_filter_name){
+
+	var value = get_value(value_field);
+	var opener_id = value_field;
+	
+	//type, value, dom_name, opener_id, href_object
+	
+	var link_location = "index.php?module=Expressions&action=SingleSelector&sugar_body_only=true";
+	link_location += '&type=' + type + '&value=' + value + '&opener_id=' + opener_id + '&href_object=' + href_object + '&dom_name=' + dom_name;
+	link_location += '&meta_filter_name=' + meta_filter_name;
+	
+	window.open(link_location, "Test","width=400,height=100,resizable=1,scrollbars=1");	
+//end function get_selector	
+}	
+
+	
+function confirm_safety(){
+
+		var check_one = "";
+		var check_two = "";
+		var check_three = "";
+		var must_select_value = SUGAR.language.get('WorkFlowTriggerShells', 'LBL_MUST_SELECT_VALUE');
+		//make sure you have the select email, name selected
+		if(this.document.getElementById('mod_past_trigger').checked==true){
+			check_one = confirm_value_present('past_trigger_operator', must_select_value);
+		} else {
+			check_one = true;	
+		}	
+		
+		check_two = confirm_value_present('future_trigger_operator', must_select_value);
+
+		if(check_one==false || check_two==false){
+			return false;
+		} else {
+			return true;	
+		}	
+//end function confirm_safety
+}	
+
+
+
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowTriggerShells">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='workflow_id' name="workflow_id" value="{WORKFLOW_ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{PARENT_ID}">
+			<input type="hidden" name="action" value="Save">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="sugar_body_only" value="true">
+			<input type="hidden" id='type' name="type" value="{TYPE}">
+			<input type="hidden" name="frame_type" value="{FRAME_TYPE}">
+			<input type="hidden" id='field' name="field" value="{FIELD}">
+			<input type="hidden" id='type' name="type" value="{TYPE}">
+			<input type="hidden" id='base_module' name="base_module" value="{BASE_MODULE}">
+			<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+	
+<!-- BEGIN: rel_custom_frame_top -->
+		<tr>
+		<td width="10%" scope="row"><slot><input id='mod_future_trigger' name='mod_future_trigger' type='checkbox' tabindex='2' checked disabled></slot></td>
+		<td width="90%" scope="row"><slot>{MOD.LBL_FUTURE_TRIGGER}&nbsp;{SPECIFIC_FIELD}&nbsp;{MOD.LBL_VALUE}</slot></td>
+		</tr>
+		<tr {PAST_HIDDEN}>
+		<td width="10%" scope="row"><slot><input id='mod_past_trigger' name='mod_past_trigger' type='checkbox' tabindex='2' onclick="togglefield_select('past_trigger', 'clear_field');" {PAST_CHECKED}></slot></td>
+		<td width="90%" scope="row"><slot>{MOD.LBL_PAST_TRIGGER}&nbsp;{SPECIFIC_FIELD}&nbsp;{MOD.LBL_VALUE}</slot></td>
+		</tr>
+<!-- END: rel_custom_frame_top -->		
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td colspan="4">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="50px">
+
+		<tr>
+		<td>{PREV_DISPLAY_TEXT}</td>
+		</tr>
+<!-- BEGIN: rel_custom_frame_bottom -->		
+		<tr id='lang_future_trigger'>
+		<td><slot>{MOD.LBL_FUTURE_TRIGGER}&nbsp;{SPECIFIC_FIELD}&nbsp;<a id='href_future_trigger' href=# onclick="get_filter_selector('{EXP_META_TYPE}', 'future_trigger_exp_id', 'future_trigger_lhs_module', 'future_trigger_lhs_field', 'future_trigger_rhs_value', 'future_trigger_operator', 'future_trigger', 'future_trigger_time_int', 'future_trigger');">{FUTURE_TRIGGER_TEXT}</a>
+		</slot></td>
+		<input type="hidden" id='future_trigger_lhs_module' name="future_trigger_lhs_module" value="{BASE_MODULE}">
+		<input type="hidden" id='future_trigger_lhs_field' name="future_trigger_lhs_field" value="{FUTURE_TRIGGER_LHS_FIELD}">
+		<input type="hidden" id='future_trigger_rhs_value' name="future_trigger_rhs_value" value="{FUTURE_TRIGGER_RHS_VALUE}">
+		<input type="hidden" id='future_trigger_exp_id' name="future_trigger_exp_id" value="{FUTURE_TRIGGER_EXP_ID}">
+		<input type="hidden" id='future_trigger_operator' name="future_trigger_operator" value="{FUTURE_TRIGGER_OPERATOR}">
+		<input type="hidden" id='future_trigger_exp_type' name="future_trigger_exp_type" value="{FUTURE_TRIGGER_EXP_TYPE}">
+		<input type="hidden" id='future_trigger_time_int' name="future_trigger_time_int" value="{FUTURE_TRIGGER_TIME_INT}">
+		<input type="hidden" id='default_href_future_trigger' name="default_href_future_trigger" value="{MOD.LBL_VALUE}">
+		</tr>
+		<tr id='lang_past_trigger'>
+		<td><slot>{MOD.LBL_PAST_TRIGGER}&nbsp;{SPECIFIC_FIELD}&nbsp;<a id='href_past_trigger' href=# onclick="get_filter_selector('{EXP_META_TYPE}', 'past_trigger_exp_id', 'past_trigger_lhs_module', 'past_trigger_lhs_field', 'past_trigger_rhs_value', 'past_trigger_operator', 'past_trigger','','past_trigger');">{PAST_TRIGGER_TEXT}</a>
+		</slot></td>
+		<input type="hidden" id='past_trigger_lhs_module' name="past_trigger_lhs_module" value="{BASE_MODULE}">
+		<input type="hidden" id='past_trigger_lhs_field' name="past_trigger_lhs_field" value="{PAST_TRIGGER_LHS_FIELD}">
+		<input type="hidden" id='past_trigger_rhs_value' name="past_trigger_rhs_value" value="{PAST_TRIGGER_RHS_VALUE}">
+		<input type="hidden" id='past_trigger_exp_id' name="past_trigger_exp_id" value="{PAST_TRIGGER_EXP_ID}">
+		<input type="hidden" id='past_trigger_operator' name="past_trigger_operator" value="{PAST_TRIGGER_OPERATOR}">
+		<input type="hidden" id='past_trigger_exp_type' name="past_trigger_exp_type" value="{PAST_TRIGGER_EXP_TYPE}">
+		<input type="hidden" id='default_href_past_trigger' name="default_href_past_trigger" value="{MOD.LBL_VALUE}">
+		</tr>
+<!-- END: rel_custom_frame_bottom -->
+		<tr>
+		<td>&nbsp;</td>
+		</tr>	
+		</table>		
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	<tr>
+	<td align='right' colspan="2">
+	<input type='submit' class='button' value='{APP.LBL_SAVE_BUTTON_LABEL}' accessKey="{APP.LBL_SAVE_BUTTON_KEY}" id='save' name='save' title='{APP.LBL_SAVE_BUTTON_LABEL}' onclick="return confirm_safety();">
+	<input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="window.close();" type="button" name="button" value="{APP.LBL_CANCEL_BUTTON_LABEL}">
+	</td>
+	</tr>	
+		</form>
+</table>
+
+<script>
+togglefield_select('past_trigger', 'no');
+{TRIGGER_START_JSCRIPT}
+{SPECIAL_JAVASCRIPT}
+</script>
+
+<!-- END: main -->
+

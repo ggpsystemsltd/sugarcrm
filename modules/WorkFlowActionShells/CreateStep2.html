@@ -1,0 +1,224 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+{JAVASCRIPT_LANGUAGE_FILES}
+<script>
+function updateiframe(){
+	var record = document.getElementById('record').value;
+	var workflow_id = document.getElementById('workflow_id').value;
+	var action_type = document.getElementById('action_type').value;
+	var action_module = document.getElementById('action_module').value;
+	var rel_module = document.getElementById('rel_module').value;		
+	document.getElementById('selectiframe').src = 'index.php?module=WorkFlowActions&action=SelectFields&sugar_body_only=true&action_type=' + action_type + '&rel_module=' + rel_module + '&action_module=' + action_module + '&record=' + record + '&workflow_id=' + workflow_id;	
+}	
+
+function togglefield_select(field_num, setting){
+	var target_row = 'lang_' + field_num;
+	var target_set_type = 'set_type_' + field_num;
+	
+	
+	if(setting==true){
+		this.document.getElementById(target_row).style.display='';
+		
+	} else {
+		this.document.getElementById(target_row).style.display='none';
+		this.document.getElementById(target_set_type).value = '';
+	
+	}	
+//end function togglefield_select		
+}	
+
+function changehref_text(href_value, href_text, field_num){
+	//var display_text = this.document.getElementById(href_value).value;
+	var display_text = this.document.getElementById('display_text_' + field_num).value;
+	this.document.getElementById(href_text).innerHTML = '\'' + display_text + '\'';
+//end function changehref_text
+}
+
+function set_attribute(attribute_id, attribute_value){
+	this.document.getElementById(attribute_id).value = attribute_value;	
+}	
+
+function get_selector(field_num){
+
+	var target_module = get_value('target_module');
+	var target_field = get_value('field_' + field_num);
+	var value = get_value('value_' + field_num);
+	var action_id = get_value('action_id_' + field_num);
+	var set_type = get_value('set_type_' + field_num);
+	var ext1 = get_value('ext1_' + field_num);
+	var ext2 = get_value('ext2_' + field_num);
+	var ext3 = get_value('ext3_' + field_num);
+	var adv_value = get_value('adv_value_' + field_num);
+	var action_type = get_value('action_type');
+	
+	var link_location = "index.php?module=WorkFlowActions&action=Selector&html=Selector&form=EditView&form_submit=false&query=true&sugar_body_only=true&workflow_id={WORKFLOW_ID}";
+	link_location += '&field_num=' + field_num +'&target_module=' + target_module + '&target_field=' + target_field + '&action_id=' + action_id + '&value=' + value;
+	link_location += '&set_type=' + set_type +'&ext1=' + ext1 + '&ext2=' + ext2 + '&ext3=' + ext3 + '&adv_value=' + adv_value + '&action_type=' + action_type;
+
+	
+	window.open(link_location, "Test","width=500,height=150,resizable=1,scrollbars=1");	
+//end function get_selector	
+}	
+
+
+function confirm_safety(){
+	var select_checked_fields = SUGAR.language.get('WorkFlowActionShells', 'LBL_SELECT_CHECKED_FIELDS');
+	
+	if((safety_rel_filters())==false){
+		return false;	
+	}
+	
+	
+	var total_count = get_value('total_field_count');
+	var iframe_object = window.frames['selectiframe'].document;
+	
+	for (x=0; x<total_count; x++){
+
+		if(iframe_object.getElementById('mod_field_' + x).checked ==true){
+		
+			var check_one = confirm_value_present('set_type_' + x, select_checked_fields);
+			if(check_one==false){
+				return false;	
+			}
+
+		//end if the field is checked to be modified		
+		}	
+			
+	//end for loop through		
+	}
+	
+	return true;
+	
+//end function confirm_safety
+}	
+
+
+
+</script>
+
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowActionShells">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{WORKFLOW_ID}">
+			<input type="hidden" id='workflow_id' name="workflow_id" value="{WORKFLOW_ID}">
+			<input type="hidden" name="action">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" id='rel__set_type' name="rel__set_type" value="{REL_SET_TYPE}">
+			<input type="hidden" id='action_module' name="action_module" value="{ACTION_MODULE}">
+			<input type="hidden" id='target_module' name="target_module" value="{TARGET_MODULE}">
+			<input type="hidden" id ='rel_module' name="rel_module" value="{REL_MODULE}">
+			<input type="hidden" id ='action_type' name="action_type" value="{ACTION_TYPE}">
+			<input type="hidden" id ='total_field_count' name="total_field_count" value="{TOTAL_FIELD_COUNT}">
+	<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td  colspan="2">
+		<iframe name='selectiframe' id='selectiframe' title='selectiframe' frameborder="0" marginwidth="0" marginheight="0" width='100%' height='200'></iframe>
+		</td>		
+		</tr>			
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td colspan="4">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="80px">
+	<tr>
+	<td>{PREV_DISPLAY_TEXT}</td>
+	</tr>
+		<!-- BEGIN: lang_field -->		
+		<tr id='lang_{FIELD_NUM}' style="display:{START_DISPLAY}" height="10px">
+		<td  wrap>{MOD.LBL_SET} <a id='href_{FIELD_NUM}' href=# onclick="get_selector('{FIELD_NUM}');">{FIELD_NAME}</a><span id='href_pre_text_{FIELD_NUM}'> {MOD.LBL_AS} </span><span id='href_text_{FIELD_NUM}'>{ACTION_DISPLAY_TEXT}</span></td>
+		<input type="hidden" id="field_{FIELD_NUM}" name="field_{FIELD_NUM}" value="{FIELD_VALUE}">
+		<input type="hidden" id="value_{FIELD_NUM}" name="value_{FIELD_NUM}" value="{ACTION_VALUE}">
+		<input type="hidden" id="set_type_{FIELD_NUM}" name="set_type_{FIELD_NUM}" value="{ACTION_SET_TYPE}">
+		<input type="hidden" id="adv_type_{FIELD_NUM}" name="adv_type_{FIELD_NUM}" value="{ACTION_ADV_TYPE}">
+		<input type="hidden" id="action_id_{FIELD_NUM}" name="action_id_{FIELD_NUM}" value="{ACTION_ACTION_ID}">
+		<input type="hidden" id="display_text_{FIELD_NUM}" name="display_text_{FIELD_NUM}" value="{ACTION_DISPLAY_TEXT}">
+		
+		<input type="hidden" id="adv_value_{FIELD_NUM}" name="adv_value_{FIELD_NUM}" value="{ACTION_ADV_VALUE}">
+		<input type="hidden" id="ext1_{FIELD_NUM}" name="ext1_{FIELD_NUM}" value="{ACTION_EXT1}">
+		<input type="hidden" id="ext2_{FIELD_NUM}" name="ext2_{FIELD_NUM}" value="{ACTION_EXT2}">	
+		<input type="hidden" id="ext3_{FIELD_NUM}" name="ext3_{FIELD_NUM}" value="{ACTION_EXT3}">
+		</tr>
+<!-- END: lang_field -->			
+		<tr>
+		<td>&nbsp;</td>
+		</tr>	
+		</table>		
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	<tr>
+	<td align='right' colspan='2'>
+	<span id='set_type_hrefs'>
+			<a id='href_set_type_basic' href=# onclick="toggle_set_type('rel', 'Advanced');" class="tabFormAdvLink">{ADVANCED_SEARCH_PNG}&nbsp;{APP.LNK_ADVANCED_SEARCH}</a>
+			<a id='href_set_type_adv' href=# onclick="reset_rel_filters(); toggle_set_type('rel', 'Basic');" class="tabFormAdvLink">{BASIC_SEARCH_PNG}&nbsp;{APP.LNK_BASIC_SEARCH}</a>
+	</span>
+<input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button" onclick="if(confirm_safety()) { this.form.action.value='Save'; return true; } else return false;" type="submit" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  ">
+ <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="window.close();" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	</tr>
+
+	{ADV_RELATED_BLOCK}
+	
+		</form>
+</table>
+
+<script>
+updateiframe();
+toggle_set_type('rel', '{REL_SET_TYPE}');
+toggle_hrefs('{SET_DISABLED}');
+</script>
+
+<!-- END: main -->

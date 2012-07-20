@@ -1,0 +1,99 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+{ERROR_STRING}
+<form name="EditView" method="POST" action="index.php">
+	<input type="hidden" name="module" value="Roles">
+	<input type="hidden" name="record" value="{ID}">
+	<input type="hidden" name="action">
+	<input type="hidden" name="display_tabs_def">
+	<input type="hidden" name="hide_tabs_def">
+	<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+	<input type="hidden" name="return_id" value="{RETURN_ID}">
+	<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td><input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="set_chooser(); this.form.action.value='Save'; return check_form('EditView');" type="submit" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " > <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="this.form.action.value='{RETURN_ACTION}'; this.form.module.value='{RETURN_MODULE}'; this.form.record.value='{RETURN_ID}'" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  "></td>
+			<td align="right" nowrap><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+			<td align='right'>{ADMIN_EDIT}</td>
+		</tr>
+	</table>
+
+
+<p><table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+<tr>
+<td>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="25%" scope="row"><slot>{MOD.LBL_NAME} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+		<td width="35%" ><slot><input name='name' {DISABLED} tabindex='1' size='25' maxlength='25' type="text" value="{NAME}"></slot></td>
+		<td width="25%" scope="row"><slot>&nbsp;</slot></td>
+		<td width="35%"><slot>&nbsp;</slot></td>
+	</tr>
+	<tr>
+		<td scope="row"><slot>&nbsp;</slot></td>
+		<td><slot>&nbsp;</slot></td>
+		<td scope="row"><slot>&nbsp;</slot></td>
+		<td><slot>&nbsp;</slot></td>
+	</tr>
+	<tr>
+	<td valign="top" scope="row"><slot>{MOD.LBL_DESCRIPTION}</slot></td>
+	<td colspan="4"><slot><textarea name='description' tabindex='3' cols="80" rows="8">{DESCRIPTION}</textarea></slot></td>
+	</tr>
+	<tr>
+	<td scope="row"><slot>&nbsp;</slot></td>
+	<td><slot>&nbsp;</slot></td>
+	<td scope="row"><slot>&nbsp;</slot></td>
+	<td><slot>&nbsp;</slot></td>
+	</tr>
+
+	</table>
+</td>
+</tr>
+</table></p>
+	
+<table class="edit view" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr><th scope="row" colspan="2" align="left"><h4>{TAB_CHOOSER}
+</td></tr></tbody>
+</table>
+</td>
+</tr></tbody>
+</table></p>
+
+</form>
+
+{JAVASCRIPT}
+
+<!-- END: main -->

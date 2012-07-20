@@ -1,0 +1,346 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+
+<!-- BEGIN: Quote_Subject -->
+SugarCRM ponuda - {QUOTE_SUBJECT}
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+{ASSIGNER} je dodelio Ponudu {ASSIGNED_USER}.
+
+Naslov: {QUOTE_SUBJECT}
+Status: {QUOTE_STATUS}
+Očekivani datum zatvaranja: {QUOTE_CLOSEDATE}
+Opis: {QUOTE_DESCRIPTION}
+
+Možete pregledati Ponudu na:
+<{URL}>
+<!-- END: Quote -->
+
+
+<!-- BEGIN: Account_Subject -->
+SugarCRM nalog - {ACCOUNT_NAME}
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+{ASSIGNER} je dodelio nalog {ASSIGNED_USER}.
+
+Ime: {ACCOUNT_NAME}
+Tip: {ACCOUNT_TYPE}
+Opis: {ACCOUNT_DESCRIPTION}
+
+Možete pregledati Nalog na:
+<{URL}>
+<!-- END: Account -->
+
+
+<!-- BEGIN: Case_Subject -->
+SugarCRM Slučaj - {CASE_SUBJECT}
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+{ASSIGNER} je dodelio slučaj {ASSIGNED_USER}.
+
+Naziv: {CASE_SUBJECT}
+Prioritet: {CASE_PRIORITY}
+Status: {CASE_STATUS}
+Opis: {CASE_DESCRIPTION}
+
+Možete pregledati Slučaj na:
+<{URL}>
+<!-- END: Case -->
+
+
+<!-- BEGIN: Task_Subject -->
+SugarCRM Zadatak - {TASK_SUBJECT}
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+{ASSIGNER} je dodelio zadatak {ASSIGNED_USER}.
+
+Naziv: {TASK_SUBJECT}
+Prioritet: {TASK_PRIORITY}
+Rok: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Opis: {TASK_DESCRIPTION}
+
+Možete pregledati zadatak na:
+<{URL}>
+<!-- END: Task -->
+
+
+<!-- BEGIN: Meeting_Subject -->
+SugarCRM Sastanak - {MEETING_SUBJECT}
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+Za: {MEETING_TO},
+
+{ASSIGNER} vas je pozvao na sastanak
+
+Naslov: {MEETING_SUBJECT}
+Status: {MEETING_STATUS}
+Datum početka: {MEETING_STARTDATE}
+Trajanje: {MEETING_HOURS}h, {MEETING_MINUTES}m
+<!-- BEGIN: Meeting_External_API -->
+URL sastanka: {MEETING_URL}
+<!-- END: Meeting_External_API -->
+Opis: {MEETING_DESCRIPTION}
+
+Prihvati ovaj sastanak:
+<{ACCEPT_URL}&amp;accept_status=accept>
+
+Uslovno prihvati ovaj sastanak
+<{ACCEPT_URL}&amp;accept_status=tentative>
+
+Odbij ovaj sastanak
+<{ACCEPT_URL}&amp;accept_status=decline>
+
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+SugarCRM Sastanak - {MEETING_SUBJECT}
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+{ASSIGNER} has assigned a Meeting to {ASSIGNED_USER}.
+
+Naslov: {MEETING_SUBJECT}
+Status: {MEETING_STATUS}
+Datum početka: {MEETING_STARTDATE}
+Trajanje: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Opis: {MEETING_DESCRIPTION}
+
+Možete pregledati ovaj sastanak na:
+<{URL}>
+<!-- END: MeetingSpecial -->
+
+
+<!-- BEGIN: Email_Subject -->
+SugarCRM Email - {EMAIL_SUBJECT}
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+{ASSIGNER} je dodelio Email {ASSIGNED_USER}.
+
+Naslov: {EMAIL_SUBJECT}
+Datum slanja: {EMAIL_DATESENT}
+
+Možete pregledati ovaj Email na:
+<{URL}>
+<!-- END: Email -->
+
+
+
+
+
+
+<!-- BEGIN: Contact_Subject -->
+SugarCRM Kontakt - {CONTACT_NAME}
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+{ASSIGNER} je dodelio kontakt {ASSIGNED_USER}.
+
+Ime: {CONTACT_NAME}
+Opis: {CONTACT_DESCRIPTION}
+
+Možete pregledati ovaj kontakt na:
+<{URL}>
+<!-- END: Contact -->
+
+
+<!-- BEGIN: Lead_Subject -->
+SugarCRM Potencijalni klijent - {LEAD_NAME}
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+{ASSIGNER} je dodelio potencijalnog klijenta {ASSIGNED_USER}.
+
+Ime: {LEAD_NAME}
+Izvor potencijalnog klijenta: {LEAD_SOURCE}
+Status: {LEAD_STATUS}
+Opis: {LEAD_DESCRIPTION}
+
+Možete pregledati ovog Potencijalnog klijenta na:
+<{URL}>
+<!-- END: Lead -->
+
+
+<!-- BEGIN: Opportunity_Subject -->
+SugarCRM Prodajna prilika - {OPPORTUNITY_NAME}
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+{ASSIGNER} je dodelio rpodajnu priliku {ASSIGNED_USER}.
+
+Naziv: {OPPORTUNITY_NAME}
+Iznos: {OPPORTUNITY_AMOUNT}
+Očekivani datum zatvaranja: {OPPORTUNITY_CLOSEDATE}
+Faza prodaje: {OPPORTUNITY_STAGE}
+Opis: {OPPORTUNITY_DESCRIPTION}
+
+Možete pregledati ovu Prodajnu priliku na:
+<{URL}>
+<!-- END: Opportunity -->
+
+
+<!-- BEGIN: Bug_Subject -->
+SugarCRM Defekt - {BUG_SUBJECT}
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+{ASSIGNER} je dodelio ovaj defetk {ASSIGNED_USER}.
+
+Broj defekta: {BUG_BUG_NUMBER}
+naslov: {BUG_SUBJECT}
+Tip: {BUG_TYPE}
+Prioritet: {BUG_PRIORITY}
+Status: {BUG_STATUS}
+Rezolucija: {BUG_RESOLUTION}
+Izdanje: {BUG_RELEASE}
+Opis: {BUG_DESCRIPTION}
+Log posla: {BUG_WORK_LOG}
+
+Možete pregledati ovaj defekt na:
+<{URL}>
+<!-- END: Bug -->
+
+
+<!-- BEGIN: Default_Subject -->
+SugarCRM - dodeljen {OBJECT}
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+{ASSIGNER} je dodelio {OBJECT} {ASSIGNED_USER}.
+
+Možete pregledati ovaj {OBJECT} na:
+<{URL}>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+SugarCRM Poziv - {CALL_SUBJECT}
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+Za: {CALL_TO},
+ {ASSIGNER} Vas je pozvao da pozovrete
+Naslov: {CALL_SUBJECT}
+Status: {CALL_STATUS}
+Datum početka: {CALL_STARTDATE}
+Trajanje: {CALL_HOURS}h, {CALL_MINUTES}m
+Opis: {CALL_DESCRIPTION}
+
+Prihvati ovaj poziv:
+<{ACCEPT_URL}&amp;accept_status=accept>
+
+Uslovno prihvati ovaj poziv:
+<{ACCEPT_URL}&amp;accept_status=tentative>
+
+Odbij ovaj poziv
+<{ACCEPT_URL}&amp;accept_status=decline>
+
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+SugarCRM Poziv - {CALL_SUBJECT}
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+{ASSIGNER} je dodelio poziv {ASSIGNED_USER}.
+
+Naslov: {CALL_SUBJECT}
+Status: {CALL_STATUS}
+Datum početka: {CALL_STARTDATE}
+Trajanje: {CALL_HOURS}h, {CALL_MINUTES}m
+Opis: {CALL_DESCRIPTION}
+
+Možete pregledati ovaj poziv na:
+<{URL}>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: Campaign_Subject -->
+SugarCRM Kampanja - {CAMPAIGN_NAME}
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+{ASSIGNER} je dodelio kampanju {ASSIGNED_USER}.
+
+Naslov: {CAMPAIGN_NAME}
+Iznos: {CAMPAIGN_AMOUNT}
+Datum zatvaranja: {CAMPAIGN_CLOSEDATE}
+Status: {CAMPAIGN_STATUS}
+Opis: {CAMPAIGN_DESCRIPTION}
+
+Možete pregledati ovu kampanju na:
+<{URL}>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+SugarCRM Kvote - Vaša kvota za {QUOTA_TIMEPERIOD}
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+{ASSIGNER} je dodelio kvotu {ASSIGNED_USER}.
+
+Iznos: {QUOTA_AMOUNT}
+Vremenski period: {QUOTA_TIMEPERIOD}
+
+Možete pregledati ovu dodelu kvote na:
+<{QUOTA_URL}>
+<!-- END: Quota -->
+
+<!-- BEGIN: KBDocument_Subject -->
+SugarCRM Dokument - {KBDOCUMENT_NAME}
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+
+{NOTIFICATION_MESSAGE}
+
+Naziv: {KBDOCUMENT_NAME}
+Datum kreiranja: {KBDOCUMENT_DATE_CREATED}
+Kreirao: {KBDOCUMENT_CREATED_BY}
+Status: {KBDOCUMENT_STATUS}
+Opis: {KBDOCUMENT_DESCRIPTION}
+
+Možete pregledati ovaj dokument na:
+<{URL}>
+<!-- END: KBDocument -->
+
+<!-- BEGIN: Contract_Subject -->
+SugarCRM Ugovor - {CONTRACT_NAME}
+<!-- END: Contract_Subject -->
+<!-- BEGIN: Contract-->
+
+{ASSIGNER} je dodelio ugovor {ASSIGNED_USER}.
+
+Možete pregledati ovaj ugovor na:
+<{URL}>
+<!-- END:Contract-->
+
+<!-- BEGIN: ContractSpecial_Subject -->
+SugarCRM Ugovor - {CONTRACT_NAME}
+<!-- END: ContractSpecial_Subject -->
+<!-- BEGIN: ContractSpecial -->
+
+Vaš ugovor: {CONTRACT_NAME} će isteći {CONTRACT_END_DATE}.
+
+Možete pregledati ovaj ugovor na:
+<{URL}>
+<!-- END:ContractSpecial-->
+

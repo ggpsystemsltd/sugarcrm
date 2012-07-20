@@ -1,0 +1,147 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+ * {APP.LBL_CURRENCY_SYM}Header: /cvsroot/sugarcrm/sugarcrm/modules/Contacts/EditView.html,v 1.22 2004/07/16 04:04:42 sugarclint Exp {APP.LBL_CURRENCY_SYM}
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+
+
+			<form enctype="multipart/form-data" name="MailMerge" method="POST" action="index.php">
+			<input type="hidden" name="module" value="MailMerge">
+			<input type="hidden" name="step" id="step" value="{STEP}">
+			<input type="hidden" name="action" value="index">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="record" value="{RECORD}">	
+			<input type="hidden" name="selected_objects" value="{SELECTED_OBJECTS}">
+			<input type="hidden" name="selected_objects_def" value="{SELECTED_OBJECTS_DEF}">				
+<p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+<tr>
+<td>
+	<table border="0"  width="100%" cellspacing="0" cellpadding="0">
+	<tr>
+	<th align="left" scope="row" colspan="5"><h4 class="">{MOD.LBL_STEP_1}</h4></th>
+	</tr>
+	<tr><td width="5%"><slot>&nbsp;</slot></td></tr>
+	<tr>
+	<td scope="row" width="20%"><slot>{MODULE_SELECT}</slot>
+	</td>
+	<td ><slot><select tabindex='2' name='mailmerge_module' id='mailmerge_module'" style="width: 100px;" onChange="javascript:clearSpan();">{MAILMERGE_MODULE_OPTIONS}</select></slot></td>
+	<td align="right" colspan='2'><slot><em>{ADDIN_NOTICE}</em></slot></td>
+	</tr>
+	<tr>
+			<td >&nbsp;&nbsp;<slot><em><span id="numObjects">{MAILMERGE_NUM_SELECTED_OBJECTS}</span></em></slot></td>
+			<td ><slot>&nbsp;</slot></td>
+			<td ><slot>&nbsp;</slot></td>
+			<td ><slot>&nbsp;</slot></td>
+		</tr>
+			<tr>
+			<td ><slot>&nbsp;</slot></td>
+			<td ><slot>&nbsp;</slot></td>
+			<td ><slot>&nbsp;</slot></td>
+			<td ><slot>&nbsp;</slot></td>
+		</tr>
+			<tr>
+				<td scope="row" width="5%"><slot>{MOD.LBL_MAILMERGE_TEMPLATES}</slot></td>
+				<td ><slot><select id="document_id" name="document_id" style="width: 200px;">{MAILMERGE_TEMPLATES}</select></slot></td>
+				<td><slot>&nbsp;</slot></td>
+					<td align="right"><slot>&nbsp;</slot></td>
+			</tr>
+			<tr><td colspan"4"><slot>&nbsp;</slot></td></tr>
+		</table>
+	</td>
+</tr>
+</table>
+</p>
+
+<p><table width="100%" cellpadding="2" cellspacing="0" border="0"><tr> 
+	<td align="right">
+	<input title="{MOD.LBL_NEXT}"  class="button" type="submit" id="btnNext" name="button" value="  {MOD.LBL_NEXT}" onClick="return validateForm();" {DISABLE_NEXT_BUTTON}></td>
+</tr>
+</table> </p>
+	</form>
+{JAVASCRIPT}
+<script type="text/javascript">{JSON_CONFIG_JAVASCRIPT}</script>
+<script type="text/javascript" src="include/javascript/jsclass_base.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/javascript/jsclass_async.js?v={VERSION_MARK}"></script>
+<script>
+var mOffset = 0;
+var max = 10;
+
+//browserCheck();
+function browserCheck()
+{
+	if(document.layers)
+	{
+		button = document.getElementById("btnNext");
+		button.disabled = true;
+		alert("This requires IE 6.0 or greater for Windows.");
+	}
+	else if(document.layers || (!document.all && document.getElementById))
+	{
+		button = document.getElementById("btnNext");
+		button.disabled = true;
+		alert("This requires IE 6.0 or greater for Windows.");
+	}	
+}
+function clearSpan()
+{
+	document.getElementById("numObjects").innerHTML = "";
+	document.getElementById("step").value = "2";
+}
+
+
+function validateForm()
+{
+	var templates = document.getElementById("document_id");
+	for (i=0;i<templates.options.length;i++)
+	{
+		if(templates[i].selected)
+		{
+			if(templates[i].value != "None")
+			{
+				return true;
+			}
+		}
+	}
+	alert("Please select a template.");
+	return false;	
+}
+
+function disableModuleDropDown(){
+	var selectBox = document.getElementById("mailmerge_module");
+	selectBox.disabled = true;
+}
+
+{MAILMERGE_DISABLE_DROP_DOWN}
+</script>
+<!-- END: main -->

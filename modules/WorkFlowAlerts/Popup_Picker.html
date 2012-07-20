@@ -1,0 +1,257 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script>
+
+function updatedroplist(rel_module){
+		//var rel_field_value = document.getElementById('rel_field_value').value;	
+		//var rel_email_value = document.getElementById('rel_email_value').value;
+		var parent_id = document.getElementById('parent_id').value;	
+
+			
+		var rel_module2_value = document.getElementById('rel_module2').value;	
+		var rel_module = document.getElementById(rel_module).options[document.getElementById(rel_module).selectedIndex].value;
+		document.getElementById('rel_modiframe').src = 'index.php?module=WorkFlowAlerts&action=DisplayRelInfo&sugar_body_only=true&type=rel_module&rel_module=' + rel_module + '&rel_module_value=' + rel_module2_value + '&parent_id=' + parent_id;
+		
+}
+
+function updatecustomframe(reset_fields){
+		var rel_field_value = document.getElementById('rel_field_value').value;	
+		var rel_email_value = document.getElementById('rel_email_value').value;
+		var parent_id = document.getElementById('parent_id').value;
+		var record = document.getElementById('record').value;
+	
+		
+	//if only rel_module1
+	var iframe_object = window.frames['rel_modiframe'].document;
+	if(reset_fields==true){
+		var rel_module2value = '';
+	} else {
+		var rel_module2value 	= iframe_object.getElementById('rel_module2').value;
+	}
+	
+	var base_module2value 	= iframe_object.getElementById('base_module2').value;
+	var rel_module 			= document.getElementById('rel_module1').options[document.getElementById('rel_module1').selectedIndex].value;
+
+	if(rel_module2value ==''){
+	//use rel_module1 as module for custom user	
+		document.getElementById('rel_valueiframe').src = 'index.php?module=WorkFlowAlerts&action=DisplayRelInfo&sugar_body_only=true&type=rel_fields&rel_module=' + rel_module + '&rel_field_value=' + rel_field_value + 'rel_email_value' + rel_email_value + '&parent_id=' + parent_id + '&record=' + record;				
+		
+	} else {	
+	//use rel_module2 as module for custom user
+		document.getElementById('rel_valueiframe').src = 'index.php?module=WorkFlowAlerts&action=DisplayRelInfo&sugar_body_only=true&type=rel_fields&rel_module=' + rel_module2value + '&rel_field_value=' + rel_field_value + 'rel_email_value' + rel_email_value + '&parent_id=' + parent_id + '&base_module2=' + base_module2value + '&record=' + record;				
+	//end else
+	}		
+	
+	
+//end function updatecustomframe
+}	
+</script>
+<script>
+function toggleusertype(){
+	if(this.document.getElementById('user_type').value=='Current'){
+		this.document.getElementById('current').style.display='';
+		this.document.getElementById('related').style.display='none';
+		this.document.getElementById('custom').style.display='none';
+		this.document.EditView.custom_user.checked = false;
+	}else{
+		this.document.getElementById('current').style.display='';
+		this.document.getElementById('related').style.display='';
+		updatedroplist('rel_module1');
+	}
+//end function toggleusertype
+}
+function togglecustom(updatevalue){
+	if(this.document.EditView.custom_user.checked == true){
+		this.document.getElementById('custom').style.display='';
+		this.document.getElementById('current').style.display='none';
+		updatecustomframe(updatevalue);
+	} else {
+		this.document.getElementById('custom').style.display='none';
+		this.document.getElementById('current').style.display='';
+	}		
+//end function toggleusertype
+}
+function save_alert(){
+
+	var iframe_object = window.frames['rel_modiframe'].document;
+	var iframe_object2 = window.frames['rel_valueiframe'].document;
+	
+
+	this.document.EditView.rel_email_value.value 	= get_iframe_element(iframe_object2, 'rel_email_value');
+	this.document.EditView.rel_field_value.value 	= get_iframe_element(iframe_object2, 'rel_field_value');
+	this.document.EditView.rel_module2.value 		= get_iframe_element(iframe_object, 'rel_module2');
+	this.document.EditView.submit();
+}
+
+function get_iframe_element(iframe_object, element_id){
+	
+	if(iframe_object.getElementById(element_id) != undefined){
+		return iframe_object.getElementById(element_id).value;
+	} else {
+		return '';	
+	}	
+}	
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowAlerts">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{PARENT_ID}">
+			<input type="hidden" name="workflow_id" value="{PARENT_ID}">
+			<input type="hidden" name="action">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			
+			<input type="hidden" id='rel_module2' name="rel_module2" value="{REL_MODULE2}">
+			<input type="hidden" id='rel_field_value' name="rel_field_value" value="{REL_FIELD_VALUE}">
+			<input type="hidden" id='rel_email_value' name="rel_email_value" value="{REL_EMAIL_VALUE}">
+			
+		<td><input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button" onclick="this.form.action.value='Save'; check_form('EditView'); return save_alert();" type="button" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " > <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="this.form.action.value='{RETURN_ACTION}'; this.form.module.value='{RETURN_MODULE}'; this.form.record.value='{RETURN_ID}'" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  "></td>
+	<td align="right" nowrap><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+	<td align='right'>{ADMIN_EDIT}</td>
+	</tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+	<tr>
+		<td width="30%" scope="row"><slot>{MOD.LBL_USER_TYPE}</slot></td>
+		<td width="30%" ><slot><select id='user_type' name='user_type' onchange="toggleusertype();" tabindex='2'>{USER_TYPE}</select></slot></td>
+		<td width="30%" scope="row"><slot>{MOD.LBL_ADDRESS_TYPE}</slot></td>
+		<td width="30%" ><slot><select id='address_type' name='address_type' tabindex='2'>{ADDRESS_TYPE}</select></slot></td>
+		</tr>
+		<tr>
+		<td scope="row"><slot>&nbsp;</slot></td>
+		<td ><slot>&nbsp;</slot></td>
+		<td scope="row"><slot>&nbsp;</slot></td>
+		<td ><slot>&nbsp;</slot></td>
+		</tr>
+		<tr>
+		<tr>
+		<td colspan="4">
+		<div id='related' style='display:none'>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td scope="row"><slot>{MOD.LBL_REL_MODULE1}</slot></td>
+		<td scope="row" colspan="2"><slot>{MOD.LBL_REL_MODULE2}</slot></td>
+		<td scope="row"><slot>{MOD.LBL_CUSTOM_USER}</slot></td>
+		</tr>
+		<tr>
+		<td ><slot><select id='rel_module1' name='rel_module1' onchange="updatedroplist('rel_module1');" tabindex='2'>{REL_MODULE1}</select></slot>
+		</td>
+		<td  colspan="2">
+		<iframe name='rel_modiframe' id='rel_modiframe' title='rel_modiframe' frameborder="0" marginwidth="0" marginheight="0" width='50%' height='60'></iframe>
+		</td>
+		<td>
+		<input id='custom_user' name='custom_user' class="checkbox" type="checkbox" tabindex='1' {CUSTOM_USER} onclick="togglecustom('false');">
+		</td>
+		</tr>
+		</table>
+		
+		</div>		
+		</td>
+		<tr>
+		<td colspan="4">
+		
+		<div id='current' style='display:none'>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td scope="row" width="30%"><slot>{MOD.LBL_ARRAY_TYPE}</slot></td>
+		<td scope="row" width="30%"><slot>{MOD.LBL_FIELD_VALUE}</slot></td>		
+		<td scope="row" width="20%"><slot>{MOD.LBL_RELATE_TYPE}</slot></td>
+		<td scope="row" width="20%"><slot>&nbsp;</slot></td>
+		</tr><tr>
+		<td scope="row"><slot><select id='array_type' name='array_type' tabindex='2' >{ARRAY_TYPE}</select></slot></td>	
+		<td ><slot><select id='field_value' name='field_value' tabindex='2' >{FIELD_VALUE}</select></slot></td>
+		<td ><slot><select id='relate_type' name='relate_type' tabindex='2' >{RELATE_TYPE}</select></slot></td>
+		<td scope="row"><slot>&nbsp;</slot></td>
+		</tr>
+		</table>
+		</div>		
+		
+
+		</td>
+		</tr>
+
+		<tr>
+		<td colspan="4">
+		
+		<div id='custom' style='display:none'>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="4" scope="row">
+		<iframe name='rel_valueiframe' id='rel_valueiframe' title='rel_valueiframe' frameborder="0" marginwidth="0" marginheight="0" width='100%' height='150'></iframe>
+			</td>
+		</tr>
+		<tr>
+		<td scope="row" width="30%"><slot>&nbsp;</slot></td>
+		<td scope="row" width="30%"><slot>&nbsp;</slot></td>		
+		<td scope="row" width="20%"><slot>&nbsp;</slot></td>
+		<td scope="row" width="20%"><slot>&nbsp;</slot></td>
+		</tr>
+		</table>
+		
+		</div>			
+		
+		
+		
+		</td>
+		</tr>
+		
+		
+		
+<tr>
+</form>
+<td>
+</td>
+</tr>
+	</table>
+</td></tr></table>
+
+<script>
+toggleusertype();
+{SPECIAL_JAVASCRIPT}
+</script>
+
+<!-- END: main -->

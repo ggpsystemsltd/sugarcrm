@@ -1,0 +1,319 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+
+<!-- BEGIN: Quote_Subject -->
+SugarCRM pasiūlymas - {QUOTE_SUBJECT}
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+{ASSIGNER} paskyrė šį pasiūlymą {ASSIGNED_USER}.
+
+Tema: {QUOTE_SUBJECT}
+Statusas: {QUOTE_STATUS}
+Tikėtina užbaigimo data: {QUOTE_CLOSEDATE}
+Aprašymas: {QUOTE_DESCRIPTION}
+
+Jūs galite peržiūrėti šį pasiūlymą čia:
+<{URL}>
+<!-- END: Quote -->
+
+
+<!-- BEGIN: Account_Subject -->
+SugarCRM klientas - {ACCOUNT_NAME}
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+{ASSIGNER} paskyrė šį klientą vartotojui: {ASSIGNED_USER}.
+
+Pavadinimas: {ACCOUNT_NAME}
+Tipas: {ACCOUNT_TYPE}
+Aprašymas: {ACCOUNT_DESCRIPTION}
+
+Jūs galite peržiūrėti šį klientą čia:
+<{URL}>
+<!-- END: Account -->
+
+
+<!-- BEGIN: Case_Subject -->
+SugarCRM aptarnavimas - {CASE_SUBJECT}
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+{ASSIGNER} paskyrė šį aptarnavimą vartotojui: {ASSIGNED_USER}.
+
+Tema: {CASE_SUBJECT}
+Svarba: {CASE_PRIORITY}
+Statusas: {CASE_STATUS}
+Aprašymas: {CASE_DESCRIPTION}
+
+Jūs galite peržiūrėti aptarnavimą čia:
+<{URL}>
+<!-- END: Case -->
+
+
+<!-- BEGIN: Task_Subject -->
+SugarCRM užduotis - {TASK_SUBJECT}
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+{ASSIGNER} paskyrė užduotį vartotojui: {ASSIGNED_USER}.
+
+Tema: {TASK_SUBJECT}
+Svarba: {TASK_PRIORITY}
+Atlikimo data: {TASK_DUEDATE}
+Statusas: {TASK_STATUS}
+Aprašymas: {TASK_DESCRIPTION}
+
+Jūs galite peržiūrėti šią užduotį čia:
+<{URL}>
+<!-- END: Task -->
+
+
+<!-- BEGIN: Meeting_Subject -->
+SugarCRM susitikimas - {MEETING_SUBJECT}
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+Kam: {MEETING_TO},
+
+{ASSIGNER} Jus pakvietė į susitikimą
+
+Tema: {MEETING_SUBJECT}
+Statusas: {MEETING_STATUS}
+Pradžios data: {MEETING_STARTDATE}
+Trukmė: {MEETING_HOURS}v, {MEETING_MINUTES}m
+Aprašymas: {MEETING_DESCRIPTION}
+
+Patvirtinkite šį susitikimą:
+<{ACCEPT_URL}&accept_status=accept>
+
+Neapsisprendę, ar dalyvausite šiame susitikime:
+<{ACCEPT_URL}&accept_status=tentative>
+
+Atsisakykite dalyvauti šiame susitikime
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+SugarCRM susitikimas - {MEETING_SUBJECT}
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+{ASSIGNER} paskyrė susitikimą vartotojui {ASSIGNED_USER}.
+
+Tema: {MEETING_SUBJECT}
+Statusas: {MEETING_STATUS}
+Pradžios data: {MEETING_STARTDATE}
+Trukmė: {MEETING_HOURS}v, {MEETING_MINUTES}m
+Aprašymas: {MEETING_DESCRIPTION}
+
+Jūs galite peržiūrėti ši susitikimą čia:
+<{URL}>
+<!-- END: MeetingSpecial -->
+
+
+<!-- BEGIN: Email_Subject -->
+SugarCRM el. laiškas - {EMAIL_SUBJECT}
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+{ASSIGNER} paskyrė el. laišką vartotojui: {ASSIGNED_USER}.
+
+Tema: {EMAIL_SUBJECT}
+Siuntimo data: {EMAIL_DATESENT}
+
+Jūs galite peržiūrėti šį el. laišką čia:
+<{URL}>
+<!-- END: Email -->
+
+
+
+
+
+
+<!-- BEGIN: Contact_Subject -->
+SugarCRM kontaktas - {CONTACT_NAME}
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+{ASSIGNER} paskyrė kontaktą vartotojui: {ASSIGNED_USER}.
+
+Pavadinimas: {CONTACT_NAME}
+Aprašymas: {CONTACT_DESCRIPTION}
+
+Jūs galite peržiūrėti šį kontaktą čia:
+<{URL}>
+<!-- END: Contact -->
+
+
+<!-- BEGIN: Lead_Subject -->
+SugarCRM potencialus kontaktas - {LEAD_NAME}
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+{ASSIGNER} paskyrė potencialų kontaktą vartotojui {ASSIGNED_USER}.
+
+Pavadinimas: {LEAD_NAME}
+Pritraukimo tipas: {LEAD_SOURCE}
+Statusas: {LEAD_STATUS}
+Aprašymas: {LEAD_DESCRIPTION}
+
+Jūs galite peržiūrėti šį potencialų kontaktą čia:
+<{URL}>
+<!-- END: Lead -->
+
+
+<!-- BEGIN: Opportunity_Subject -->
+SugarCRM pardavimas - {OPPORTUNITY_NAME}
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+{ASSIGNER} paskyrė pardavimą vartotojui: {ASSIGNED_USER}.
+
+Pavadinimas: {OPPORTUNITY_NAME}
+Suma: {OPPORTUNITY_AMOUNT}
+Tikėtina sandorio data: {OPPORTUNITY_CLOSEDATE}
+Pardavimo etapas: {OPPORTUNITY_STAGE}
+Aprašymas: {OPPORTUNITY_DESCRIPTION}
+
+Jūs galite peržiūrėti šį pardavimą čia:
+<{URL}>
+<!-- END: Opportunity -->
+
+
+<!-- BEGIN: Bug_Subject -->
+SugarCRM klaida - {BUG_SUBJECT}
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+{ASSIGNER} paskyrė klaidą vartotojui {ASSIGNED_USER}.
+
+Bug Number: {BUG_BUG_NUMBER}
+Tema: {BUG_SUBJECT}
+Type: {BUG_TYPE}
+Svarba: {BUG_PRIORITY}
+Statusas: {BUG_STATUS}
+Sprendimas: {BUG_RESOLUTION}
+Release: {BUG_RELEASE}
+Aprašymas: {BUG_DESCRIPTION}
+Istorija: {BUG_WORK_LOG}
+
+Jūs galite peržiūrėti šią klaidą čia:
+<{URL}>
+<!-- END: Bug -->
+
+
+<!-- BEGIN: Default_Subject -->
+SugarCRM - paskirtas {OBJECT}
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+{ASSIGNER} paskyrė {OBJECT} vartotojui: {ASSIGNED_USER}.
+
+Jūs galite peržiūrėti {OBJECT} čia:
+<{URL}>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+SugarCRM skambutis - {CALL_SUBJECT}
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+Kam: {CALL_TO},
+ {ASSIGNER} pakvietė Jus į pokalbį
+Tema: {CALL_SUBJECT}
+Statusas: {CALL_STATUS}
+Pradžios data: {CALL_STARTDATE}
+Trukmė: {CALL_HOURS}v, {CALL_MINUTES}m
+Aprašymas: {CALL_DESCRIPTION}
+
+Patvirtinkite savo dalyvavimą pokalbyje
+<{ACCEPT_URL}&accept_status=accept>
+
+Neapsisprendę ar dalyvausite šiame pokalbyje
+<{ACCEPT_URL}&accept_status=tentative>
+
+Atsisakykite dalyvauti šiame pokalbyje
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+SugarCRM skambutis - {CALL_SUBJECT}
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+{ASSIGNER} paskyrė skambutį vartotojui: {ASSIGNED_USER}.
+
+Tema: {CALL_SUBJECT}
+Statusas: {CALL_STATUS}
+Pradžios data: {CALL_STARTDATE}
+Trukmė: {CALL_HOURS}h, {CALL_MINUTES}m
+Aprašymas: {CALL_DESCRIPTION}
+
+Jūs galite peržiūrėti šį skambutį:
+<{URL}>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: Campaign_Subject -->
+SugarCRM kampanija - {CAMPAIGN_NAME}
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+{ASSIGNER} paskyrė kampaniją vartotojui: {ASSIGNED_USER}.
+
+Tema: {CAMPAIGN_NAME}
+Suma: {CAMPAIGN_AMOUNT}
+Užbaigimo data: {CAMPAIGN_CLOSEDATE}
+Statusas: {CAMPAIGN_STATUS}
+Aprašymas: {CAMPAIGN_DESCRIPTION}
+
+Jūs galite peržiūrėti šią kampaniją čia:
+<{URL}>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+SugarCRM pardavimų planas - Laikotarpiui {QUOTA_TIMEPERIOD}
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+{ASSIGNER} paskyrė pardavimų planą {ASSIGNED_USER}.
+
+Amount: {QUOTA_AMOUNT}
+Timeperiod: {QUOTA_TIMEPERIOD}
+
+Jūs galite peržiūrėti šį pardavimų planą čia: 
+<{QUOTA_URL}>
+<!-- END: Quota -->
+
+
+<!-- BEGIN: KBDocument_Subject -->
+SugarCRM dokumentas - {KBDOCUMENT_NAME}
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+
+{NOTIFICATION_MESSAGE}
+ 
+Pavadinimas: {KBDOCUMENT_NAME}
+Sukūrimo data: {KBDOCUMENT_DATE_CREATED}
+Sukūrė: {KBDOCUMENT_CREATED_BY} 
+Statusas: {KBDOCUMENT_STATUS}
+Aprašymas: {KBDOCUMENT_DESCRIPTION}
+
+Jūs galite peržiūrėti šį dokumentą čia:
+<{URL}>
+<!-- END: KBDocument -->
+

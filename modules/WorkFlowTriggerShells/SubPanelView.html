@@ -1,0 +1,66 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+<script>
+function get_popup_new(parent_id, record, action, frame_type, plugin_module, plugin_action, width, height){
+	
+	if(plugin_module !='' && plugin_action !=''){
+		plugin_url_part = '&plugin_module=' + plugin_module + '&plugin_action=' + plugin_action;	
+	} else {
+		plugin_url_part = '';	
+	}			
+	
+	window.open('index.php?module=WorkFlowTriggerShells&frame_type=' + frame_type + '&action='+ action +'&sugar_body_only=true&workflow_id=' + parent_id + '&record=' + record + '' + plugin_url_part,'new','width=' + width + ',height=' + height + ',resizable=1,scrollbars=1');
+	
+}	
+</script>
+<table cellpadding="0" cellspacing="0" width="100%" border="0" class="list view">
+	<tr height="20" >
+	<td scope="col" width="50%" ><slot>{MOD.LBL_LIST_NAME}</td>
+	<td scope="col" width="40%" ><slot>{MOD.LBL_LIST_VALUE}</td>
+	<td scope="col" width="5%" ><slot>&nbsp;</td>
+	<td scope="col" width="5%" ><slot><img src="include/images/blank.gif" width="1" height="1" alt=""></slot></td>
+	  </tr>
+
+<!-- BEGIN: row -->
+<tr height="20"  class="{ROW_COLOR}S1">
+    	<td scope='row' valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot><a href='javascript:get_popup_new("{TRIGGER.PARENT_ID}","{TRIGGER.ID}", "{TRIGGER.ACTION}", "{TRIGGER.FRAME_TYPE}", "{TRIGGER.PLUGIN_MODULE}", "{TRIGGER.PLUGIN_ACTION}", "{TRIGGER.POPUP_WIDTH}", "{TRIGGER.POPUP_HEIGHT}")'>{TRIGGER.STATEMENT}</a></slot></td>
+    	<td scope='row' valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot>{TRIGGER.STATEMENT2}</slot></td>
+    	<td nowrap align="center" valign=TOP bgcolor="{BG_COLOR}" class="{ROW_COLOR}S1" ><slot><a href='javascript:get_popup_new("{TRIGGER.PARENT_ID}","{TRIGGER.ID}", "{TRIGGER.ACTION}", "{TRIGGER.FRAME_TYPE}", "{TRIGGER.PLUGIN_MODULE}", "{TRIGGER.PLUGIN_ACTION}", "{TRIGGER.POPUP_WIDTH}", "{TRIGGER.POPUP_HEIGHT}")'>{EDIT_INLINE_PNG}&nbsp;{APP.LNK_EDIT}</a></td>
+		<td nowrap align="center" valign=TOP><slot><a class="listViewTdToolsS1" onclick="return confirm('{MOD.NTC_REMOVE_TRIGGER}')" href="{URL_PREFIX}index.php?action=Delete&module=WorkFlowTriggerShells&record={TRIGGER.ID}{RETURN_URL}">{DELETE_INLINE_PNG}&nbsp;{APP.LNK_REMOVE}</a></slot></td>
+</tr>
+
+<!-- END: row -->
+
+</table>
+<!-- END: main -->

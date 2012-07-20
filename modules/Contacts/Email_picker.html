@@ -1,0 +1,165 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+<!-- BEGIN: main -->
+<!-- BEGIN: SearchHeader -->
+<script type="text/javascript" src="modules/Emails/javascript/email_popup_helper.js?v={VERSION_MARK}"></script>
+<form action="index.php" method="post" name="popup_query_form" id="popup_query_form">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+		<tr>
+			<td>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td scope="row" nowrap="nowrap">
+							{MOD.LBL_FIRST_NAME}
+						</td>
+						<td  nowrap="nowrap">
+							<input type="text" size="20" name="first_name"  value="{LAST_SEARCH.FIRST_NAME}" />
+						</td>
+						<td scope="row" nowrap="nowrap">
+							{MOD.LBL_LAST_NAME}
+						</td>
+						<td  nowrap="nowrap">
+							<input type="text" size="20" name="last_name"  value="{LAST_SEARCH.LAST_NAME}" />
+						</td>
+						<td valign="top" align="right">
+							<input type="hidden" name="module" value="{MODULE_NAME}" />
+							<input type="hidden" name="action" value="Popup" />
+							<input type="hidden" name="query" value="true" />
+							<input type="hidden" name="func_name" value="" />
+							<input type="hidden" name="request_data" value="{request_data}" />
+							<input type="hidden" name="populate_parent" value="false" />
+							<input type="hidden" name="record_id" value="" />
+							<input type="hidden" name="html" value="Email_picker" />
+							<input type="submit" name="button" class="button" id="search_form_submit" title="{APP.LBL_SEARCH_BUTTON_TITLE}" value="{APP.LBL_SEARCH_BUTTON_LABEL}" />
+						</td>
+					</tr>
+					<tr>
+						<td scope="row" nowrap="nowrap">
+							{MOD.LBL_ACCOUNT_NAME}
+						</td>
+						<td >
+							<input type="text" size="20" name="account_name"  value="{LAST_SEARCH.ACCOUNT_NAME}{ACCOUNT_NAME}" />
+						</td>
+						<td>
+							&nbsp;
+						</td>
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+
+<p>
+<div id='addformlink'>
+	{CREATECONTACT}
+</div>
+<div id='addform' style='display:none;position:relative;z-index:2;left:0px;top:0px;'>
+<form name="ContactSave" onsubmit="return check_form('ContactSave');" method="post" action="index.php">
+	{ADDFORMHEADER}
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+		<tr>
+			<td>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>
+							<input type="hidden" name="module" value="{MODULE_NAME}" />
+							<input type="hidden" name="action" value="Popup" />
+							<input type="hidden" name="doAction" value="save" />
+							<input type="hidden" name="query" value="true" />
+							<input type="hidden" name="html" value="Email_picker" />
+							{ADDFORM}
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
+</p>
+<!-- END: SearchHeader -->
+<!-- BEGIN: list_nav_row -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list view">
+	{PAGINATION}
+<!-- END: list_nav_row -->
+	<tr height="20">
+		<td scope="col"  nowrap>
+			{CHECKALL}
+		</td>
+		<td scope="col" width="40%"  nowrap="nowrap">
+			<a href="{ORDER_BY}last_name" class="listViewThLinkS1">
+				{MOD.LBL_LIST_CONTACT_NAME}{arrow_start}{last_name_arrow}{arrow_end}
+			</a>
+		</td>
+		<td scope="col" width="20%"  nowrap="nowrap">
+			<a href="{ORDER_BY}email1" class="listViewThLinkS1">
+				{MOD.LBL_LIST_EMAIL_ADDRESS}{arrow_start}{email1_arrow}{arrow_end}
+			</a>
+		</td>
+		<td scope="col" width="40%"  nowrap="nowrap">
+			{MOD.LBL_LIST_ACCOUNT_NAME}
+		</td>
+	</tr>
+<!-- BEGIN: row -->
+	<tr height="20" class="{ROW_COLOR}S1">
+		<td valign="top">
+			{PREROW}
+		</td>
+		<td scope='row' valign="top">
+			<a href="#"  onclick="send_back('Contacts','{CONTACT.ID}');">
+				{CONTACT.FULL_NAME}
+			</a>
+		</td>
+		<td valign="top">
+			<a href="#"  onclick="send_back('Contacts','{CONTACT.ID}');">
+				{CONTACT.EMAIL1}
+			</a>
+			<br />
+			<a href="#"  onclick="send_back('Contacts','{CONTACT.ID}');">
+				{CONTACT.EMAIL2}
+			</a>
+		</td>
+		<td valign="top">
+			{CONTACT.ACCOUNT_NAME}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="20" class="listViewHRS1">
+		</td>
+	</tr>
+<!-- END: row -->
+	{ASSOCIATED_JAVASCRIPT_DATA}
+</table>
+<!-- END: main -->

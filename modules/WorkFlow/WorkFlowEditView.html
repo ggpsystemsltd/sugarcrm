@@ -1,0 +1,176 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+
+<!-- BEGIN: main -->
+<script>
+var focus_obj = false;
+
+function remember_place(obj)
+{
+  focus_obj = obj;
+}
+</script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+<form name="EditView" method="POST" action="index.php" enctype="multipart/form-data">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td>
+			<input type="hidden" name="module" value="EmailTemplates">
+			<input type="hidden" name="record" value="{ID}">
+			<input type="hidden" name="action">
+			<input type="hidden" name="form">
+			<input type="hidden" name="base_module" id="base_module" value="{BASE_MODULE}">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+		<input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button" onclick="this.form.action.value='Save'; this.form.action.return_module='WorkFlow'; this.form.action.return_action='WorkFlowDetailView'; return check_form('EditView');" type="submit" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " > <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="this.form.action.value='{RETURN_ACTION}'; this.form.module.value='{RETURN_MODULE}'; this.form.record.value='{RETURN_ID}'" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  "></td>
+	<td align="right" nowrap><span  class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+	<td align='right'>{ADMIN_EDIT}</td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="edit view">
+<tr>
+<td>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td width="15%" scope="row">{MOD.LBL_NAME} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></td>
+	<td width="30%" ><input name='name' tabindex="1" type="text" size='30' maxlength="255" value="{NAME}"></td>
+	<td colspan=2></td>
+	</tr>
+	<tr>
+	<td width="15%" scope="row">{MOD.LBL_FROM_NAME} </td>
+	<td width="30%" ><input name='from_name' tabindex="2" type="text" size='30' maxlength="255" value="{FROM_NAME}"></td>
+	<td colspan=2></td>
+	</tr>
+	<tr>
+	<td width="15%" scope="row">{MOD.LBL_FROM_ADDRESS} </td>
+	<td width="30%" ><input name='from_address' tabindex="3" type="text" size='30' maxlength="255" value="{FROM_ADDRESS}"></td>
+	<td colspan=2></td>
+	</tr>
+<style>
+#subjectfield { height: 1.6em; }
+</style>
+	<tr>
+	<td width="15%" scope="row">{MOD.LBL_DESCRIPTION}</td>
+	<td colspan="3"  ><textarea name='description' tabindex='1' cols="90" rows="1"  style="height: 1.6.em; overflow-y:auto; font-family:sans-serif,monospace; font-size:inherit;" id="subjectfield">{DESCRIPTION}</textarea></td>
+	</tr>
+	<tr>
+	<td colspan=4>&nbsp;</td>
+	</tr>
+	
+	<tr>
+	<td width="15%" scope="row" align='left'>&nbsp;</td>
+	<td width="15%" align='left'>{MOD.LBL_BASE_MODULE}&nbsp;{BASE_MODULE_TRANSLATED}</td>
+<!-- BEGIN: special -->
+	<td width="15%" scope="row" align='left'>{MOD.LBL_RELATED_MODULE}&nbsp;</td>
+	<td width="30%"  align='left'>
+		<iframe name='rel_iframe' id='rel_iframe' title='rel_iframe' frameborder="0" marginwidth="0" marginheight="0" style="margin: 0; width: 100%; height: 2.25em; overflow:hidden;" allowtransparency="true" background-color="transparent" scrolling="no"></iframe>
+	</td>
+<!-- END: special -->
+<!-- BEGIN: normal -->
+	<td width="15%" scope="row" align='left'>&nbsp;</td>
+	<td width="30%" scope="row" align='left'>&nbsp;</td>
+<!-- END: normal -->
+	</tr>
+	<tr>
+	<td width="15%" scope="row" align='left'>&nbsp;</td>
+	<td width="85%"  align='left' colspan="3">
+		<iframe name='fields_iframe' id='fields_iframe' title='fields_iframe' frameborder="0" marginwidth="0" marginheight="0" style="margin: 0; width: 100%; height: 2.25em; overflow:hidden;" allowtransparency="true" background-color="transparent" scrolling="no"></iframe>
+    </td>
+	</tr>
+	
+	<tr><td colspan=4>&nbsp;</td></tr>
+	
+	<tr>
+	<td width="15%" scope="row" align='left'>&nbsp;</td>
+	<td width="70%"  colspan="3" nowrap>
+	<select id='value_type' name='value_type' tabindex='2' onchange="copy_text('fields_iframe', 'variable_text');">{VALUE_TYPE}</select>
+	<input type="text" size="60" id='variable_text' name='variable_text' >
+	<input type='button' onclick='insert_variable_html(document.EditView.variable_text.value);' class='button' value='{MOD.LBL_INSERT}'></td>
+	</tr>
+	<tr><td colspan=4>&nbsp;</td></tr>
+	
+	
+	<tr>
+	<td width="15%" scope="row">{MOD.LBL_SUBJECT}</td>
+        <td colspan='4' ><textarea onblur="remember_place(this);" name='subject' tabindex='1' cols="90" rows="1"  style="height: 1.6.em; overflow-y:auto; font-family:sans-serif,monospace; font-size:inherit;" id="subjectfield">{SUBJECT}</textarea></td>
+        </tr>
+	<tr>
+	<td valign="top" scope="row">{MOD.LBL_BODY}</td>
+<!-- BEGIN: htmlarea -->
+    <td colspan="4" >
+        <textarea id='body_html' tabindex='90' name='body_html'>{HTMLAREA}</textarea> 
+        <input id="toggle_textarea_elem" onchange="toggle_textarea(this);" type="checkbox" name="toggle_html" {ALT_CHECKED}> {MOD.LBL_EDIT_ALT_TEXT}<br>
+        <div id="text_div" style="display: none"><textarea tabindex='0' name='body' cols="100" rows="20">{BODY}</textarea></div>
+    </td>
+<!-- END: htmlarea -->
+<script>
+function toggle_textarea(obj)
+{
+ if (obj.checked == true)
+ {
+        document.getElementById('text_div').style.display = 'block';
+ } else
+ {
+        document.getElementById('text_div').style.display = 'none';
+ }
+}
+toggle_textarea( document.getElementById('toggle_textarea_elem'));
+</script>
+
+</tr></table>
+</td></tr></table>
+<script>
+focus_obj = document.EditView.body;
+</script>
+</form>
+{tiny}
+<script>
+toggle_portal_flag();
+
+function toggle_portal_flag() {
+	{TOGGLE_JS}
+}
+	
+</script>
+<script>
+<!-- BEGIN: special2 -->
+updatedroplist('rel_iframe', 'base_module', 'rel_mod');
+<!-- END: special2 -->
+updatedroplist('fields_iframe', 'base_module', 'base_fields');
+
+</script>
+{JAVASCRIPT}
+<!-- END: main -->

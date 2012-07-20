@@ -1,0 +1,344 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+-->
+
+
+<!-- BEGIN: Quote_Subject -->
+SugarCRM Tilbud - {QUOTE_SUBJECT}
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+{ASSIGNER} har tildelt et Tilbud til {ASSIGNED_USER}.
+
+Emne: {QUOTE_SUBJECT}
+Status: {QUOTE_STATUS}
+Forventet avslutningsdato: {QUOTE_CLOSEDATE}
+Beskrivelse: {QUOTE_DESCRIPTION}
+
+Du kan se Tilbudet her:
+<{URL}>
+<!-- END: Quote -->
+
+
+<!-- BEGIN: Account_Subject -->
+SugarCRM Bedrft - {ACCOUNT_NAME}
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+{ASSIGNER} har tildelt en Bedrift til {ASSIGNED_USER}.
+
+Navn: {ACCOUNT_NAME}
+Type: {ACCOUNT_TYPE}
+Beskrivelse: {ACCOUNT_DESCRIPTION}
+
+Du kan vurdere denne Bedriften her:
+<{URL}>
+<!-- END: Account -->
+
+
+<!-- BEGIN: Case_Subject -->
+SugarCRM Sak - {CASE_SUBJECT}
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+{ASSIGNER} har tildelt en sak til {ASSIGNED_USER}.
+
+Emne: {CASE_SUBJECT}
+Prioritet: {CASE_PRIORITY}
+Status: {CASE_STATUS}
+Beskrivelse: {CASE_DESCRIPTION}
+
+Du kan vurdere dnnte Saken på:
+<{URL}>
+<!-- END: Case -->
+
+
+<!-- BEGIN: Task_Subject -->
+SugarCRM Oppgave - {TASK_SUBJECT}
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+{ASSIGNER} har tildelt en Oppgave til {ASSIGNED_USER}.
+
+Emne: {TASK_SUBJECT}
+Prioritet: {TASK_PRIORITY}
+Forfallsdato: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Beskrivelse: {TASK_DESCRIPTION}
+
+Du kan vurdere denne Oppgaven her:
+<{URL}>
+<!-- END: Task -->
+
+
+<!-- BEGIN: Meeting_Subject -->
+SugarCRM Møte- {MEETING_SUBJECT}
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+Til: {MEETING_TO},
+
+{ASSIGNER} har invitert deg til et Møte
+
+Emne: {MEETING_SUBJECT}
+Status: {MEETING_STATUS}
+Startdato: {MEETING_STARTDATE}
+Varighet: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Beskrivelse: {MEETING_DESCRIPTION}
+
+Godta dette møtet:
+<{ACCEPT_URL}&accept_status=accept>
+
+Foreløbig godta dette møtet
+<{ACCEPT_URL}&accept_status=tentative>
+
+Avslå dette møtet
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+SugarCRM Møte - {MEETING_SUBJECT}
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+{ASSIGNER} har tildelt et Møte til{ASSIGNED_USER}.
+
+Emne: {MEETING_SUBJECT}
+Status: {MEETING_STATUS}
+Startdato: {MEETING_STARTDATE}
+Varighet: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Beskrivelse: {MEETING_DESCRIPTION}
+
+Du kan vurdere dette Møtet på:
+<{URL}>
+<!-- END: MeetingSpecial -->
+
+
+<!-- BEGIN: Email_Subject -->
+SugarCRM E-post - {EMAIL_SUBJECT}
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+{ASSIGNER} har tildelt en e-post til {ASSIGNED_USER}.
+
+Emne: {EMAIL_SUBJECT}
+Dato sendt: {EMAIL_DATESENT}
+
+Du kan vurdere denne e-posten på:
+<{URL}>
+<!-- END: Email -->
+
+
+
+
+
+
+<!-- BEGIN: Contact_Subject -->
+SugarCRM Kontakt - {CONTACT_NAME}
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+{ASSIGNER} har tildelt en Kontakt til {ASSIGNED_USER}.
+
+Navn: {CONTACT_NAME}
+Beskrivelse: {CONTACT_DESCRIPTION}
+
+Du kan gjennomgå denne Kontakten på:
+<{URL}>
+<!-- END: Contact -->
+
+
+<!-- BEGIN: Lead_Subject -->
+SugarCRM Lead - {LEAD_NAME}
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+{ASSIGNER} har tildelt en Lead til {ASSIGNED_USER}.
+
+Navn: {LEAD_NAME}
+Lead-kilde: {LEAD_SOURCE}
+Status: {LEAD_STATUS}
+Beskrivelse: {LEAD_DESCRIPTION}
+
+Du kan vurdere dette Lead på:
+<{URL}>
+<!-- END: Lead -->
+
+
+<!-- BEGIN: Opportunity_Subject -->
+SugarCRM Opportunity - {OPPORTUNITY_NAME}
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+{ASSIGNER} har tildelt en Opportunity til {ASSIGNED_USER}.
+
+Navn: {OPPORTUNITY_NAME}
+Beløp: {OPPORTUNITY_AMOUNT}
+Forventet avslutningsdato: {OPPORTUNITY_CLOSEDATE}
+Salgsfase: {OPPORTUNITY_STAGE}
+Beskrivelse: {OPPORTUNITY_DESCRIPTION}
+
+Du kan vurdere denne Opportunity på:
+<{URL}>
+<!-- END: Opportunity -->
+
+
+<!-- BEGIN: Bug_Subject -->
+SugarCRM Bug - {BUG_SUBJECT}
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+{ASSIGNER} har tildelt en Bug til {ASSIGNED_USER}.
+
+Bug Nummer: {BUG_BUG_NUMBER}
+Emne: {BUG_SUBJECT}
+Type: {BUG_TYPE}
+Prioritet: {BUG_PRIORITY}
+Status: {BUG_STATUS}
+Løsning: {BUG_RESOLUTION}
+Release: {BUG_RELEASE}
+Beskrivelse: {BUG_DESCRIPTION}
+Arbeidslogg: {BUG_WORK_LOG}
+
+Du kan vurdere denne Bug på:
+<{URL}>
+<!-- END: Bug -->
+
+
+<!-- BEGIN: Default_Subject -->
+SugarCRM - Tildelt {OBJECT}
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+{ASSIGNER} har tildelt {OBJECT} til {ASSIGNED_USER}.
+
+Du kan vurdere dette {OBJECT} på:
+<{URL}>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+SugarCRM Oppringing - {CALL_SUBJECT}
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+Til: {CALL_TO},
+ {ASSIGNER} har invitert deg til en Samtale
+Emne: {CALL_SUBJECT}
+Status: {CALL_STATUS}
+Startdato: {CALL_STARTDATE}
+Varighet: {CALL_HOURS}h, {CALL_MINUTES}m
+Beskrivelse: {CALL_DESCRIPTION}
+
+Godta denne samtalen:
+<{ACCEPT_URL}&accept_status=accept>
+
+Godta denne samtalen foreløbig
+<{ACCEPT_URL}&accept_status=tentative>
+
+Avvis denne samtalen
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+SugarCRM Oppringing - {CALL_SUBJECT}
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+{ASSIGNER} har tildelt en Oppringing til {ASSIGNED_USER}.
+
+Emne: {CALL_SUBJECT}
+Status: {CALL_STATUS}
+Startdato: {CALL_STARTDATE}
+Varighet: {CALL_HOURS}h, {CALL_MINUTES}m
+Beskrivelse: {CALL_DESCRIPTION}
+
+Du kan vurdere denne Oppringingen på:
+<{URL}>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: Campaign_Subject -->
+SugarCRM Kampanje - {CAMPAIGN_NAME}
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+{ASSIGNER} har tildelt en Kampanje til {ASSIGNED_USER}.
+
+Emne: {CAMPAIGN_NAME}
+Beløp: {CAMPAIGN_AMOUNT}
+Sluttdato: {CAMPAIGN_CLOSEDATE}
+Status: {CAMPAIGN_STATUS}
+Beskrivelse: {CAMPAIGN_DESCRIPTION}
+
+Du kan gjennomgå denne Kampanjen på:
+<{URL}>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+SugarCRM Kvoter - Din Kvote for {QUOTA_TIMEPERIOD}
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+{ASSIGNER} har tildelt en Kvote til {ASSIGNED_USER}.
+
+Beløp: {QUOTA_AMOUNT}
+Tidsperiode: {QUOTA_TIMEPERIOD}
+
+Du kan vurdere denne Kvotesettingen på:
+<{QUOTA_URL}>
+<!-- END: Quota -->
+
+<!-- BEGIN: KBDocument_Subject -->
+SugarCRM Dokument - {KBDOCUMENT_NAME}
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+
+{NOTIFICATION_MESSAGE}
+
+Navn: {KBDOCUMENT_NAME}
+Opprettet dato: {KBDOCUMENT_DATE_CREATED}
+Opprettet av: {KBDOCUMENT_CREATED_BY}
+Status: {KBDOCUMENT_STATUS}
+Beskrivelse: {KBDOCUMENT_DESCRIPTION}
+
+Du kan gjennomgå dette dokumentet på:
+<{URL}>
+<!-- END: KBDocument -->
+
+<!-- BEGIN: Contract_Subject -->
+SugarCRM Kontrakt- {CONTRACT_NAME}
+<!-- END: Contract_Subject -->
+<!-- BEGIN: Contract-->
+
+{ASSIGNER} har tildelt en Kontrakt til {ASSIGNED_USER}.
+
+Du kan vurdere denne Kontrakten på:
+<{URL}>
+<!-- END:Contract-->
+
+<!-- BEGIN: ContractSpecial_Subject -->
+SugarCRM Kontrakt - {CONTRACT_NAME}
+<!-- END: ContractSpecial_Subject -->
+<!-- BEGIN: ContractSpecial -->
+
+Din Kontrakt: {CONTRACT_NAME} vil bli utdatert den {CONTRACT_END_DATE}.
+
+Du kan vurdere denne Kontrakten på:
+<{URL}>
+<!-- END:ContractSpecial-->
+
+
+
+
+

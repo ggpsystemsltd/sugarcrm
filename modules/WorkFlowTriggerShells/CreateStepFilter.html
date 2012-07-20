@@ -1,0 +1,157 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ * Description:
+ ********************************************************************************/
+-->
+<!-- BEGIN: embeded -->
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/workflow/jutils.js?v={VERSION_MARK}"></script>
+{JAVASCRIPT_LANGUAGE_FILES}
+<script>
+function changehref_text(href_object, selected_text){
+	
+	this.document.getElementById(href_object).innerHTML = selected_text;
+	
+//end function changehref_text
+}
+
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}	
+
+</script>
+<script>
+	
+function confirm_safety(){
+
+		var check_one = "";		
+
+		check_one = confirm_value_present('trigger_operator', '');
+		
+		if(check_one==false){
+			return false;
+		} else {
+			return true;	
+		}	
+//end function confirm_safety
+}	
+
+
+
+</script>
+<!-- END: embeded -->
+<!-- BEGIN: main -->
+
+{SET_RETURN_JS}
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="edit view">
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+			<form name="EditView" method="POST" action="index.php">
+			<input type="hidden" name="module" value="WorkFlowTriggerShells">
+			<input type="hidden" id='record' name="record" value="{ID}">
+			<input type="hidden" id='workflow_id' name="workflow_id" value="{WORKFLOW_ID}">
+			<input type="hidden" id='parent_id' name="parent_id" value="{PARENT_ID}">
+			<input type="hidden" name="action" value="SaveFilter">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="sugar_body_only" value="true">
+			<input type="hidden" id='type' name="type" value="{TYPE}">
+			<input type="hidden" id='field' name="field" value="{FIELD}">
+			<input type="hidden" name="frame_type" value="{FRAME_TYPE}">
+			<input type="hidden" id='rel_module' name="rel_module" value="{REL_MODULE}">
+			<input type="hidden" id='base_module' name="base_module" value="{BASE_MODULE}">
+			<td></td></tr>
+</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">	
+		<tr>
+		<td scope="row" colspan="2"><slot>{FILTER_TOP_DISPLAY}</slot></td>
+		</tr>	
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td colspan="4">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"  height="50px">
+		<tr>
+		<td>{PREV_DISPLAY_TEXT}</td>
+		</tr>
+		<tr id='lang_trigger'>
+		<td><slot>{FILTER_BOTTOM_DISPLAY}&nbsp;<a id='href_trigger' href=# onclick="get_filter_selector('count_trigger', 'trigger_exp_id', 'trigger_lhs_module', 'trigger_lhs_field', 'trigger_rhs_value', 'trigger_operator', 'trigger', '', 'trigger');">{TRIGGER_TEXT}</a>
+		</slot></td>
+		<input type="hidden" id='trigger_lhs_module' name="trigger_lhs_module" value="{TRIGGER_LHS_MODULE}">
+		<input type="hidden" id='trigger_lhs_field' name="trigger_lhs_field" value="{TRIGGER_LHS_FIELD}">
+		<input type="hidden" id='trigger_rhs_value' name="trigger_rhs_value" value="{TRIGGER_RHS_VALUE}">
+		<input type="hidden" id='trigger_exp_id' name="trigger_exp_id" value="{TRIGGER_EXP_ID}">
+		<input type="hidden" id='trigger_operator' name="trigger_operator" value="{TRIGGER_OPERATOR}">
+		<input type="hidden" id='trigger_exp_type' name="trigger_exp_type" value="{TRIGGER_EXP_TYPE}">
+		<input type="hidden" id='default_href_trigger' name="default_href_trigger" value="{MOD.LBL_FIELD}">
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>	
+		</table>		
+		</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	<tr>
+	<td align='right' colspan="2">
+	<input type='submit' class='button' value='{APP.LBL_SAVE_BUTTON_LABEL}' accessKey="{APP.LBL_SAVE_BUTTON_KEY}" id='save' name='save' title='{APP.LBL_SAVE_BUTTON_LABEL}' onclick="return confirm_safety();">
+	<input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="window.close();" type="button" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+	</td>
+	</tr>	
+		</form>
+</table>
+
+<script>
+{TRIGGER_START_JSCRIPT}
+{SPECIAL_JAVASCRIPT}
+</script>
+
+<!-- END: main -->
+

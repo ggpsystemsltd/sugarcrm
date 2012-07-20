@@ -1,0 +1,339 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+
+ * Source: SugarCRM 5.2.0
+ * Contributor(s): RamÛn Feliu (ramon@slay.es).
+ ********************************************************************************/
+-->
+
+<!-- BEGIN: Quote_Subject -->
+Presupost de SugarCRM - {QUOTE_SUBJECT}
+<!-- END: Quote_Subject -->
+<!-- BEGIN: Quote -->
+{ASSIGNER} ha assignat un Pressupost a {ASSIGNED_USER}.
+
+Assumpte: {QUOTE_SUBJECT}
+Estat: {QUOTE_STATUS}
+Data de Tancament Estimada: {QUOTE_CLOSEDATE}
+Descripció: {QUOTE_DESCRIPTION}
+
+Pot examinar aquest Pressupost a:
+<{URL}>
+<!-- END: Quote -->
+
+
+<!-- BEGIN: Account_Subject -->
+Compte de SugarCRM - {ACCOUNT_NAME}
+<!-- END: Account_Subject -->
+<!-- BEGIN: Account -->
+{ASSIGNER} ha assignat un Compte a {ASSIGNED_USER}.
+
+Nom: {ACCOUNT_NAME}
+Tipus: {ACCOUNT_TYPE}
+Descripció: {ACCOUNT_DESCRIPTION}
+
+Pot examinar aquest Compte a:
+<{URL}>
+<!-- END: Account -->
+
+
+<!-- BEGIN: Case_Subject -->
+Cas de SugarCRM - {CASE_SUBJECT}
+<!-- END: Case_Subject -->
+<!-- BEGIN: Case -->
+{ASSIGNER} ha assignat un Cas a {ASSIGNED_USER}.
+
+Assumpte: {CASE_SUBJECT}
+Prioritat: {CASE_PRIORITY}
+Estat: {CASE_STATUS}
+Descripció: {CASE_DESCRIPTION}
+
+Pot examinar aquest Cas a:
+<{URL}>
+<!-- END: Case -->
+
+
+<!-- BEGIN: Task_Subject -->
+Tasca de SugarCRM - {TASK_SUBJECT}
+<!-- END: Task_Subject -->
+<!-- BEGIN: Task -->
+{ASSIGNER} ha assignat una Tasca a {ASSIGNED_USER}.
+
+Assumpte: {TASK_SUBJECT}
+Prioritat: {TASK_PRIORITY}
+Data Venciment: {TASK_DUEDATE}
+Estat: {TASK_STATUS}
+Descripció: {TASK_DESCRIPTION}
+
+Pot examinar aquesta Tasca a:
+<{URL}>
+<!-- END: Task -->
+
+
+<!-- BEGIN: Meeting_Subject -->
+Reunió de SugarCRM - {MEETING_SUBJECT}
+<!-- END: Meeting_Subject -->
+<!-- BEGIN: Meeting -->
+A: {MEETING_TO}
+
+{ASSIGNER} li ha convidat a una Reunió.
+
+Assumpte: {MEETING_SUBJECT}
+Estat: {MEETING_STATUS}
+Data d'inici: {MEETING_STARTDATE}
+Durada: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Descripció: {MEETING_DESCRIPTION}
+
+Acceptar aquesta reunió:
+<{ACCEPT_URL}&accept_status=accept>
+
+Acceptar provisionalment aquesta reunió
+<{ACCEPT_URL}&accept_status=tentative>
+
+Refusar la reunió
+<{ACCEPT_URL}&accept_status=decline>
+<!-- END: Meeting -->
+
+<!-- BEGIN: MeetingSpecial_Subject -->
+Reunió de SugarCRM - {MEETING_SUBJECT}
+<!-- END: MeetingSpecial_Subject -->
+<!-- BEGIN: MeetingSpecial -->
+{ASSIGNER} ha assignat una Reunió a {ASSIGNED_USER}.
+
+Assumpte: {MEETING_SUBJECT}
+Estat: {MEETING_STATUS}
+Data d'Inici: {MEETING_STARTDATE}
+Duració: {MEETING_HOURS}h, {MEETING_MINUTES}m
+Descripció: {MEETING_DESCRIPTION}
+
+Pot examinar aquesta Reunió a:
+<{URL}>
+<!-- END: MeetingSpecial -->
+
+
+<!-- BEGIN: Email_Subject -->
+Correu de SugarCRM - {EMAIL_SUBJECT}
+<!-- END: Email_Subject -->
+<!-- BEGIN: Email -->
+{ASSIGNER} ha assignat un Correu a {ASSIGNED_USER}.
+
+Assumpte: {EMAIL_SUBJECT}
+Data d'enviament: {EMAIL_DATESENT}
+
+Pot revisar aquest Correu a:
+<{URL}>
+<!-- END: Email -->
+
+
+<!-- BEGIN: Contact_Subject -->
+Contacte de SugarCRM - {CONTACT_NAME}
+<!-- END: Contact_Subject -->
+<!-- BEGIN: Contact -->
+{ASSIGNER} ha assignat un Contacte a {ASSIGNED_USER}.
+
+Nom: {CONTACT_NAME}
+DescripciÛ: {CONTACT_DESCRIPTION}
+
+Pot examinar aquest Contacte a:
+<{URL}>
+<!-- END: Contact -->
+
+
+<!-- BEGIN: Lead_Subject -->
+Client Potencial de SugarCRM - {LEAD_NAME}
+<!-- END: Lead_Subject -->
+<!-- BEGIN: Lead -->
+{ASSIGNER} ha assignat un Client Potencial a {ASSIGNED_USER}.
+
+Nom: {LEAD_NAME}
+Origen: {LEAD_SOURCE}
+Estat: {LEAD_STATUS}
+Descripció: {LEAD_DESCRIPTION}
+
+Pot examinar aquest Client Potencial a:
+<{URL}>
+<!-- END: Lead -->
+
+
+<!-- BEGIN: Opportunity_Subject -->
+Oportunitat de SugarCRM - {OPPORTUNITY_NAME}
+<!-- END: Opportunity_Subject -->
+<!-- BEGIN: Opportunity -->
+{ASSIGNER} ha assignat una Oportunitat a {ASSIGNED_USER}.
+
+Nom: {OPPORTUNITY_NAME}
+Quantitat: {OPPORTUNITY_AMOUNT}
+Data de tancament estimada: {OPPORTUNITY_CLOSEDATE}
+Estapa de la venda: {OPPORTUNITY_STAGE}
+Descripció: {OPPORTUNITY_DESCRIPTION}
+
+Pot examinar aquesta Oportunitat a:
+<{URL}>
+<!-- END: Opportunity -->
+
+
+<!-- BEGIN: Bug_Subject -->
+Incidència de SugarCRM - {BUG_SUBJECT}
+<!-- END: Bug_Subject -->
+<!-- BEGIN: Bug -->
+{ASSIGNER} ha assignat una Incidència a {ASSIGNED_USER}.
+
+N˙mero d'Incidència: {BUG_BUG_NUMBER}
+Assumpte: {BUG_SUBJECT}
+Tipus: {BUG_TYPE}
+Prioritat: {BUG_PRIORITY}
+Estat: {BUG_STATUS}
+Resolució: {BUG_RESOLUTION}
+Publicació: {BUG_RELEASE}
+Descripció: {BUG_DESCRIPTION}
+Registre d'Activitat: {BUG_WORK_LOG} 
+
+Pot examinar aquesta Incidència a:
+<{URL}>
+<!-- END: Bug -->
+
+
+<!-- BEGIN: Default_Subject -->
+SugarCRM - {OBJECT} Assignat
+<!-- END: Default_Subject -->
+<!-- BEGIN: Default -->
+{ASSIGNER} ha assignat algún objecte de tipus {OBJECT} a {ASSIGNED_USER}.
+
+Pot examinar aquest objecte de tipus {OBJECT} a:
+<{URL}>
+<!-- END: Default -->
+
+<!-- BEGIN: Call_Subject -->
+Trucada de SugarCRM - {CALL_SUBJECT}
+<!-- END: Call_Subject -->
+<!-- BEGIN: Call -->
+To: {CALL_TO},
+ {ASSIGNER} li ha convidat a una Trucada
+Assumpte: {CALL_SUBJECT}
+Estat: {CALL_STATUS}
+Data d'Inici: {CALL_STARTDATE}
+Duració: {CALL_HOURS}h, {CALL_MINUTES}m
+Descripció: {CALL_DESCRIPTION}
+
+Acceptar aquesta trucada:
+<{ACCEPT_URL}&accept_status=accept>
+
+Acceptar provisionalment aquesta trucada
+<{ACCEPT_URL}&accept_status=tentative>
+
+Refusar aquesta trucada
+<{ACCEPT_URL}&accept_status=decline>
+
+<!-- END: Call -->
+
+<!-- BEGIN: CallSpecial_Subject -->
+Trucada de SugarCRM - {CALL_SUBJECT}
+<!-- END: CallSpecial_Subject -->
+<!-- BEGIN: CallSpecial -->
+{ASSIGNER} ha assignat una Trucada a {ASSIGNED_USER}.
+
+Assumpte: {CALL_SUBJECT}
+Estat: {CALL_STATUS}
+Data d'Inici: {CALL_STARTDATE}
+Duració: {CALL_HOURS}h, {CALL_MINUTES}m
+Descripció: {CALL_DESCRIPTION}
+
+Pot revisar aquesta Trucada a:
+<{URL}>
+<!-- END: CallSpecial -->
+
+<!-- BEGIN: Campaign_Subject -->
+Campanya de SugarCRM - {CAMPAIGN_NAME}
+<!-- END: Campaign_Subject -->
+<!-- BEGIN: Campaign -->
+{ASSIGNER} ha assignat una Campanya a {ASSIGNED_USER}.
+
+Assumpte: {CAMPAIGN_NAME}
+Quantitat: {CAMPAIGN_AMOUNT}
+Data de tancament: {CAMPAIGN_CLOSEDATE}
+Estat: {CAMPAIGN_STATUS}
+Descripció: {CAMPAIGN_DESCRIPTION}
+
+Pot examinar aquesta Campanya a:
+<{URL}>
+<!-- END: Campaign -->
+
+<!-- BEGIN: Quota_Subject -->
+Pressupostos de SugarCRM - El seu Pressupost per a {QUOTA_TIMEPERIOD}
+<!-- END: Quota_Subject -->
+<!-- BEGIN: Quota -->
+{ASSIGNER} ha assignat un Pressupost a {ASSIGNED_USER}.
+
+Quantitat: {QUOTA_AMOUNT}
+Període: {QUOTA_TIMEPERIOD}
+
+Pot revisar aquest Pressupost a:
+<{QUOTA_URL}>
+<!-- END: Quota -->
+
+<!-- BEGIN: KBDocument_Subject -->
+Document de SugarCRM - {KBDOCUMENT_NAME}
+<!-- END: KBDocument_Subject -->
+<!-- BEGIN: KBDocument -->
+
+{NOTIFICATION_MESSAGE}
+ 
+Nom: {KBDOCUMENT_NAME}
+Data de CreaciÛ: {KBDOCUMENT_DATE_CREATED}
+Creat Per: {KBDOCUMENT_CREATED_BY} 
+Estat: {KBDOCUMENT_STATUS}
+Descripció: {KBDOCUMENT_DESCRIPTION}
+
+Pot revisar aquest Document a:
+<{URL}>
+<!-- END: KBDocument -->
+
+<!-- BEGIN: Contract_Subject -->
+Contracte de SugarCRM - {CONTRACT_NAME}
+<!-- END: Contract_Subject -->
+<!-- BEGIN: Contract-->
+
+{ASSIGNER} ha assignat un Contracte a {ASSIGNED_USER}.
+
+Pot revisar aquest Contracte a:
+<{URL}>
+<!-- END:Contract-->
+
+<!-- BEGIN: ContractSpecial_Subject -->
+Contracte de SugarCRM - {CONTRACT_NAME}
+<!-- END: ContractSpecial_Subject -->
+<!-- BEGIN: ContractSpecial -->
+
+El Seu Contracte: {CONTRACT_NAME} vencer· el {CONTRACT_END_DATE}.
+
+Pot revisar aquest Contracte a:
+<{URL}>
+<!-- END:ContractSpecial-->

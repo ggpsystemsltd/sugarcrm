@@ -1,0 +1,317 @@
+{*
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+*}
+
+<!-- BEGIN: main -->
+{$STYLES}
+{$JAVASCRIPT}
+			{$SITEURL}
+			{$TREEHEADER}
+
+<span>
+	<div id='overDiv' style='position:absolute; visibility:hidden; z-index:1000;'></div>
+	<link rel='stylesheet' type='text/css' href='include/javascript/yui/assets/tabview/css/round_tabs.css' />
+	<link rel='stylesheet' type='text/css' href='include/javascript/yui/assets/tabview/css/tabs.css' />
+	{sugar_getscript file="include/javascript/popup_parent_helper.js"}
+	<input type="hidden" name="mode" id="mode" value="{$mode}">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+<tr><td>
+
+	<ul class="tablist" id="groupTabs">
+		<li id="basic_tab_li"  class="active"><a id='basic_tab_link'  class="{$CURRENT_OTHER_BASIC}" href="javascript:select_Tab_CSS('basic_tab');">{$MOD.LBL_TAB_SEARCH}</a></li>
+		<li id="advanced_tab_li"  class="active"><a id='advanced_tab_link'  class="{$CURRENT_OTHER_ADV}" href="javascript:select_Tab_CSS('advanced_tab');">{$MOD.LBL_TAB_ADVANCED}</a></li>
+		<li  id='browse_tab_li'  class="active"><a id='browse_tab_link' class="{$CURRENT_OTHER_BROWSE}"  href="javascript:select_Tab_CSS('browse_tab');">{$MOD.LBL_TAB_BROWSE}</a></li>
+	</ul>
+
+		<div id="basic_tab"  style="{$SHOW_INITIAL_BASIC}">
+			<div id='fts_search_form'>
+			<form enctype="multipart/form-data" id="FTSFormBasic" name="FTSFormBasic" method="POST" action="index.php">
+			<input type="hidden" name="module" id="module" value="KBDocuments">
+			<input type="hidden" name="action" id="action" value="SearchHome">
+			<input type="hidden" name="mode" id="mode_b" value="{$MODE}">
+			<input type="hidden" name="post_clear_mode" id="post_clear_mode" value="basic">
+			<input type="hidden" value="true" name="query" id="query">
+
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view search kb">
+					<tr>
+						<td width='2%'>&nbsp;</td>
+				        <td nowrap>
+				        	<input type='text' id='searchText' class='text' name='searchText' size='80' value='{$searchText}' maxlength='150'>&nbsp;
+				       		<b>{$MOD.LBL_SEARCH_WITHIN}</b>&nbsp;<select name='canned_search' id='canned_search'  value='{$searchTxt}'>{$CANNED_SEARCH_OPTIONS}</select>&nbsp;
+					   </td>
+	  			    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td align=right><img  border='0' src='{sugar_getimagepath file="helpInline.gif"}' onmouseover="return overlib(SUGAR.language.get('KBDocuments', 'LBL_SYNTAX_CHEAT_SHEET'), STICKY, MOUSEOFF,1000,WIDTH, 700, LEFT,CAPTION,'<div style=\'float:left\'>'+SUGAR.language.get('KBDocuments', 'LBL_SHOW_SYNTAX_HELP')+'</div>', CLOSETEXT, '<div style=\'float: right\'><img border=0 style=\'margin-left:2px; margin-right: 2px;\' src={sugar_getimagepath file='close.gif'}></div>',CLOSETITLE, SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_CLOSE_TOOLTIP'), CLOSECLICK,FGCLASS, 'olFgClass', CGCLASS, 'olCgClass', BGCLASS, 'olBgClass', TEXTFONTCLASS, 'olFontClass', CAPTIONFONTCLASS, 'olCapFontClass');" ></td>
+                    </tr>
+				</table>
+	        	<div style='padding: 2'>
+		        	<input type='submit' class='button' name='fts_search' id='fts_search' value='{$MOD.LBL_SEARCH}' >
+	 				<input type='submit' class='button' name='clearFormBasic' id='clearFormBasic' value='{$MOD.LBL_CLEAR}' onClick="SUGAR.searchForm.clear_form(this.form); return false;">
+ 				</div>
+			</form>
+			</div>
+		</div>
+
+
+		<div id="advanced_tab" width='100%'  style="{$SHOW_INITIAL_ADV}">
+			{$ADVANCEDTAB}
+
+
+		</div>
+		<div id="browse_tab"   style="{$SHOW_INITIAL_BROWSE}">
+
+			{$BROWSETAB}
+		</div>
+
+
+			<div id='fts_results_form' {$SHOW_INITIAL_LIST}>
+				{$LIST}
+			</div>
+</p>
+{literal}
+<script>
+		var document_additionalDetailsCache;
+		var document_additionalDetailsCalls;
+		var document_additionalDetailsRpcCall;
+		var document_zIndex =0;
+		var document_time_el;
+		var document_panel_handle = [];
+
+		//create YUI panel object to display the preview in
+		function getDocumentDetails(bean, id, spanId, hdrCaption, panel_id,seg) {
+			//function that gets called recursively
+			go = function() {
+				//create instance of panel
+				oReturn = function(body, caption, width, theme) {
+					//set z-index to top, and create array of config args
+					document_zIndex = document_zIndex +1;
+					var args = {
+  							    width:"550px",
+  							    height:"350px",
+							    fixedcenter: false,
+							    constraintoviewport: true,
+							    underlay:"shadow",
+							    close:true,
+							    visible:true,
+							    draggable:true,
+							    zIndex:document_zIndex,
+							    context: [spanId, 'tl','br'],
+							    effect:{effect: YAHOO.widget.ContainerEffect.FADE, duration:1}
+							   } ;
+
+					//If panel already exists, just apply the configs and re-render
+	  			 	if(typeof(document_panel_handle[seg]) != 'undefined' && document_panel_handle[seg]){
+						panel_id = document_panel_handle[seg];
+						panel_id.cfg.applyConfig(args);
+						panel_id.setHeader(document_additionalDetailsCache[spanId]['caption']);
+						panel_id.setBody(document_additionalDetailsCache[spanId]['body']);
+						panel_id.render();
+						var currentTime = new Date();
+						document_time_el = currentTime.getTime();
+
+					}else{
+						//since panel does not exist, create a new one
+						panel_id = new YAHOO.widget.Panel("kb"+id, args);
+						//If we haven't built our panel using existing markup,
+						//we can set its content via script:
+						panel_id.setHeader(document_additionalDetailsCache[spanId]['caption']);
+						panel_id.setBody(document_additionalDetailsCache[spanId]['body']);
+						panel_id.render(document.body);
+						document_panel_handle[seg] = panel_id;
+						var currentTime = new Date();
+						document_time_el = currentTime.getTime();
+					 }
+					return panel_id.show;
+
+				}//end oReturn
+
+				//on succesful retrieval of preview data
+				success = function(data) {
+					eval(data.responseText);
+					//populate detailscache array from data
+					document_additionalDetailsCache[spanId] = new Array();
+					document_additionalDetailsCache[spanId]['body'] = result['body'];
+					document_additionalDetailsCache[spanId]['caption'] = hdrCaption;
+					document_additionalDetailsCache[spanId]['width'] = result['width'];
+
+					//turn off loading message
+					ajaxStatus.hideStatus();
+
+					//call function that creates panel
+					return oReturn(document_additionalDetailsCache[spanId]['body'], document_additionalDetailsCache[spanId]['caption'], document_additionalDetailsCache[spanId]['width'], document_additionalDetailsCache[spanId]['theme']);
+				}//end success
+
+				//if this span id has already been retrieved, then use cached details to create panel
+				if(typeof document_additionalDetailsCache[spanId] != 'undefined'){
+					//call function that creates panel
+					return oReturn(document_additionalDetailsCache[spanId]['body'], document_additionalDetailsCache[spanId]['caption'], document_additionalDetailsCache[spanId]['width'], document_additionalDetailsCache[spanId]['theme']);
+				}
+
+				//if this is a call already in progress, then just return
+				if(typeof document_additionalDetailsCalls[spanId] != 'undefined')
+					return;
+
+				//set loading message
+				ajaxStatus.showStatus(SUGAR.language.get('app_strings', 'LBL_LOADING'));
+				//define url to retrieve data (via existing additional details framework)
+				url = 'index.php?to_pdf=1&module=Home&action=AdditionalDetailsRetrieve&bean=' + bean + '&id=' + id+'&full=true';
+				//make asynchronous call to retrieve data
+				document_additionalDetailsCalls[spanId] = YAHOO.util.Connect.asyncRequest('GET', url, {success: success, failure: success});
+
+				return;
+			}//end go
+
+			//kick off process by calling the display preview "go" function after 2 seconds
+			document_additionalDetailsRpcCall = window.setTimeout('go()', 2000);
+
+		}
+
+
+
+
+		function document_clearAdditionalDetailsCall(id,spanId,seg) {/*
+			var currentTime = new Date();
+			var rightNow = currentTime.getTime();
+			if(rightNow>(parseInt(document_time_el)+2500)){
+				//do nothing
+					//alert("do nothing "+document_panel_handle[seg]);
+
+			}else{ //alert(" i "+document_panel_handle[seg]);
+				if(typeof(document_panel_handle[seg]) != 'undefined' && document_panel_handle[seg]){
+					var args = {
+							    fixedcenter: false,
+							    constraintoviewport: true,
+							    underlay:"shadow",
+							    close:true,
+							    visible:true,
+							    draggable:true,
+							    monitorresize:true,
+							    effect:{effect: YAHOO.widget.ContainerEffect.FADE, duration:1}
+							   } ;
+
+
+						panel_id = document_panel_handle[seg];
+						panel_id.cfg.applyConfig(args);
+							panel_id.setHeader(document_additionalDetailsCache[spanId]['caption']);
+							panel_id.setBody(document_additionalDetailsCache[spanId]['body']);
+							panel_id.render();
+					panel_id.hide();
+
+				}
+			}*/
+			if(typeof document_additionalDetailsRpcCall == 'number') window.clearTimeout(document_additionalDetailsRpcCall);
+		}
+
+	document_additionalDetailsCache = new Array();
+	document_additionalDetailsCalls = new Array();
+
+
+    var keys = [ "basic_tab", "browse_tab", "advanced_tab"];
+    //show/hide tabs and update css styles based on selected tab link
+	function select_Tab_CSS(key){
+		for( var i=0; i<keys.length;i++)
+        {
+        	var liclass = '';
+            var linkclass = '';
+
+            if ( key == keys[i])
+            {
+            	var liclass = 'active';
+                var linkclass = 'current';
+                document.getElementById(keys[i]).style.display = '';
+            }else{
+                document.getElementById(keys[i]).style.display = 'none';
+            }
+                document.getElementById(keys[i]+'_li').className = liclass;
+                document.getElementById(keys[i]+'_link').className = linkclass;
+       	}
+       	    if ( key == 'browse_tab'){
+                document.getElementById('fts_results_form').style.display = 'none';
+            }else{
+                document.getElementById('fts_results_form').style.display = '';
+            }
+
+				if(key == 'advanced_tab'){
+	                document.getElementById('mode_a').value= 'advanced';
+	            }
+				if(key == 'basic_tab'){
+	               document.getElementById('mode_b').value= 'basic';
+	            }
+				if(key == 'browse_tab'){
+	               document.getElementById('mode_b').value= 'browse';
+	            }
+
+
+
+    }
+
+	function updateKBViewsCount(kbId){
+	    ajaxStatus.showStatus('Saving the Tag....');
+	    var idName = new Array(3);
+	    idName[0]=kbId;
+	    window.setTimeout('ajaxStatus.hideStatus()', 500);
+	    var callback = {
+		     success:function(r) {
+			    //alert(r.responseText);
+			 	window.location.href = 'index.php?action=DetailView&module=KBDocuments&record='+kbId;
+		     },
+		     failure:function() {
+		     	window.location.href = 'index.php?action=DetailView&module=KBDocuments&record='+kbId;
+		     }
+	    }
+		postData = 'selectedKBId=' + YAHOO.lang.JSON.stringify({'jsonObject':kbId}) + '&module=KBDocuments&action=UpdateKBViewsCount&to_pdf=1';
+		YAHOO.util.Connect.asyncRequest('POST', 'index.php', callback, postData);
+	}
+
+
+	//hide or show the 'more options' portion of advanced search screen
+	function toggleInlineSearch(){
+	        if (document.getElementById('search_tips').style.display == 'none'){
+	            document.getElementById('search_tips').style.display = '';
+	            document.getElementById('up_down_img').src='{/literal}{sugar_getimagepath file="basic_search.gif"}{literal}';
+                document.getElementById('up_down_img').setAttribute('alt',"{sugar_translate label='LBL_ALT_HIDE_OPTIONS'}");
+	        }else{
+	            document.getElementById('up_down_img').src='{/literal}{sugar_getimagepath file="advanced_search.gif"}{literal}';
+	            document.getElementById('search_tips').style.display = 'none';
+                document.getElementById('up_down_img').setAttribute('alt',"{sugar_translate label='LBL_ALT_SHOW_OPTIONS'}");
+	        }
+	    }
+
+</script>
+{/literal}
+</td></tr>
+</table>
+
+

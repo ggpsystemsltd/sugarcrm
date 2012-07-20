@@ -1,0 +1,166 @@
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+ 
+html, body, select {
+	background-color:#FFFFFF;
+	color:#000000;
+	font-family:"helvetica";
+	font-size:small;
+	font-weight:normal;
+	margin:0pt;
+	padding:0pt;
+}
+body {
+    margin: 3px;
+}
+div, ul {
+	margin:0px;
+	padding:3px 0px;
+}
+li{
+	list-style: none;
+}
+
+table {
+    width: 100%;
+    border: 0;
+    border-collapse: collapse;
+}
+
+table tr td, table tr td select {
+    padding: 1px;
+    font-size: 12px;
+}
+
+td.bar{
+	margin:0pt;
+	padding:0pt;
+	font-size:xx-small;
+}
+a {
+	color:#3B5998;
+	font-size:x-small;	
+}
+a:focus, a:hover {
+	background:#3B5998 none repeat scroll 0%;
+	color:#FFFFFF;
+}
+
+a.nav{
+	font-size:xx-small;
+	color:#666666;
+}
+a.nav:focus, a.nav:hover{
+	background:#666666 none repeat scroll 0%;
+	color:#FFFFFF;
+}
+
+a.back_link{
+	font-size:xx-small;
+	color:#FFFFFF;
+}
+a.back_link:hover{
+	color:#3B5998;
+}
+
+small {
+	color:#666666;
+	font-size:xx-small;
+}
+form {
+	border:0pt none;
+	margin:0px;
+    display: inline;
+}
+.error {
+	background:#FFEBE8 none repeat scroll 0%;
+	border:1px solid #DD3C10;
+	color:#333333;
+}
+.sectitle {
+	color:#ffffff;
+	margin-top:4px;
+	background:#333333 none repeat scroll 0%;
+	width:100%;
+}
+.secsubtitle {
+	color:#333333;
+	margin-top:1px;
+}
+.sec {
+	border-bottom:1px solid #DDDDDD;
+	margin-bottom:4px;
+	margin-top:2px;
+}
+.nav_sec {
+	margin-bottom:2px;
+	margin-top:2px;
+	font-size:xx-small;
+}
+.search_sec{
+	margin-top:4px;
+	font-size:x-small;
+	color:#333333;
+	background:#dddddd none repeat scroll 0%;
+	width:100%;
+}
+.subpanel_sec{
+	margin-top:4px;
+	font-size:x-small;
+	color:#333333;
+	background:#dddddd none repeat scroll 0%;
+	width:100%;
+}
+.detail_label{
+	color:#666666;
+}
+.button {
+	background:#EEEEEE none repeat scroll 0%;
+	color:#000000;
+}
+.required{
+	color:#FF0000;
+}
+.odd {
+    background-color: #f6f6f6;
+}
+.even {
+    background-color: #eeeeee;
+}
+div.sec .odd a, div.sec .even a {
+    font-size: 12px;
+}
+table,tr,td {
+    background: transparent;
+}
+input[readonly] {
+	background-color:#DDD;
+}

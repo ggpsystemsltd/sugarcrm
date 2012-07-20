@@ -1,0 +1,570 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+<script type="text/javascript" src="include/javascript/popup_parent_helper.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/javascript/jsclass_base.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="include/javascript/jsclass_async.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="modules/Documents/documents.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" language="Javascript" src="include/ytree/treeutil.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" language="Javascript" src="modules/KBDocuments/kbdocuments.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" language="Javascript" src="include/ytree/treeutil.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" src="cache/include/javascript/sugar_grp_overlib.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" language="Javascript" src="include/ytree/TreeView/TreeView.js?v={VERSION_MARK}"></script>
+<script type="text/javascript" language="Javascript" src="include/ytree/TreeView/TaskNode.js?v={VERSION_MARK}"></script>
+<link rel="stylesheet" type="text/css" href="include/ytree/TreeView/css/folders/tree.css?v={VERSION_MARK}" />
+<script type="text/javascript" src="include/javascript/yui/ext/yui-ext.js?v={VERSION_MARK}"></script>
+<link rel="stylesheet" type="text/css" href="modules/kbdocuments/modal.css?v={VERSION_MARK}" />
+
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td>
+			<form name="KBAdminView" id="KBAdminView" method="POST" action="index.php" enctype="multipart/form-data">
+			<input type="hidden" name="module" value="KBDocuments">
+			<input type="hidden" name="record" value="{ID}">
+			<input type="hidden" name="action">
+			<input type="hidden" name="old_id" value="{OLD_ID}">
+			<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+			<input type="hidden" name="return_id" value="{RETURN_ID}">
+			<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+			<input type="hidden" name="parent_id" value="{PARENT_ID}">
+			<input type="hidden" name="parent_type" value="{PARENT_TYPE}">
+			<input type="hidden" name="parent_name" value="{PARENT_NAME}">
+			<textarea style="display: none;" name="uid"></textarea>
+			<input name="select_entire_list" value="0" type="hidden">
+			<input name="KBDocuments2_KBDOCUMENT_offset" value="0" type="hidden">
+	<td align='right'>{ADMIN_EDIT}</td>
+	</tr>
+</table>
+
+{SITEURL}
+{JAVASCRIPT}
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td  width="0%">
+			<span sugar='slot9b'>&nbsp;<select tabindex='1' onchange="SUGAR.kb.adminActions();" name='action_id' id='action_id'>{ADMIN_ACTIONS}</select></span sugar='slot'>
+		</td>
+		<td  width="75%">
+			   <div id="adminTag" name="adminTag">
+			       <table>
+				       <tr>
+					   		<td scope="row" colspan='2'><span sugar='slot25' id='admin_message' name='admin_message' ><b><font COLOR=red>{MOD.LBL_DEFAULT_ADMIN_MESSAGE}</b></span sugar='slot'></td>
+			           </tr>
+			       </table>
+			    </div>
+
+			   <div id="createTag" name="createTag" style="display:none">
+			       <table>
+				       <tr>
+							<td scope="row" colspan='2'>
+								<span sugar='slot25' id='tag_message' name='tag_message' ><b><font COLOR=red>{MOD.LBL_SELECT_PARENT_TAG_MESSAGE}</b></span sugar='slot'>
+							</td>
+				            <td>
+			                    <input align="center" id='tag_new' name='tag_new' maxlength='255' type='text' style="visibility:hidden"></td>
+			                <td>
+			                    <input align="right" id='tag_save' name='tag_save' type='button' class='button' onclick="SUGAR.kb.addNewNode(true);" value=" {APP.LBL_SAVE_BUTTON_LABEL} " style="visibility:hidden"></td>
+			                <td>
+			                    <input align="right" id='tag_cancel' name='tag_cancel' type='button' class="button" onclick="SUGAR.kb.cancelAdminActions();" value=" {APP.LBL_CANCEL_BUTTON_LABEL} "></td>
+			                <td><input id='tag_selected_id' name='tag_selected_id' type='hidden' value=''></td>
+			           </tr>
+			       </table>
+			    </div>
+
+			   <div id="deleteTag" style="display:none">
+			   	   <table>
+				   	   <tr>
+						   <td scope="row" colspan='2'>
+						   		<span sugar='slot25' id='tag_message_delete' name='tag_message_delete'><b><font COLOR=red>{MOD.LBL_SELECT_TAG_TO_BE_DELETED_FROM_TREE}</b></span sugar='slot'>
+						   </td>
+						   <td>
+						       <input align="center" id='tag_delete' name='tag_delete' onclick="SUGAR.kb.deleteTags();" type='button' class='button' value=" {MOD.LBL_DELETE_TAG} ">
+					       </td>
+					       <td>
+						       <input align="center" id='tag_cancel' name='tag_cancel' type='button' class="button" onclick="SUGAR.kb.cancelAdminActions();" value=" {APP.LBL_CANCEL_BUTTON_LABEL} ">
+						   </td>
+			           </tr>
+			       </table>
+			   </div>
+
+			   <div id="renameTag" style="display:none">
+			   	  <table>
+				   	  <tr>
+						  <td scope="row" colspan='2'>
+							  <span sugar='slot25' id='tag_message_rename' name='tag_message_rename' ><b><font COLOR=red>{MOD.LBL_SELECT_TAG_TO_BE_RENAMED_FROM_TREE}</b></span sugar='slot'>
+						  </td>
+				          <td>
+				              <input align="center" id='tag_name_rename' name='tag_name_rename' maxlength='255' type='text' style="visibility:hidden">
+			              </td>
+			              <td>
+				              <input align="center" id='tag_save_rename' name='tag_save_rename' onclick="SUGAR.kb.renameTag(true);" type='button' class='button' value=" {APP.LBL_SAVE_BUTTON_LABEL} " style="visibility:hidden">
+			              </td>
+			              <td>
+				              <input align="center" id='tag_cancel' name='tag_cancel' onclick="SUGAR.kb.cancelAdminActions();" type='button' class="button" value=" {APP.LBL_CANCEL_BUTTON_LABEL} ">
+			              </td>
+			              <td>
+				              <input id='tag_selected_rename_id' name='tag_selected_rename_id' type='hidden' value=''>
+			              </td>
+			              <td>
+				              <input id='tag_selected_rename_parent_id' name='tag_selected_rename_parent_id' type='hidden' value=''>
+			              </td>
+
+			           </tr>
+			       </table>
+			   </div>
+
+			   <div id="moveArticles" style="display:none">
+			   	  <table>
+				   	  <tr>
+						  <td scope="row" colspan='2'>
+							  <span sugar='slot25' id='article_message_move' name='article_message_move' ><b><font COLOR=red>{MOD.LBL_SELECT_ARTICLES_TO_BE_MOVED_TO_OTHER_TAG}</b></span sugar='slot'>
+						  </td>
+			              <td>
+				              <input align="center" id='articles_move_to_tag' name='articles_move_to_tag' onclick="status = SUGAR.kb.selectArticles('Move'); if(status) SUGAR.kb.modalMoveDocs();" type='button' class='button' value=" {MOD.LBL_SELECT_TAG} ">
+			              </td>
+			              <td>
+				              <input align="center" id='tag_cancel' name='tag_cancel' onclick="SUGAR.kb.cancelAdminActions();" type='button' class="button" value=" {APP.LBL_CANCEL_BUTTON_LABEL} ">
+			              </td>
+			              <td>
+				              <input id='tag_selected_move_from_id' name='tag_selected_move_from_id' type='hidden' value=''>
+			              </td>
+			           </tr>
+			       </table>
+			   </div>
+
+			    <div id="applyTags" style="display:none">
+			   	  <table>
+				   	  <tr>
+						  <td scope="row" colspan='2'>
+							  <span sugar='slot25' id='apply_tags_message' name='apply_tags_message'><b><font COLOR=red>{MOD.LBL_SELECT_ARTICLES_TO_APPLY_TAGS}</b></span sugar='slot'>
+						  </td>
+			              <td>
+				              <input align="center" id='apply_tag_modal' name='apply_tag_modal' onclick='status=SUGAR.kb.selectArticles("Apply");if(status) SUGAR.kb.applyTagsModal();' type='button' class='button' value=" {MOD.LBL_SELECT_TAG} ">
+			              </td>
+			              <td>
+				              <input align="center" id='tag_cancel' name='tag_cancel' onclick="SUGAR.kb.cancelAdminActions();" type='button' class="button" value=" {APP.LBL_CANCEL_BUTTON_LABEL} ">
+			              </td>
+			              <td>
+				              <input id='tag_selected_articles_apply_from_id' name='tag_selected_articles_apply_from_id' type='hidden' value=''>
+			              </td>
+			           </tr>
+			       </table>
+			   </div>
+
+			    <div id="deleteArticles" style="display:none">
+			   	  <table>
+				   	  <tr>
+						  <td scope="row" colspan='2'>
+							  <span sugar='slot25' id='delete_articles_message' name='delete_articles_message'><b><font COLOR=red>{MOD.LBL_SELECT_ARTICLES_TO_DELETE}</b></span sugar='slot'>
+						  </td>
+			              <td>
+				              <input align="center" id='delete_articles' name='delete_articles' onclick="SUGAR.kb.deleteArticles();" type='button' class='button' value=" {APP.LBL_DELETE_BUTTON_LABEL} ">
+			              </td>
+			              <td>
+				              <input align="center" id='tag_cancel' name='tag_cancel' onclick="SUGAR.kb.cancelAdminActions();" type='button' class="button" value=" {APP.LBL_CANCEL_BUTTON_LABEL} ">
+			              </td>
+			              <td>
+				              <input id='tag_selected_articles_delete_from_id' name='tag_selected_articles_delete_from_id' type='hidden' value=''>
+			              </td>
+			           </tr>
+			       </table>
+			   </div>
+		</td>
+	</tr>
+</table>
+<br>
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td valign="top" width="25%">
+			<div id="tagstree" height="500">
+				{TAGSTREEINSTANCE}
+			</div>
+		</td>
+		<td valign="top"  id='selected_directory_children'>&nbsp;</td>
+	</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td>
+	<div id='moveDlg' style="display: none" class="edit view">
+		<div id="moveMessage" class="edit view">
+			<table>
+			     <tr>
+			     	<td scope="row">
+			     		<span sugar='slot25' id ='CreateNodeMove' ><b><font COLOR=red>{MOD.LBL_SELECT_A_TAG_FROM_TREE}</b></span sugar='slot'>
+			     	</td>
+			     	<td>
+			     		<input id='Move' class='button' type='button' size='10' onclick="SUGAR.kb.moveDocsAndModalClose();"  value=" {MOD.LBL_MOVE} " style="visibility:hidden">
+			     	</td>
+			     	<td>
+			     		<input id='Cancel_Move' class='button' type='button' size='10' onclick="SUGAR.kb.hideMove();"  value=" {APP.LBL_CANCEL_BUTTON_LABEL} " style="visibility:hidden">
+			     	</td>
+			     	<td>
+			       		<input id='tag_selected_id' type='hidden' value=''>
+			     	</td>
+			     </tr>
+			</table>
+		</div>
+		<div id='tagstreeMoveDocsModal' class="edit view">{TAGSTREEMOVEDOCSMODAL}</div>
+	</div>
+
+	<div id='applyDlg' style="display: none" class="edit view">
+		<div id="applyMessage" class="edit view">
+			<table>
+			     <tr>
+			     	<td scope="row">
+			     		<span sugar='slot25' id ='CreateNodeApply' ><b><font COLOR=red>{MOD.LBL_SELECT_TAGS_FROM_TREE}</b></span sugar='slot'>
+			     	</td>
+			     	<td>
+			     		<input id='Apply' class='button' type='button' size='10' onclick="SUGAR.kb.applyTagsAndmodalClose();"  value=" {MOD.LBL_APPLY_TAG} " style="visibility:hidden">
+			     	</td>
+			     	<td>
+			     		<input id='Cancel_Apply' class='button' type='button' size='10' onclick="SUGAR.kb.hideApply();"  value=" {APP.LBL_CANCEL_BUTTON_LABEL} " style="visibility:hidden">
+			     	</td>
+
+			     </tr>
+			</table>
+		</div>
+		<div id='tagstreeApplyTags' class="edit view"></div>
+	</div>
+</td></tr>
+</table>
+
+<script>
+		/**
+		 * Retrieves additional details dynamically
+		 */
+
+		var document_additionalDetailsCache;
+		var document_additionalDetailsCalls;
+		var document_additionalDetailsRpcCall;
+		var document_zIndex =0;
+		var document_time_el;
+		var document_panel_handle = [];
+
+		function getDocumentDetails(bean, id, spanId, hdrCaption, panel_id,seg) {
+			go = function() {
+				oReturn = function(body, caption, width, theme) {
+					document_zIndex = document_zIndex +1;
+					var args = {
+  							    width:"550px",
+  							    height:"350px",
+							    fixedcenter: false,
+							    constraintoviewport: true,
+							    underlay:"shadow",
+							    close:true,
+							    visible:true,
+							    draggable:true,
+							    zIndex:document_zIndex,
+							    context: [spanId, 'tl','br'],
+							    effect:{effect: YAHOO.widget.ContainerEffect.FADE, duration:1}
+							   } ;
+
+
+  				  if(typeof(document_panel_handle[seg]) != 'undefined' && document_panel_handle[seg]){
+						panel_id = document_panel_handle[seg];
+						panel_id.cfg.applyConfig(args);
+							panel_id.setHeader(document_additionalDetailsCache[spanId]['caption']);
+							panel_id.setBody(document_additionalDetailsCache[spanId]['body']);
+							panel_id.render();
+						var currentTime = new Date();
+						document_time_el = currentTime.getTime();
+
+					}else{
+						panel_id = new YAHOO.widget.Panel("kb"+id, args);
+							//If we haven't built our panel using existing markup,
+							//we can set its content via script:
+							panel_id.setHeader(document_additionalDetailsCache[spanId]['caption']);
+							panel_id.setBody(document_additionalDetailsCache[spanId]['body']);
+							panel_id.render(document.body);
+							document_panel_handle[seg] = panel_id;
+							var currentTime = new Date();
+							document_time_el = currentTime.getTime();
+					 }
+					return panel_id.show;
+
+
+				}
+
+				success = function(data) {
+					eval(data.responseText);
+
+					document_additionalDetailsCache[spanId] = new Array();
+					document_additionalDetailsCache[spanId]['body'] = result['body'];
+					document_additionalDetailsCache[spanId]['caption'] = hdrCaption;
+					document_additionalDetailsCache[spanId]['width'] = result['width'];
+					ajaxStatus.hideStatus();
+					return oReturn(document_additionalDetailsCache[spanId]['body'], document_additionalDetailsCache[spanId]['caption'], document_additionalDetailsCache[spanId]['width'], document_additionalDetailsCache[spanId]['theme']);
+				}
+
+				if(typeof document_additionalDetailsCache[spanId] != 'undefined'){
+					return oReturn(document_additionalDetailsCache[spanId]['body'], document_additionalDetailsCache[spanId]['caption'], document_additionalDetailsCache[spanId]['width'], document_additionalDetailsCache[spanId]['theme']);
+					}
+
+				if(typeof document_additionalDetailsCalls[spanId] != 'undefined') // call already in progress
+					return;
+				ajaxStatus.showStatus(SUGAR.language.get('app_strings', 'LBL_LOADING'));
+				url = 'index.php?to_pdf=1&module=Home&action=AdditionalDetailsRetrieve&bean=' + bean + '&id=' + id+'&full=true';
+				document_additionalDetailsCalls[spanId] = YAHOO.util.Connect.asyncRequest('GET', url, {success: success, failure: success});
+
+				return;
+			}
+			document_additionalDetailsRpcCall = window.setTimeout('go()', 1000);
+
+		}
+
+		function document_clearAdditionalDetailsCall(id,spanId,seg) {/*
+			var currentTime = new Date();
+			var rightNow = currentTime.getTime();
+			if(rightNow>(parseInt(document_time_el)+2500)){
+				//do nothing
+					//alert("do nothing "+document_panel_handle[seg]);
+
+			}else{ //alert(" i "+document_panel_handle[seg]);
+				if(typeof(document_panel_handle[seg]) != 'undefined' && document_panel_handle[seg]){
+					var args = {
+							    fixedcenter: false,
+							    constraintoviewport: true,
+							    underlay:"shadow",
+							    close:true,
+							    visible:true,
+							    draggable:true,
+							    monitorresize:true,
+							    effect:{effect: YAHOO.widget.ContainerEffect.FADE, duration:1}
+							   } ;
+
+
+						panel_id = document_panel_handle[seg];
+						panel_id.cfg.applyConfig(args);
+							panel_id.setHeader(document_additionalDetailsCache[spanId]['caption']);
+							panel_id.setBody(document_additionalDetailsCache[spanId]['body']);
+							panel_id.render();
+					panel_id.hide();
+
+				}
+			}*/
+			if(typeof document_additionalDetailsRpcCall == 'number') window.clearTimeout(document_additionalDetailsRpcCall);
+		}
+
+document_additionalDetailsCache = new Array();
+document_additionalDetailsCalls = new Array();
+
+
+          var keys = [ "advanced_tab","browse_tab"];
+	function select_Tab_CSS(key){
+            	for( var i=0; i<keys.length;i++)
+              	{
+                	var liclass = '';
+                	var linkclass = '';
+
+                	if ( key == keys[i])
+                	{
+                    	var liclass = 'active';
+                    	var linkclass = 'current';
+                    	document.getElementById(keys[i]).style.display = '';
+                	}else{
+                    	document.getElementById(keys[i]).style.display = 'none';
+                	}
+                	document.getElementById(keys[i]+'_li').className = liclass;
+                	document.getElementById(keys[i]+'_link').className = linkclass;
+            	}
+            }
+
+
+	function updateKBViewsCount(kbId){
+	    ajaxStatus.showStatus('Saving the Tag....');
+	    var idName = new Array(3);
+	    idName[0]=kbId;
+	    window.setTimeout('ajaxStatus.hideStatus()', 500);
+	    var callback = {
+		     success:function(r) {
+			     //alert(r.responseText);
+		     }
+	    }
+		postData = 'selectedKBId=' + YAHOO.lang.JSON.stringify({'jsonObject':kbId}) + '&module=KBDocuments&action=UpdateKBViewsCount&to_pdf=1';
+		YAHOO.util.Connect.asyncRequest('POST', 'index.php', callback, postData);
+	}
+
+	function update_select_count_to_value(val)
+	{
+            var arr = new Array();
+            arr = document.getElementsByName('selectCount[]');
+            for(var i = 0; i < arr.length; i++)
+            {
+                var obj = arr[i];
+                if (typeof obj.value != 'undefined')
+                {
+                    obj.value = val;
+                }
+            }
+	}
+
+	function update_sel_count(c){
+		selCount = parseInt(document.getElementById('selectCountTop').value);
+		if(c.checked){
+			selCount = selCount + 1;
+		}else{
+			selCount = selCount - 1;
+		}
+		if(selCount < 0){
+			selCount =0;
+		}
+
+		update_select_count_to_value(selCount);
+	}
+
+	function set_update_select_count()
+	{
+		if(document.KBAdminView.uid.value != '') {
+			var oldUids = document.KBAdminView.uid.value.split(',');
+			var ar = new Array();
+
+			for(i in oldUids)
+			{
+				ar[oldUids[i]] = 1;
+			}
+
+			var inputs_array = document.getElementsByName("mass[]");
+			for(wp = 0 ; wp < inputs_array.length; wp++) {
+					if(typeof ar[inputs_array[wp].value] != 'undefined') {
+						inputs_array[wp].checked = true;
+					}
+			}
+			selCount = oldUids.length;
+		} else {
+			selCount = 0;
+		}
+		update_select_count_to_value(selCount);
+	}
+
+   function checkUncheckAll(){
+	  var state = document.getElementsByName('massall')[0].checked;
+	  var elems = document.getElementsByName('mass[]');
+	  selCount = 0;
+	  for(var i=0;i<elems.length;i++)
+      {
+		  var el = elems[i];
+		  if(el.type == 'checkbox')
+	      {
+			 el.checked=state;
+			 selCount++;
+		  }
+	  }
+
+	  if(!state){
+		 selCount = 0;
+      }
+	  update_select_count_to_value(selCount);
+	}
+
+	function unCheckAll(){
+        document.getElementsByName('massall')[0].checked=false;
+	    var elems = document.getElementsByName('mass[]');
+	    for(var i=0;i<elems.length;i++){
+		  var el = elems[i];
+		  if(el.type == 'checkbox') {
+			 el.checked = false;
+		  }
+		}
+
+		document.KBAdminView.uid.value = '';
+		document.KBAdminView.select_entire_list.value = 0;
+		update_select_count_to_value(0);
+	}
+
+
+	//when called, this function will make ajax call to refresh list view sort order
+	function sortBrowseList(params,name) {
+
+		// if paginating before running a sort, then name will be empty.  Handle this use case
+		if(typeof(name) =='undefined' ){
+			//we will pass in keyword PAGINATE.  This will identify this call as a pagination call
+			name = 'PAGINATE';
+		}
+
+
+		//create data to send across
+		postData = 'module=KBDocuments&action=BrowseListView&to_pdf=1'+ '&sortCol='+name;
+
+		args = '&to_pdf=1'+'&params=' + JSON.stringify(params) + '&sortCol='+name;
+		//create callback function
+		var callback =	{
+			//on success, refresh list
+			  success: function(o) {
+			    	var targetdiv=document.getElementById('selected_directory_children');
+	    			targetdiv.innerHTML=o.responseText;
+	    			SUGAR.util.evalScript(o.responseText);
+			  },
+			  //do nothing on failure
+			  failure: function(o) {/*failure handler code*/}
+		};
+		//make ajax call
+		var trobj = YAHOO.util.Connect.asyncRequest('POST','index.php?'+postData, callback, args);
+
+	}
+
+
+
+	function save_kb_checks(offset) {
+		ar = new Array();
+		if(document.KBAdminView.uid.value != '') {
+			oldUids = document.KBAdminView.uid.value.split(',');
+			for(uid in oldUids) {
+			    if(typeof(oldUids[uid]) != 'function') {
+			       ar[oldUids[uid]] = 1;
+			    }
+			}
+		}
+
+		// build associated array of uids, associated array ensures uniqueness
+		var inputs = document.getElementsByName('mass[]');
+		for(i = 0; i < inputs.length; i++) {
+			ar[inputs[i].value]	= (inputs[i].checked) ? 1 : 0; // 0 of it is unchecked
+		}
+
+		// build regular array of uids
+		uids = new Array();
+		for(i in ar) {
+			if(typeof(ar[i]) != 'function' && ar[i] == 1) {
+			   uids.push(i);
+			}
+		}
+
+		document.KBAdminView.uid.value = uids.join(',');
+		eval('document.KBAdminView.KBDocuments2_KBDOCUMENT_offset.value = offset');
+		return true;
+	}
+</script>
+
+</table>
+</form>
+<!-- END: main -->

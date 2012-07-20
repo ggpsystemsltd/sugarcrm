@@ -1,0 +1,69 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Master Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/master-subscription-agreement
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2012 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<form id="wizform" name="wizform" method="POST" action="index.php">
+	<input type="hidden" name="module" value="Campaigns">
+	<input type="hidden" name="action" = "CampaignDiagnostic">
+	<input type="hidden" name="return_module" value="{$RETURN_MODULE}">
+	<input type="hidden" name="return_id" value="{$RETURN_ID}">
+	<input type="hidden" name="return_action" value="{$RETURN_ACTION}">
+		
+
+
+<div id="diagnose" class="contentdiv"> 
+<form name="form1" method="post" action="">
+
+<table class="h3Row" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td nowrap="nowrap"><h3>{$EMAIL_IMAGE}{$EMAIL_COMPONENTS}</h3></td></tr></table>
+
+	<div id="email" >
+
+          {$EMAIL_SETTINGS_CONFIGURED_MESSAGE}
+		  {$MAILBOXES_DETECTED_MESSAGE}
+
+	</div>
+<p>{$EMAIL_SETUP_WIZ_LINK}</p>
+
+<p>&nbsp;</p>
+<table class="h3Row" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td nowrap="nowrap"><h3>{$SCHEDULE_IMAGE}  {$SCHEDULER_COMPONENTS}</h3></td></tr></table>
+
+	<div id="schedule">
+
+          {$SCHEDULER_EMAILS_MESSAGE}
+
+	</div>	
+</p>
+<p><div id='submit'><input name="Re-Check" onclick="this.form.action.value='CampaignDiagnostic';" class='button' value="{$RECHECK_BTN}" type="submit"></div>
+</form></div>	
+
+
+
+		
